@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                JS的数据类型检测
+                    - 目的: 检测变量存储的数据是什么类型
+                
+                typeof 关键字
+                    - 语法:
+                        => typeof 检测的值
+                        => typeof(检测的值)
+
+                    - 返回值(结果)
+                        => 检测的结果用字符串的形式返回出来
+                        => 返回值结果：
+                            -> 数值: 'number'
+                            -> 字符串: 'string'
+                            -> 布尔值: 'boolean'
+                            -> undefined: 'undefined'
+                            -> Null: 'object'
+
+                    - typeof 和 typeof()区别
+                        => typeof() 优先计算括号内的值，最后进行类型检测
+
+            */
+
+			var age = 18;
+
+			// 1、typeof 使用
+			// 把typeof检测的变量当做一个值赋给变量res
+			// var res = typeof age;
+			// console.log(res);
+
+			// var res = typeof age;
+			// console.log(res);
+
+			// typeof检测的结果是什么类型的? res
+			// typeof检测的结果是字符串类型的
+			// var res1 = typeof res;
+			// console.log(res1);
+
+			// 两个typeof连用：结果是string
+			// var res1 = typeof typeof age;
+			// console.log(res1);
+
+			// typeof只能用来检测基础数据类型
+			console.log(typeof 18); // number
+			console.log(typeof "abc"); // string
+			console.log(typeof true); // boolean
+			console.log(typeof undefined); // undefined
+			console.log(typeof null); // object
+
+			//[] 数组： 复杂数据类型
+			// console.log(typeof []);
+			//{} 对象: 复杂数据类型
+			// console.log(typeof {});
+
+			// 2. typeof 和 typeof() 区别
+			var res1 = typeof 10 + 20;
+			console.log(res1);
+
+			// typeof() 提升优先级，优先计算()里面的值
+			var res2 = typeof (10 + 20);
+			console.log(res2);
+		</script>
+	</body>
+</html>

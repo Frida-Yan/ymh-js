@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                数据类型转换--布尔类型
+                    - 把数据类型转为布尔类型(true/false)
+
+                1. Boolean()
+                    - 语法: Boolean(要转换的内容)
+                    - 返回值: true/false
+                    - 规则: 在js中，除了以下5个转为false, 其余都是true
+                        -> NaN
+                        -> 0
+                        -> ''
+                        -> undefined
+                        -> null
+            */
+
+			// 1. Boolean()
+			console.log(Boolean(0)); // -> false
+			console.log(Boolean("")); // -> false
+			console.log(Boolean(undefined)); // -> false
+			console.log(Boolean(null)); // -> false
+			console.log(Boolean(NaN)); // -> false
+
+			console.log(Boolean("0")); // -> true
+			console.log(Boolean(" ")); // -> true
+		</script>
+	</body>
+</html>

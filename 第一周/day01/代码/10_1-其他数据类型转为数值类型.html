@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                数据类型转换--数值类型
+                    - 把其他数据类型转为数值类型
+
+                    1. Number()
+                        - 语法: Number(要转换的内容)
+                        - 返回值(结果): 转换好的数值类型数据
+                        - 规则：
+                            1) 如果转换的整体内容是一个合法数字，返回的结果就是这个数字
+                            2) 如果转化的整体内容是一个非法数字，返回的结果是NaN(not a number)
+
+                    2. parseInt()
+                        - 语法: parseInt(要转换的内容)
+                        - 返回值(结果): 转换好的数值类型数据
+                        - 规则:
+                            1) 不管转换的内容是什么，都是一位一位看
+                            2) 如果第一位不是数字，那么直接返回NaN
+                            3) 如果第一位是数字，从第一位开始向后看，直到不能解析或者结束
+                            4) 不认识小数点(重要)
+
+                    3. parseFloat()
+                        - 语法: parseFloat(要转换的内容)
+                        - 返回值(结果): 转换好的数值类型数据
+                        - 规则:
+                            1) 不管转换的内容是什么，都是一位一位看
+                            2) 如果第一位不是数字，那么直接返回NaN
+                            3) 如果第一位是数字，从第一位开始向后看，直到不能解析或者结束
+                            4) 认识小数点(重要)
+
+                    4. 非加法的数学运算 - * / 等
+                        - 规则: 和Number() 一样，强制转换
+            */
+
+			// 1. Number()
+
+			// var s = "100";
+			// var s = "100.123";
+			// var s = "abc";
+			// var s = "100a";
+			// console.log(s); // '100'
+			// console.log(typeof s); // 'string'
+
+			// // Number() 转换数据类型， 返回的结果赋给res
+			// var res = Number(s);
+			// console.log(res, "res");
+			// // 检测 res的数据类型
+			// console.log(typeof res); // number
+
+			// 2. parseInt()
+			// var s = "100";
+			// var s = "100.123"; // parseInt() 不识别小数点，遇到不能转化的直接停止
+			// var s = "100abc"; // parseInt() 从第一位开始识别，遇到不能转化的直接停止
+			// var s = "abc"; // parseInt() 从第一位开始，如果第一位不识别，直接返回NaN
+			// var s = "a100.123"; // parseInt() 从第一位开始，如果第一位不识别，直接返回NaN
+			// // parseInt() 转换数据类型， 返回的结果赋给res
+			// var res = parseInt(s);
+			// console.log(res);
+			// // 检测res的数据类型
+			// console.log(typeof res);
+
+			// 3. parseFloat()
+			// var s = "100";
+			// var s = "100.123"; // parseFloat() 识别小数点，从小数点后继续解析
+			// var s = "100.123abc"; // parseFloat() 识别小数点，从小数点后继续解析
+			// var s = "a100.123";
+			// parseFloat() 数据类型转换，返回的结果赋给res
+			// var res = parseFloat(s);
+			// console.log(res);
+			// // 检测res的数据类型
+			// console.log(typeof res);
+
+			// 4. 非加法的数学运算
+			// var s = "100";
+			// var s = "100.123";
+			// var s = "100a";
+			// var s = "abc";
+			// var res = s - 0;
+			// // 非加法运算进行转换
+			// console.log(res);
+			// // 检测res的数据类型
+			// console.log(typeof res);
+		</script>
+	</body>
+</html>
