@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            根据 1 ~ 12 的数字在控制台输出当月的天数     
+        */
+    //    var month = 12 
+    //    switch(month){
+    //         case 1:
+    //         case 3:
+    //         case 5: 
+    //         case 7: 
+    //         case 8: 
+    //         case 10: 
+    //         case 12:
+    //             console.log(31);
+    //             break 
+    //         case 4: 
+    //         case 6: 
+    //         case 9:
+    //         case 11: 
+    //             console.log(30);
+    //             break;
+    //         case 2: 
+    //             console.log(28)            
+    //     }
+
+        /*
+            根据成绩 在控制台输出内容 
+            90 以上 A 
+            80-89 B 
+            70-79 C
+            60-69 D 
+            60以下 E
+        */
+       var score = 55.56
+        // 1. 成绩/10
+        // 2. 保留整数部分 10 9 8 7 6 5 4 3 2 1 0 
+        switch(parseInt(score/10)){
+            case 10: 
+            case 9:
+                console.log('A');
+                break 
+            case 8: 
+                console.log('B')
+                break;
+            case 7: 
+                console.log('C')
+                break;
+            case 6: 
+                console.log('D')
+                break;
+            default:
+                console.log('E')
+            // case 5:
+            // case 4: 
+            // case 3: 
+            // case 2: 
+            // case 1: 
+            // case 0: 
+            //     console.log('E')
+            //     break
+        }
+    </script>
+</body>
+</html>

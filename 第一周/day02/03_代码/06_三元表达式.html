@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            三元表达式(三元运算/三目运算/三目)
+
+            语法: 条件? 对 : 不对 
+            作用: 简化 if else语句
+            注意: 执行代码的位置只能执行一句话
+            作用: 
+                  1. 利用三元表达式执行代码
+                  2. 利用三元表达式给变量赋值
+        */
+
+
+        // var num = 10
+        // if(num%2){
+        //     console.log('奇数')
+        // }else {
+        //     console.log('偶数')
+        // }
+
+        // 条件? 对 : 不对 
+        // num%2? console.log('奇数'):console.log('偶数')
+
+        // 2. 利用三元表达式进行赋值
+        // var sex = 1 // 1: 男  0: 女
+        // var gender = ''
+        // if(sex===1) {
+        //     gender = '男'
+        // } else {
+        //     gender = '女'
+        // }
+
+        // gender = sex === 1 ? '男' : '女'
+
+        // 案例 根据输入的身份证后四位判断是男是女 
+        // prompt()
+        // 语法: prompt(提示文本)
+        // 作用: 在浏览器出现一个弹窗，带有确定和取消，输入框
+        // 返回值： 点击确认，返回输入的内容的字符串，点击取消，返回null 
+        // 注意：点击确认返回的必然是一个 string 类型
+
+        // 规定： 只输入身份证后四位，只考虑四位数字的情况 点击确定或者取消
+
+        // 1. 获取到prompt输入的内容 
+        var res = prompt('请输入身份证后四位')
+        console.log(res)
+
+        // 2. 判断点击确定还是取消
+        // 确定 -- res是字符串，转布尔是 true 
+        // 取消 -- res是null,  转布尔是false, 什么都不做
+
+        if(res) {
+            // if() 里面必然是一个布尔类型
+            // console.log('点击确定') 
+            // 获取倒数第二位数字
+            var sex = parseInt(res%100/10)
+            var gender = sex % 2 ? '先生' : '女士'
+            alert(`欢迎光临, ${gender}`)
+        }
+
+
+        
+    </script>
+</body>
+</html>
