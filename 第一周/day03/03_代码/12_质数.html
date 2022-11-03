@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            质数：除了1和自身以外，不能被其他数字整除
+
+                7 % 2
+                7 % 3
+                7 % 4
+                7 % 5
+                7 % 6
+
+                范围 2 ~ (n - 1)
+        */
+
+        var n = 7 
+        // // 设置一个计数器 
+        // var count = 0
+        // for(var i = 2; i<n; i++) {
+        //     if( n % i === 0 ) {
+        //         // 不是质数
+        //         count ++ 
+        //     }
+        // } 
+        // if(count !== 0 ) {
+        //     console.log('不是质数')
+        // }else {
+        //     console.log('是质数')
+        // }
+
+
+        // 有必要循环到n-1吗？ 
+        // n = 127
+        // n / 1 = 127
+        // n / 2 = 63.5 
+        // 1 和 2 之间没有整数，所以 64-126之间一定不能被127整除
+
+        // var count = 0
+        // for(var i = 2; i<= n / 2; i++) {
+        //     if( n % i === 0 ) {
+        //         count ++
+        //         break
+        //     }
+        // } 
+
+        var flag = false
+        for(var i = 2; i<= n / 2; i++) {
+            if( n % i === 0 ) {
+                flag = true
+                break
+            }
+        } 
+
+        if(flag) {
+            console.log('不是质数')
+        } else {
+            console.log('是质数')
+        }
+
+
+        // var count = 0
+        // for(var i = 2; i<= n / 2; i++) {
+        //     if( n % i === 0 ) {
+        //         break
+        //     }
+        // } 
+
+        // if(i<= n/2) {
+        //     console.log('不是质数')
+        // }else {
+        //     console.log('质数')
+        // }
+
+        
+            
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            最小公倍数
+                公倍数：能同时整数两个数字
+                eg: 12 18 -> 36 72
+
+                思路：
+                    1. 需要重复的操作
+                        -> 寻找 能整除 两个数字的值
+                    2. 是否需要一组有规律的数字
+                        -> 最小值  max 
+                        -> 最大值  min*max
+                    3. 简化代码 --- 修改步长
+                        考虑能被max整数的数字的范围
+                        18的1倍是 18
+                        18的2倍是 36
+                        -> 因为 1 和 2 之间没有整数，所以 19 - 35 之间一定没有数字能整除 18
+                        -> 因为 2 和 3 之间没有整数，所以 37 - 53 之间一定没有数字能整除 18 
+                        -> 因为 3 和 4 之间没有整数，所以 55 - 63 之间一定没有数字能整除 18 
+                        ......
+                        每次的步长都是 max 的就可以了
+                    
+        */
+
+        var min = 12
+        var max = 18
+        // for(var i = max; i <= min*max; i++) {
+        //     if(i % min === 0 && i % max === 0) {
+        //         console.log(i)
+        //         break
+        //     }
+        // }
+
+        for(var i = max; i <= min*max; i += max ) {
+            if(i % min === 0 ) {
+                console.log(i)
+                break
+            }
+        }
+        
+    
+    </script>
+</body>
+
+</html>

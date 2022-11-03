@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            最大公约数
+                辗转相除法求最大公约数
+                => 逻辑
+                    两数取余，如果为0，直接结束，最小的数字就是最大公约数
+                    如果不为0，用小数覆盖大数，两数余数覆盖大数，重复
+                => eg:
+                    min 18 max 22 
+                    22 % 18 = 4  ==> max: 18  min: 4
+                    18 % 4 = 2 ==> max: 4 min: 2
+                    4 % 2 = 0 ==> 最大公约数: 2
+
+                思考
+                    1. 重复的操作是什么  -- 辗转相除
+                    2. 需要一组有规律的数字吗 -- 不需要
+        */
+
+        var min = 18
+        var max = 22 
+        
+        while(max%min!==0) {
+            var tmp = max % min 
+            max = min 
+            min = tmp 
+        }
+    </script>
+</body>
+</html>
