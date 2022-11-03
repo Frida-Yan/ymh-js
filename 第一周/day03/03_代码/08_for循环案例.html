@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            水仙花
+                1. 重复执行的操作是什么
+                2. 是否需要一组有规律的数字
+        */
+        for (var i = 100; i <= 999; i++) {
+            // 获取 每一位数字
+            var a = parseInt(i / 100)
+            var b = parseInt(i % 100 / 10)
+            var c = parseInt(i % 10)
+
+            // 判断是不是水仙花，是的话输出
+            if(a**3 + b**3 + c**3 === i){
+                console.log(i)
+            }
+        }
+    </script>
+</body>
+
+</html>
