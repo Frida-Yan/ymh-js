@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            函数
+
+            什么是函数
+                - 是JavaScript数据类型，叫做Function
+                - 复杂数据类型
+                - 就是一个盒子，里面放置代码
+                    步骤
+                        1. 把代码装进盒子 ===> 定义
+                        2. 把盒子里的代码执行 ===> 执行
+
+            函数定义阶段
+                - 声明式定义函数
+                    1. 语法: function 函数名() { 代码段 }
+                        ->  function:     定义函数的关键字
+                        ->  函数名:        给这个函数起名字
+                        ->  ():           函数放置参数的地方 
+                        ->  {}:           函数体，放置代码的位置
+
+            函数调用阶段(执行函数里面的代码)
+                - 语法: 函数名()
+        */
+
+        // 九九乘法表
+        
+
+        // 声明式定义函数
+        function fn() {
+            for(var i = 1; i <= 9; i++) {
+                for(var j = 1; j <= i; j++) {
+                    document.write(`${j} * ${i} = ${i*j}`)
+                }
+                document.write('<br>')
+            }
+        }
+
+        fn()
+    </script>
+</body>
+</html>
