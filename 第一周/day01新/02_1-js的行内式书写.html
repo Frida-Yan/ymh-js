@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="javascript: alert('hello world') ;">点我一下</a>
+    <!-- 
+        js的行内式书写  (不推荐)
+            - a标签 (利用a标签自带的特性：锚点，跳转，执行js)
+                -> 在a标签中，用属性href进行书写 javascript: js代码 ;
+                    eg: <a href='javascript: js代码 ;'></a>
+
+            - 非a标签
+                -> 添加在元素的行为属性上(点击 键盘 焦点...)
+                    => on行为属性...
+                eg: <div onclick = 'js代码' ></div>
+     -->
+    <!-- 
+        第一个js代码
+            语法：alert('内容')
+            -> 作用: 会在页面上弹出一个提示框，内容就是()里面的内容
+            -> 书写注意点： 除了纯数字之外,()里面的内容必须写引号
+      -->
+  </body>
+</html>
