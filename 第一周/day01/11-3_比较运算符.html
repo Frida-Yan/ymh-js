@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    比较运算符
+        - 比较的结果都是布尔值
+  */
+  /*
+    大于 > 
+    小于 <
+    大于等于 >=
+    小于等于 <= 
+        - 比较的时候会进行隐式转换(转换数据类型)
+        - 规则
+            1. 两边都是数值，直接比较
+            2. 两边都是字符串, 比较ASCII编码
+            3. 任一边是数值，另一个转数值(隐式转换)
+            4. 任一边是布尔，把这个转数值(隐式转换)
+            5. NaN 和 任何比都是false
+  */
+  //   console.log(10 < 20); // true 两边都是数值，直接比较
+  //   console.log(10 < true); // false 一边是布尔，把布尔转为数值
+  //   console.log(10 < false); // false 一边是布尔, 把布尔转为数值
+  //   console.log(10 < null); // false 任一边是数值，把另一边转为数值
+  //   console.log(10 < "9"); // false 任一边是数值，把另一边转为数值
+  //   console.log("10" > "9"); // false 两边都是字符串，比较字符串的ASCII编码
+  /*
+    ASCII编码, 每个字符有一个编码, js中叫做unicode编码
+    0 ~ 9  48 ~ 57
+    A ~ Z  65 ~ 90
+    a ~ z  97 ~ 122
+  */
+  //   console.log("Banana" < "apple"); // true B的编码小于a的编码
+  //   console.log(undefined > 10);
+
+  /*
+    不考虑类型，只比较值(隐式转换)
+    == 等于    
+    != 不等于
+
+    类型和值都需要考虑 (推荐)
+    === 全等 恒等
+    !== 全不等 不恒等
+  */
+  //   console.log(1 == 1);
+  //   console.log(1 == true); // 一边是布尔，把这个布尔转为数值
+  //   console.log(1 == "1"); // 一边是字符，一边是数值，把字符转为数值
+  //   console.log(null == undefined); // 作者约定，大部分语言中认为null 和 undefined是同一个东西
+  //   console.log(NaN == NaN); // NaN和任何相比都是false
+  //   console.log(NaN != NaN);
+
+  //   console.log(1 === 1);
+  //   console.log(1 === true);
+  //   console.log(1 === "1");
+  //   console.log(null === undefined);
+  //   console.log(NaN === NaN);
+  //   console.log(NaN !== NaN);
+</script>
