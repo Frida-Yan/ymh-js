@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    一些小方法
+        1. isNaN()
+            -> 语法 isNaN(内容)
+            -> 判断内容是不是非数字
+            -> 返回值
+                => true 是一个非数字
+                => false 不是一个非数字
+            -> 判断规则
+                把()里面的内容整体用Number转换，转换出来是NaN，就返回true, 否则false
+  */
+  // 1. isNaN
+  //   console.log(isNaN(10));
+  //   console.log(isNaN("10"));
+  //   console.log(isNaN("abc"));
+  //   console.log(isNaN("1.1.1"));
+  //   console.log(isNaN("1.1"));
+  //   console.log(isNaN(true));
+  //   console.log(isNaN(undefined));
+  //   console.log(isNaN(null));
+
+  /*
+    2. Number.isNaN()
+        -> 语法 Number.isNaN(数据)
+        -> 判断数据是不是NaN
+        -> 返回值
+            => true 数据是NaN
+            => false 数据不是NaN
+        -> 判断规则
+            => 直接判断数据是不是NaN
+  */
+  //   console.log(Number.isNaN(10));
+  //   console.log(Number.isNaN("10"));
+  //   console.log(Number.isNaN("abc"));
+  //   console.log(Number.isNaN("1.1.1"));
+  //   console.log(Number.isNaN("1.1"));
+  //   console.log(Number.isNaN(true));
+  //   console.log(Number.isNaN(undefined));
+  //   console.log(Number.isNaN(null));
+  //   console.log(Number.isNaN(NaN));
+
+  /*
+    3. Object.is
+        -> 语法 Object.is(数据1, 数据2)
+        -> 作用 判断两个数据是否相等
+        -> 返回值 
+            => true 两个数据相等
+            => false 两个数据不相等
+        -> 注意 
+            NaN和NaN比较，返回的是true
+  */
+
+  console.log(Object.is(1, 1));
+  console.log(Object.is(1, "1"));
+  console.log(Object.is(null, undefined));
+  console.log(Object.is(NaN, NaN));
+</script>
