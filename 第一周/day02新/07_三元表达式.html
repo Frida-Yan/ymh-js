@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+
   <body></body>
 </html>
 <script>
   /*
     三元表达式(三目运算 三目 三元运算)
-        -> 语法  条件 ? 对的执行代码 : 不对的执行代码
-        -> 意义  就是对if else的简化
-        -> 注意  
-                1. 三元表达式可以嵌套
-                2. 执行代码的地方只能写一句话
-        -> 作用
-                1. 利用三元表达式执行代码
-                2. 利用三元表达式进行赋值
+      -> 语法  条件 ? 对的执行代码 : 不对的执行代码
+      -> 意义  就是对if else的简化
+      -> 注意  
+          1. 三元表达式可以嵌套
+          2. 执行代码的地方只能写一句话
+      -> 作用
+          1. 利用三元表达式执行代码
+          2. 利用三元表达式进行赋值
   */
 
   //   var age = 20;
@@ -48,8 +49,8 @@
 
   // 利用三元表达式进行赋值
   // 需求 根据一组四位数的第三位判断是男士还是女士，给变量text赋值, 奇数 男士  偶数 女士
-  var origin = 2221;
-  var num = parseInt((origin % 100) / 10);
-  var text = num % 2 ? "男士" : "女士";
-  console.log(text);
+  var origin = 2221
+  var num = parseInt((origin % 100) / 10)
+  var text = num % 2 ? "男士" : "女士"
+  console.log(text)
 </script>

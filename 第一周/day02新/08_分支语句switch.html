@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+</html>
+<script>
+  /*
+	单词
+		switch   分支 岔路
+		case     情况
+		break    折断  打断
+		default  默认
+ */
+  /*
+		条件分支语句--switch
+			基础语法
+				switch(要判断的内容) {
+					case 情况1:
+						情况1满足的时候执行的代码
+						break;
+					case 情况2:
+						情况2满足的时候执行的代码
+						break;
+					default:
+						都不满足的时候执行的代码
+				}
+			
+			注意
+				1. switch 一般不进行范围的判断，而是某些准确的值的判断
+				2. switch语句中，判断的内容和case必须值和数据类型都一样，才能满足情况
+				3. switch语句可以不写default
+					-> 如果不写，所有case都不满足的时候没有代码执行
+				4. switch语句可以不写break
+					-> 如果不写，会发生break穿透效果
+
+			break穿透效果
+				从第一个满足的case开始
+				如果没有case开始，后面的条件不再判断，直接执行代码
+				直到遇到break或者switch结束为止
+
+			switch的特殊性
+				-> switch语句的条件可以不是常量，而是变量或表达式
+	*/
+
+  // 案例  根据 0 ~ 6 的数字在控制台输出星期一到星期日
+  //   var num = 10;
+  //   switch (num) {
+  //     case 0:
+  //       console.log("星期一");
+  //       break;
+  //     case 1:
+  //       console.log("星期二");
+  //       break;
+  //     case 2:
+  //       console.log("星期三");
+  //       break;
+  //     case 3:
+  //       console.log("星期四");
+  //       break;
+  //     case 4:
+  //       console.log("星期五");
+  //       break;
+  //     case 5:
+  //       console.log("星期六");
+  //       break;
+  //     case 6:
+  //       console.log("星期日");
+  //       break;
+  //     default:
+  //       console.log("请输入正确的数字");
+  //   }
+
+  // break穿透效果  建议在穿透的地方写上注释
+  // var num = 0;
+  // switch (num) {
+  //   case 0:
+  //     console.log("星期一");
+  //   case 1:
+  //     console.log("星期二");
+  //   case 2:
+  //     console.log("星期三");
+  //   case 3:
+  //     console.log("星期四");
+  //   case 4:
+  //     console.log("星期五");
+  //   case 5:
+  //     console.log("星期六");
+  //   case 6:
+  //     console.log("星期日");
+  //   default:
+  //     console.log("请输入正确的数字");
+  // }
+
+  // switch的条件是表达式
+  // var text = "hello world";
+  // switch (text) {
+  //   case "hello " + "world":
+  //     console.log("找到了");
+  //     break;
+  //   case "bye bye":
+  //     console.log("没找到");
+  //     break;
+  // }
+
+  // 案例 判断一个数字在不在10 ~ 20中
+  var num = 11
+  switch (true) {
+    case 10 < num && num < 20:
+      console.log("在区间中")
+      break
+    default:
+      console.log("不在区间中")
+  }
+</script>

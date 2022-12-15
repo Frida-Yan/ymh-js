@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+	switch 案例
+	
+	根据年月日三个条件，判断是当年的第几天
+	2020-12-31
+	
+	分析
+		年  判断闰年平年 
+		日  直接加上
+		月  
+		如果2月，就把1月的整月加上
+		如果3月，就把2 1 的整月加上
+*/
+
+  // 定义三个变量 年月日
+  var year = 2020
+  var month = 12
+  var day = 31
+
+  // 准备一个变量接受所有的计算结果
+  var date = day
+
+  // 利用break穿透效果
+  switch (month) {
+    case 12:
+      day += 30
+    case 11:
+      day += 31
+    case 10:
+      day += 30
+    case 9:
+      day += 31
+    case 8:
+      day += 31
+    case 7:
+      day += 30
+    case 6:
+      day += 31
+    case 5:
+      day += 30
+    case 4:
+      day += 31
+    case 3:
+      // 这里要判断是不是闰年
+      day += (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? 29 : 28
+    case 2:
+      day += 31
+  }
+  console.log(day)
+</script>
