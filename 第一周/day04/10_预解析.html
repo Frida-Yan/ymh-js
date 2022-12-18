@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    预解析
+        在代码执行之前，对代码进行通读并解释
+
+    只解析两个内容
+        1. var声明的变量
+            -> 对var声明的变量进行提前声明，但是暂时不赋值
+        2. 声明式函数  function 函数名() {}
+            -> 对函数名进行提前声明，并且直接赋值为一个函数
+            -> 注意： 赋值式函数，按照var的规则解析
+
+    注意
+        打开浏览器 只会解析全局代码
+        不会对函数内的代码进行预解析
+        函数内的代码会在该函数调用的时候，进行预解析
+            
+  */
+
+  // 1. var 预解析
+  //   var num = 100
+  //   console.log(num)
+
+  /*
+    打开浏览器
+        1. var num = 100 
+        2. console.log(num)
+
+    预解析
+        1. 需要预解析
+            告诉浏览器 定义了一个叫做num的变量，但是不赋值
+        2. 不需要预解析
+    
+    代码执行
+        1. num= 100
+        2. console.log(num)
+  */
+
+  //   console.log(num)
+  //   var num = 100
+  //   console.log(num)
+
+  /*
+    打开浏览器
+        1. console.log(num)
+        2. var num = 100 
+        3. console.log(num)
+
+    预解析
+        1. 不需要
+        2. 需要  var num 
+            告诉浏览器 定义了一个叫做num的变量，但是不赋值
+        3. 不需要
+
+    代码执行
+        1. console.log(num)
+            预解析中已经声明了num变量，但是没有赋值
+            undefined
+        2. num = 100
+        3. console.log(num)
+        
+        
+    所以上述的代码等价于
+    var num 
+    console.log(num)
+    num = 100 
+    console.log(num)
+  */
+
+  /*
+    声明式函数
+   */
+
+  //   fn()
+  //   function fn() {
+  //     console.log("fn")
+  //   }
+  //   fn()
+
+  /*
+    打开浏览器
+        1. fn()
+        2. function fn() { console.log("fn") }
+        3. fn()
+    预解析
+        1. 不需要
+        2. 需要 声明一个fn的变量，值是一个函数
+        3. 不需要
+    代码执行
+        1. fn() 
+            预解析的时候已经声明了一个fn变量，并且赋值为一个函数 
+            正常调用
+        2. fn() 同上
+
+    
+    fn()
+    function fn() {
+        console.log("fn")
+    }
+    fn()
+
+    所以上面的代码等价于
+
+    function fn() {
+        console.log("fn")
+    }
+    fn()
+    fn()
+    
+  */
+
+  // 3. 赋值式函数
+  //   fn()
+  //   var fn = function () {
+  //     console.log("fn")
+  //   }
+  //   fn()
+
+  /*
+    打开浏览器
+    1. fn()
+    2. var fn = function () { console.log("fn") }
+    3. fn()
+    预解析
+    1. 不需要
+    2. 需要 声明了一个变量 fn， 但是不赋值
+    3. 不需要
+    代码执行
+    1. fn() 
+        变量fn的值此刻是一个undefined , 不能当做函数使用，会报错
+    2. 不执行
+  */
+
+  // 函数内的变量的预解析
+  function fn() {
+    console.log(num)
+    var num = 100
+    console.log(num)
+  }
+  fn()
+
+  /*
+    打开浏览器
+    1. function fn() { var num = 100; console.log(num) }
+    2. fn()
+    预解析
+    1. 需要
+        声明一个函数fn, 赋值为一个函数
+    2. 不需要
+    代码执行
+        1. fn()
+            此时，对函数内进行预解析
+            1. var num 
+            2. console.log(num)
+
+  */
+</script>

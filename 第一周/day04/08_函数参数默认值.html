@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    函数参数默认值
+        - 给函数的形参定义一个默认值，当没有传递实参的时候可以使用
+        - 直接使用赋值符号，给形参进行赋值
+  */
+
+  function fn(n = 9) {
+    for (var i = 1; i <= n; i++) {
+      for (var j = 1; j <= i; j++) {
+        document.write(`${i}*${j}=${i * j}`)
+      }
+      document.write("<br>")
+    }
+  }
+  fn()
+</script>

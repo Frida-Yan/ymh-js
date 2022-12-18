@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="first" />
+    +
+    <input type="text" id="second" />
+    <button id="btn">=</button>
+    <input type="text" disabled id="third" />
+  </body>
+</html>
+<script>
+  /*
+    页面小交互
+  */
+  /*
+    知识点1
+        页面上的任何一个元素，它的id名都可以被当做一个天生变量使用
+        这个变量存储的就是这个元素
+    知识点2
+        捕获表单元素的内容
+        语法 元素.value 
+            -> 可以获取
+            -> 可以设置
+        注意 获取到的是一个字符串格式
+    知识点3
+        捕获用户行为(事件)
+        语法 元素.on事件类型 = 函数
+            -> 这个函数会在用户触发该行为的时候执行
+  */
+
+  // 需要在点击按钮的时候获取输入框的内容进行运算后填充
+  btn.onclick = function () {
+    // 1. 获取输入框的内容
+    var n1 = +first.value
+    var n2 = +second.value
+    // 2. 判断，如果不是一个数字，提示，结束代码
+    if (isNaN(n1) || isNaN(n2)) {
+      alert("输入有问题，检查后再试")
+      return
+    }
+    // 3. 如果是数字，进行相加
+    var res = n1 + n2
+    // 4. 把计算好的数值设置到最后一个文本框中
+    third.value = res
+  }
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    预解析的重名问题
+        当函数名和变量名重名的情况下，预解析阶段以函数为准
+  */
+
+  //   fn()
+  //   function fn() { console.log("fn") }
+  //   fn()
+  //   var fn = 100
+  //   fn()
+
+  /*
+    打开浏览器
+    1. fn()
+    2. function fn() { console.log("fn") }
+    3. fn()
+    4. var fn = 100
+    5. fn()
+    预解析
+    1. 不需要
+    2. 需要 
+        声明了一个fn的变量，赋值为一个函数
+    3. 不需要
+    4. 需要 
+        声明了一个fn的变量，不赋值 (没有意义)
+    5. 不需要
+    代码执行
+    1. fn()
+        预解析的时候fn定义为一个函数
+        正常执行
+    2. fn() 
+        同上
+    3. fn = 100 
+        此刻fn被赋值为100 
+    4. fn() 
+        把100当做函数调用，会报错
+ */
+
+  fn()
+  var fn = 100
+  fn()
+  function fn() {
+    console.log("fn")
+  }
+  fn()
+
+  /*
+    打开浏览器
+    预解析
+    1. 不需要
+    2. 需要
+        在浏览器声明一个变量fn, 但是没有赋值 (没有意义)
+    3. 不需要
+    4. 需要
+        在浏览器声明一个变量fn， 赋值为一个函数
+    5. 不需要
+    代码执行
+    1. fn()
+        预解析的时候，fn是一个函数，可以执行
+    2. fn = 100 
+    3. 把fn的值100当做函数调用，报错
+ */
+</script>
