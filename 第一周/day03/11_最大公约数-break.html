@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    最大公约数
+  */
+  //   var min = 8
+  //   var max = 12
+  //   var res = 1
+  //   for (var i = 1; i <= min; i++) {
+  //     if (min % i === 0 && max % i === 0) {
+  //       res = i
+  //     }
+  //   }
+  //   console.log(res)
+
+  var min = 8
+  var max = 12
+  var res = 1
+  for (var i = min; i >= 1; i--) {
+    if (min % i === 0 && max % i === 0) {
+      res = i
+      // 这个时候是最大公约数，直接结束循环
+      break
+    }
+  }
+  console.log(res)
+</script>

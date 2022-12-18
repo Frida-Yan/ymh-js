@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    案例2 求水仙花数 (三次自幂数)
+      三次自幂数： 
+            1. 是一个三位数
+            2. 每一位的三次方之和等于这个数
+      eg: 157 ==> 1**3 + 5**3 + 7**3 === 157 
+
+      分析
+        1. 重复执行的操作
+            查找这个数是不是自幂数
+        2. 循环的三要素
+            开始  100
+            结束  999
+            步长  +1
+  */
+  for (var i = 100; i <= 999; i++) {
+    // 获取三位数的每一位
+    var a = parseInt(i / 100)
+    var b = parseInt((i % 100) / 10)
+    var c = parseInt(i % 10)
+
+    if (a ** 3 + b ** 3 + c ** 3 === i) {
+      console.log(i + "是一个水仙花数")
+    }
+  }
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    判断一个数字是不是质数
+        质数： 只有1和自身能被整除的数字
+
+        7
+        7%2
+        7%3
+        7%4
+        7%5
+        7%6
+
+        思考
+            1. 重复执行的操作
+                判断能不能整除
+            2. 循环的三要素
+                开始  2
+                结束  n-1
+                步长  +1
+            3. 循环结束，怎么知道这个数字是不是质数？
+                - 标记思维： 给需要的内容添加一个标记，根据情况改变标记状态，根据标记得出最终结果
+                    一般来说，用布尔值 true/false 或者 计数器进行标记
+
+  */
+  // 添加一个标记，默认要判断的数字是一个质数，根据情况对这个标记进行修改
+  //   var flag = true
+  //   var num = 8
+  //   for (var i = 2; i <= num - 1; i++) {
+  //     if (num % i === 0) {
+  //       flag = false
+  //       // 此时有一个数字可以被num整除，证明是一个非质数，可以结束循环
+  //       break
+  //     }
+  //   }
+
+  // 循环结束，判断这个标记有没有改，改了就是非质数，否则就是质数
+  //   if (flag) {
+  //     console.log(num + "是一个质数")
+  //   } else {
+  //     console.log(num + "是一个非质数")
+  //   }
+
+  //   flag ? console.log(num + "是一个质数") : console.log(num + "是一个非质数")
+
+  // 思考一个问题，一定要循环到n-1吗
+  // 8 % 5
+  // n 对于 n/2以上的数字永远无法整除
+
+  var flag = true
+  var num = 8
+  for (var i = 2; i <= num / 2; i++) {
+    if (num % i === 0) {
+      flag = false
+      // 此时有一个数字可以被num整除，证明是一个非质数，可以结束循环
+      break
+    }
+  }
+
+  //   循环结束，判断这个标记有没有改，改了就是非质数，否则就是质数
+  if (flag) {
+    console.log(num + "是一个质数")
+  } else {
+    console.log(num + "是一个非质数")
+  }
+
+  flag ? console.log(num + "是一个质数") : console.log(num + "是一个非质数")
+</script>

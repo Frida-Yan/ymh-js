@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    流程控制语句
+        - 循环中使用的两个关键字
+
+        break
+            -> 循环中遇到break的时候，会结束整个循环
+
+        continue 
+            -> 循环中遇到continue的时候，会结束本次循环，直接去到循环下一次修改变量的位置
+  */
+
+  // break
+  //   for (var i = 1; i <= 5; i++) {
+  //     console.log("我吃了" + i + "个包子")
+
+  //     if (i === 3) {
+  //       console.log("吃饱了")
+  //       // break: 循环中遇到break的时候，会结束整个循环
+  //       break
+  //     }
+  //   }
+
+  // continue
+  for (var i = 1; i <= 5; i++) {
+    console.log("我拿起了第" + i + "个包子")
+
+    if (i === 3) {
+      console.log("这个包子掉地上了")
+      // continue： 循环中遇到continue的时候，会直接跳过本次循环，去到下次循环开始的位置
+      continue
+    }
+
+    console.log("我吃掉了第" + i + "个包子")
+    console.log("===========")
+  }
+</script>

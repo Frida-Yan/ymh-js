@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br />
+    * * * * * * * * * <br /> -->
+  </body>
+</html>
+<script>
+  /*
+    打印正方形
+
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+    * * * * * * * * *
+  */
+
+  // 1. 打印一个*
+  //   document.write("* ")
+  // 2. 打印一行*
+  //   for (var i = 1; i <= 9; i++) {
+  //     document.write("* ")
+  //   }
+  //   // 打印一行之后，要加一个 br
+  //   document.write("<br>")
+  // 3. 重复上述操作9次
+  //   for (var j = 1; j <= 9; j++) {
+  //     for (var i = 1; i <= 9; i++) {
+  //       document.write("* ")
+  //     }
+  //     // 打印一行之后，要加一个 br
+  //     document.write("<br>")
+  //   }
+
+  /*
+    打印三角形
+    * 
+    * * 
+    * * * 
+    * * * * 
+    * * * * * 
+    * * * * * * 
+    * * * * * * * 
+    * * * * * * * *
+    * * * * * * * * *
+  */
+
+  /*
+    i 外层循环次数 
+    j 内层循环 
+
+    当 i===1 的时候， j 循环1次  j<=1
+    当 i===2 的时候， j 循环2次  j<=2
+    当 i===3 的时候， j 循环3次  j<=3
+  */
+
+  //   for (var i = 1; i <= 9; i++) {
+  //     for (var j = 1; j <= i; j++) {
+  //       document.write("* ")
+  //     }
+  //     document.write("<br>")
+  //   }
+
+  /*
+    打印三角形
+    * * * * * * * * *
+    * * * * * * * * 
+    * * * * * * * 
+    * * * * * * 
+    * * * * * 
+    * * * * 
+    * * * 
+    * * 
+    * 
+  */
+
+  /*
+    i 是外侧循环
+    j 是内层循环 * 
+
+    i === 1的时候， j 循环 9次     j<=9  1~9    1~9
+    i === 2的时候， j 循环 8次     j<=8  1~8    2~9
+    i === 3的时候， j 循环 7次     j<=7  1~7    3~9
+  */
+
+  //   for (var i = 1; i <= 9; i++) {
+  //     for (var j = i; j <= 9; j++) {
+  //       document.write("* ")
+  //     }
+  //     document.write("<br>")
+  //   }
+
+  /*
+    打印三角形
+
+                    * 
+                  * * 
+                * * * 
+              * * * * 
+            * * * * * 
+          * * * * * * 
+        * * * * * * * 
+      * * * * * * * *
+    * * * * * * * * *
+    
+    i 外层循环
+    j 是 空格
+    k 是 *
+
+    i === 1   j 循环8次  1~9-1 ，k 循环1次 1 ~ 1
+    i === 2   j 循环7次  1~9-2 ，k 循环2次 1 ~ 2
+    i === 3   j 循环6次  1~9-3 ，k 循环3次 1 ~ 3
+
+  */
+
+  for (var i = 1; i <= 9; i++) {
+    // 空格
+    for (var j = 1; j <= 9 - i; j++) {
+      // document.write("&nbsp;&nbsp;")
+      document.write("&nbsp;")
+    }
+    // *
+    for (var k = 1; k <= i; k++) {
+      document.write("* ")
+    }
+    document.write("<br>")
+  }
+
+  // 1. 案例
+  // 2. 等腰三角形
+  // 3. 菱形
+</script>

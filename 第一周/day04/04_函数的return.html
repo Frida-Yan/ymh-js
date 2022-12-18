@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    函数的返回值
+        - 在函数内使用 return 关键字来给函数定义 返回值
+
+        return 的作用
+            1. 结束函数，return后面的代码不再执行
+            2. 返回值，将函数的结果拿到，方便在函数外使用
+            
+        注意： 函数可以没有return, 默认函数返回undefined
+  */
+
+  // 作用1 结束函数 打断函数
+  //   function fn() {
+  //     console.log(1)
+  //     console.log(2)
+  //     // 在函数中使用return可以中断函数，后面的代码不再执行
+  //     return
+  //     console.log(3)
+  //     console.log(4)
+  //     console.log(5)
+  //   }
+  //   fn()
+
+  // 作用2 返回值，拿到函数的结果，可以在函数外面使用
+  //   function fn() {
+  //     // 给 fn 这个函数制作了一个 返回值 叫做 100
+  //     // 将来你只要调用 fn 函数, 就能得到 100 这个结果
+  //     return 100
+  //   }
+  //   // 此时 res 接受的就是 fn 函数调用后的 返回值(结果)
+  //   // fn 函数内 return 的内容就会赋值给 res
+  //   var res = fn()
+  //   console.log(res)
+
+  // 函数没有return
+  //   function fn() {
+  //     var res = 100
+  //   }
+  //   var result = fn()
+  //   console.log(result)
+
+  // return应用
+  // 制作一个求和函数，传入两个参数，返回一个两数之和的结果
+  function add(a, b) {
+    // 1. 求和
+    var res = a + b
+    // 2. 把求和结果当做函数的返回值
+    return res
+  }
+
+  var result = add(10, 20)
+  console.log(result)
+
+  var result2 = add(100, 200)
+  document.write(result2)
+
+  var result3 = add(1000, 2000)
+  alert(result3)
+</script>

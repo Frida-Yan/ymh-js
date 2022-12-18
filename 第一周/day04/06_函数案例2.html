@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script src="./utils.js"></script>
+<script>
+  /*
+    案例：在控制台输出100~200之间所有的质数
+  */
+  for (var i = 100; i <= 200; i++) {
+    // 判断是不是质数
+    var res = isPrime(i)
+    if (res) {
+      // 就是质数
+      console.log(i + "是质数")
+    }
+  }
+</script>

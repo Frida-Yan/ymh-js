@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    辗转相除法计算最大公约数
+        规则
+            大数对小数取余，如果没有余数，小数就是最大公约数
+                          如果有余数，小数覆盖大数，余数覆盖小数，继续执行代码
+
+        12  8 的最大公约数
+            === 第一次循环
+                max = 12 
+                min = 8 
+                12%8 = 4 
+
+                max = 8
+                min = 4
+            === 第二个循环
+                max = 8 
+                min = 4 
+                8%4 = 0 
+            
+                最大公约数是4 结束循环
+
+        1. 重复执行的操作
+            判断两数有没有余数
+        2. 循环的条件判断是什么
+            只要有余数，就进行循环 ----- while循环
+  */
+
+  var min = 3
+  var max = 5
+  var res = 1
+
+  while (max % min !== 0) {
+    var tmp = max % min
+    max = min
+    min = tmp
+  }
+  // 循环结束，将小数赋值给res作为结果
+  res = min
+  console.log("最大公约数", res)
+</script>

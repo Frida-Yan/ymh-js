@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    函数的参数
+
+        函数的形参 
+            - 书写在函数定义阶段的小括号中 
+            - 就是一个只能在函数内使用的变量(遵循变量命名的规则和规范)
+            - 可以书写多个，用逗号隔开
+            - 值由函数的实参决定
+
+        函数的实参
+            - 书写在函数调用阶段的小括号内
+            - 就是一个真实的值，按照顺序依次给函数的形参赋值
+            - 可以书写多个，用逗号隔开
+
+  */
+
+  // 封装一段函数展示乘法表
+  //   function fn() {
+  //     for (var i = 1; i <= 9; i++) {
+  //       for (var j = 1; j <= i; j++) {
+  //         document.write(`${i}*${j}=${i * j}`)
+  //       }
+  //       document.write("<br>")
+  //     }
+  //   }
+  //   fn()
+
+  // 函数的参数
+  //   function fn(a, b) {
+  //     console.log(a, "a")
+  //     console.log(b, "b")
+  //   }
+  //   fn()
+  //   fn(10)
+  //   fn(10, 20)
+
+  //   function weibolu(food) {
+  //     console.log("热热热~~~" + food)
+  //   }
+  //   weibolu("宫保鸡丁")
+  //   weibolu("鱼香肉丝")
+
+  // 七七乘法表
+
+  function fn(n) {
+    for (var i = 1; i <= n; i++) {
+      for (var j = 1; j <= i; j++) {
+        document.write(`${i}*${j}=${i * j}`)
+      }
+      document.write("<br>")
+    }
+  }
+  fn(7)
+  fn(12)
+</script>

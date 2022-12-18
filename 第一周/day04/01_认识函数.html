@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    认识函数
+        - 是 js 的复杂数据类型的一种 -- Function 
+        - 私人 ： 是一个盒子，承载一段代码
+        
+    函数的两个阶段
+        1.  把代码装进盒子里  --- 定义函数阶段
+        2.  把盒子里的代码执行  --- 函数调用阶段
+  */
+
+  /*
+    函数的定义阶段
+
+    - 声明式定义函数
+        语法  function 函数名() { 代码段 }
+
+             function : 定义函数的关键字
+             函数名: 给函数起的名字(遵循变量的命名规则和规范)
+             ():  函数放置形参的位置  必须写
+             {}:  函数体 放置代码的位置
+
+    - 赋值式函数(函数表达式)
+        语法  var 变量名 = function () {}
+  */
+
+  /*
+    函数的调用阶段 
+        - 两种定义函数的方式不一样，调用方式一样的
+        - 语法 函数名()
+
+    调用的区别
+        - 两种定义函数的方式调用方式一样
+        - 调用时机不一样
+    
+        声明式函数
+            可以在声明以前调用，也可以在声明以后调用
+        赋值式函数
+            只能在声明以后调用，之前调用会报错 xxx is not a function
+  */
+
+  //   for (var i = 1; i <= 9; i++) {
+  //     for (var j = 1; j <= i; j++) {
+  //       document.write(`${i}*${j}=${i * j}`)
+  //     }
+  //     document.write("<br>")
+  //   }
+
+  // 声明式函数
+  //   function fn() {
+  //     for (var i = 1; i <= 9; i++) {
+  //       for (var j = 1; j <= i; j++) {
+  //         document.write(`${i}*${j}=${i * j}`)
+  //       }
+  //       document.write("<br>")
+  //     }
+  //   }
+
+  // 赋值式函数
+  //   var fn1 = function () {
+  //     for (var i = 1; i <= 9; i++) {
+  //       for (var j = 1; j <= i; j++) {
+  //         document.write(`${i}*${j}=${i * j}`)
+  //       }
+  //       document.write("<br>")
+  //     }
+  //   }
+
+  //   console.log(fn)
+  //   console.log(fn1)
+
+  // 声明式函数调用
+  //   fn()
+
+  // 赋值式函数调用
+  //   fn1()
+
+  //   for (var i = 1; i <= 100; i++) {
+  //     fn1()
+  //   }
+
+  // 调用的区别
+  // 声明式调用
+
+  //   fn()
+  //   function fn() {
+  //     console.log("fn")
+  //   }
+  //   fn()
+
+  // 赋值式调用
+  fn()
+  var fn = function () {
+    console.log("fn")
+  }
+  fn()
+</script>

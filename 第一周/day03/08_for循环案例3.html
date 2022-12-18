@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    最大公约数
+        约数： 能被这个数字整除的数字 (能整除的被除数)
+            eg： 8的约数==> 1 2 4 8
+        公约数： 能被两个数字整除的数字
+            eg: 12 和 8 的约数
+                    12的约数  1 2 3 4 6 12
+                    8 的约数  1 2 4 8 
+                    
+        思路
+            1. 重复执行的操作
+                判断这个数是不是公约数   num % a === 0 && num % b === 0
+            2. 循环的三要素
+                开始    1
+                结束    小的那个
+                循环    +1
+  */
+
+  var max = 12
+  var min = 8
+
+  // 提前准备一个变量，作为公约数的结果
+  var res = 1
+  for (var i = 1; i <= min; i++) {
+    if (min % i === 0 && max % i === 0) {
+      // 每次循环的时候都把i赋给res， 循环到最后的时候，res保存的值就是最大公约数
+      res = i
+      //   console.log("这个数是公约数", i)
+    }
+  }
+
+  // 需要得到一个最大公约数，在循环执行后得到
+  console.log("最大公约数", res)
+</script>

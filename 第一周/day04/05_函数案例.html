@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    函数小案例2: 封装一个函数, 判断一个数字是不是质数
+  */
+
+  // 判断一个数字是不是质数
+  // 是否需要参数？ 需要 1 个，就是要判断的数字
+  // 是否需要返回值？ 需要，判断的结果，这个结果是一个布尔值
+
+  function isPrime(n) {
+    // 先假设传入的数字是质数
+    var flag = true
+    for (var i = 2; i <= n / 2; i++) {
+      if (n % i === 0) {
+        //进入这个判断，就说明不是质数
+        flag = false
+        break
+      }
+    }
+    // 循环结束，得到flag的最终结果
+    return flag
+  }
+
+  var res = isPrime(10)
+  console.log(res)
+
+  /*
+    回忆:
+    var res = isNaN(30)
+  */
+</script>
