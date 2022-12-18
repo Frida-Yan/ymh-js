@@ -16,4 +16,37 @@
     大数 对小数取余，没有余数，小数就是最大公约数
                      有余数，小数覆盖大数，余数覆盖小数 重复之前的步骤
   */
+
+  // 是否需要参数 需要两个
+  // 是否需要返回值 ？ 需要，返回最大公约数结果
+
+  function fn(a, b) {
+    // 1. 求 a b中的大数和小数
+    var max = a > b ? a : b
+    var min = a < b ? a : b
+
+    while (max % min !== 0) {
+      var tmp = max % min
+      max = min
+      min = tmp
+    }
+    // 代码执行到这里的时候，已经拿到了最大公约数，将这个结果返回
+    return min
+  }
+
+  //   console.log(fn(12, 5))
+
+  /*
+    案例2 求两个数字的最小公倍数
+    数学公式
+        a*b = 最大公约数 * 最小公倍数
+        最小公倍数 = a*b/最大公约数
+  */
+  function fn2(a, b) {
+    var res = (a * b) / fn(a, b)
+    return res
+  }
+
+  var res2 = fn2(33, 22)
+  console.log(res2)
 </script>
