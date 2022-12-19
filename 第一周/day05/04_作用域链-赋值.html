@@ -20,15 +20,37 @@
 
   */
 
-  var n = 100
+  // 案例1
+  //   var n = 100
+  //   function fn() {
+  //     var n = 200
+  //     console.log("修改前", n)
+  //     n = 300
+  //     console.log("修改后", n)
+  //   }
+
+  //   console.log("全局前", n)
+  //   fn()
+  //   console.log("全局后", n)
+
+  // 案例2
+  //   var n = 100
+  //   function fn() {
+  //     console.log("修改前", n)
+  //     n = 300
+  //     console.log("修改后", n)
+  //   }
+
+  //   console.log("全局前", n)
+  //   fn()
+  //   console.log("全局后", n)
+
+  // 案例3
   function fn() {
-    var n = 200
-    console.log("修改前", n)
     n = 300
     console.log("修改后", n)
   }
 
-  console.log("全局前", n)
   fn()
   console.log("全局后", n)
 </script>
