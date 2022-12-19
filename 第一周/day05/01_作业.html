@@ -7,8 +7,50 @@
 		<title>document</title>
 	</head>
 	<body>
-		<script>
-			/**/
-		</script>
+		<input type="text" id="first" />
+		<select name="" id="type">
+			<option value="">请选择</option>
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text" id="second" />
+		<button id="btn">=</button>
+		<input type="text" id="result" />
 	</body>
 </html>
+<script>
+	btn.onclick = function () {
+		var n1 = +first.value;
+		var n2 = +second.value;
+
+		if (isNaN(n1) || isNaN(n2)) {
+			alert("数据错误");
+			return;
+		}
+
+		var state = type.value;
+		if (!state) {
+			alert("选择运算种类");
+			return;
+		}
+
+		var res = 0;
+		switch (state) {
+			case "+":
+				res = n1 + n2;
+				break;
+			case "-":
+				res = n1 - n2;
+				break;
+			case "*":
+				res = n1 * n2;
+				break;
+			case "/":
+				res = n1 / n2;
+				break;
+		}
+		result.value = res;
+	};
+</script>
