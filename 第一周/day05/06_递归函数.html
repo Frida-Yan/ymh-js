@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>document</title>
-	</head>
-	<body>
-		<script>
-			/*
-                递归函数
-                    是一种函数的调用方式，一种高阶函数的调用方式
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+  </head>
+  <body>
+    <script>
+      /*
+		递归函数
+			是一种函数的调用方式，一种高阶函数的调用方式
 
-                    什么是递归函数
-                        -> 一个函数自己调用自己
-                        -> 正确设置了返回条件
+			什么是递归函数
+				-> 一个函数自己调用自己
+				-> 正确设置了返回条件
 
-                    递归函数的书写技巧
-                        1. 写一个函数
-                        2. 先写折返点
-                        3. 未到折返点的时候，不要忘记return
-            */
-		</script>
-	</body>
+			递归函数的书写技巧
+				1. 写一个函数
+				2. 先写折返点
+				3. 未到折返点的时候，不要忘记return
+	*/
+
+      // 封装一个函数，求一个数字的阶乘
+      // 4的阶乘 4*3*2*1
+      // 5的阶乘 5*4*3*2*1
+
+      // n的阶乘 n*(n-1)*(n-2)...*2*1
+
+      // 封装一个函数求阶乘 , n是一个形参，就是要求阶乘的数字
+      function fn(n) {
+        if (n === 1) {
+          return 1
+        }
+        return n * fn(n - 1)
+      }
+      // 求5的阶乘
+      // 5的阶乘 fn(5) = 5*4*3*2*1
+      // 等价于 5 * 4的阶乘(fn(4))
+
+      // 5*fn(4)
+      // fn(4) 等价于 4*fn(3)
+      // fn(3) 等价于 3*fn(2)
+      // fn(2) 等价于 2*fn(1)
+      // fn(1) === 1
+      console.log(fn(5))
+    </script>
+  </body>
 </html>
