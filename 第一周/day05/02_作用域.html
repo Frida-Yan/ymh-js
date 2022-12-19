@@ -20,6 +20,15 @@
                         -> 只有函数才可以生成局部作用域
                         -> 局部作用域中定义的变量只能在这个局部作用域内部使用
             */
+
+			var a = 10; // 全局作用域
+			function fn() {
+				var b = 100; // 局部作用域
+				console.log(a); // 10 全局变量
+				console.log(b);
+			}
+			console.log(a, "外面");
+			console.log(b, "外面");
 		</script>
 	</body>
 </html>
