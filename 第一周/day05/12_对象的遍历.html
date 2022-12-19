@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                对象的遍历
+                    - 遍历对象一般使用  for  in 循环
+
+                    in 关键字
+                        - 语法: 字符串 in 对象名
+                        - 结果: 一个布尔值
+                            -> true 表示该字符串是对象内某一个key
+                            -> false 表示该字符串不是该对象内某一个key
+
+                    for in 循环
+                        - 语法
+                            for( var 变量 in 对象名 ) {
+                                会根据对象内有多少个成员执行多少回
+                                随着循环，变量分别表示对象内的每一个key
+                                随着循环，obj[变量] 分别表示对象内的每一个 值
+                            }
+
+                            
+
+            */
+
+			var obj = {
+				name: "tom",
+				age: 18,
+				sex: "男",
+				sing: function () {
+					console.log("只因你太美");
+				},
+			};
+
+			// // in 关键字
+			// console.log("name" in obj);
+			// console.log("class-name" in obj);
+
+			// for in循环
+			for (var k in obj) {
+				// 随着循环，k分别表示对象内每一个键名
+				// 第1次循环 k 是  'name'  obj[k] => obj['name']
+				// 第2次循环 k 是  'age'  obj[k] => obj['age']
+				// 第3次循环 k 是  'sex'  obj[k] => obj['sex']
+				console.log("执行了", k, obj[k]);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                对象
+                    - 一类内容中的真实个例
+                    - 一种JS的数据类型Object 
+
+                对象数据类型Object
+                    - 是一个引用数据类型
+                    - 私人: 是一个 盒子， 用来放置数据
+                    - 是一个无序的数据集合
+                    - 是一个 键值对 的集合
+            */
+
+			/*
+                对象数据类型的创建
+                    1. 字面量方式创建对象
+                        - 语法 
+                            -> 创建一个空对象  var obj = {}
+                            -> 创建一个带有数据的对象  var obj = {键值对, 键值对... }
+                                键值对   键(key): 值(value..)
+                    2. 内置构造函数方式创建
+                        - 语法
+                            创建空对象  var obj = new Object()
+
+             */
+
+			// 创建一个空对象
+			var obj = {};
+			console.log(obj);
+
+			// 创建一个有数据的对象
+			var obj = {
+				name: "tom",
+				age: 18,
+			};
+			console.log(obj);
+
+			// 内置构造函数方式创还能
+			var obj = new Object();
+			console.log(obj);
+
+			/*
+                对象中对于 键(key) 的要求
+                1. 推荐使用符合变量命名规则和规范的名字
+                2. 可以使用纯数字当做键名
+                    -> 当键名是纯数字的时候，排在最前面
+                3. 可以使用任何特殊符号
+                    -> 要求： 当使用特殊符号的时候，书写的时候需要用引号包裹
+            */
+
+			var obj = {
+				name: "tom",
+				age: 18,
+				$aaa: 100,
+				1: 200,
+				"class-name": "box",
+				aaa$bbb: 1000,
+			};
+			console.log(obj);
+		</script>
+	</body>
+</html>

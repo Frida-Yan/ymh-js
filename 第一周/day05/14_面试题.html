@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                面试题
+            */
+
+			// var obj = {
+			// 	name: "jerry",
+			// };
+			// function fn() {
+			// 	obj.name = "tom";
+			// 	obj = {};
+			// 	obj.name = "tony";
+			// 	console.log(obj.name);
+			// }
+			// fn();
+			// console.log(obj.name);
+
+			/*
+                全局定义了一个obj变量
+
+                函数执行
+                   1. obj.name = 'tom'
+                    obj是全局变量，给全局变量obj进行修改
+                   2. obj = {}
+                    {}是一个新的空对象，将这个对象的地址(0002)赋给了obj
+                   3. obj.name  =  'tony'
+                    访问全局obj变量，obj变量的值是一个{}
+                    现在给这个全局变量obj添加一个新属性name,属性值为tony
+                   4. console.log(obj.name) 获取的是全局变量obj {name: 'tony'}
+            */
+
+			// var obj = { name: "tom" };
+			// function fn() {
+			// 	obj.name = "jerry";
+			// 	var obj = {};
+			// 	obj.name = "nick";
+			// 	console.log(obj.name);
+			// }
+			// fn();
+			// console.log(obj.name);
+
+			/*
+                打开浏览器
+                    obj是一个全局变量，存储的时候的地址为(0001)
+                函数执行
+                    函数预解析
+                        var obj 
+                        提前声明一个变量obj， 不赋值
+                    函数代码执行
+                        obj.name = 'jerry'
+                        此时私有变量obj的值为undefined, 不能给他添加属性 报错
+            */
+
+			// var obj = { name: "tom" };
+			// function fn(obj) {
+			// 	obj.name = "jerry";
+			// 	var obj = {};
+			// 	obj.name = "nick";
+			// 	console.log(obj.name);
+			// }
+			// fn(obj);
+			// console.log(obj.name);
+
+			/*
+                打开浏览器
+                预解析
+                    定义一个全局变量obj
+                全局代码执行
+                    obj 赋值为 对象, 地址为(0001)
+                    
+                函数 执行
+                    - 实参 obj: 全局变量obj(地址0001)
+                    - 形参 obj: 值是全局变量obj(地址0001)
+                    - 函数内预解析
+                        var obj 
+                        声明一个变量obj， 不赋值
+                    - 函数内代码执行
+                        形参赋值 obj.name = 'jerry' (形参的obj是全局变量obj，地址0001)
+                                全局变量obj = {name: 'jerry'}
+                        var obj = {} 
+                                给私有变量obj赋值为{}，地址(0002)
+                        obj.name = "nick"; 
+                                给私有变量obj添加属性name
+                        console.log(obj.name); 根据作用域链，这里是地址(0002)的变量obj
+                                obj = {name: 'nick'}
+                    - 全局的console.log(obj)执行
+                                obj = {name: 'jerry'}
+
+            */
+
+			var obj = { name: "tom" };
+			function fn(obj) {
+				obj.name = "nick";
+				obj = {};
+				obj.name = "jerry";
+				console.log(obj.name);
+			}
+			fn(obj);
+			console.log(obj.name);
+
+			/*
+                打开浏览器
+                预解析
+                    定义一个全局变量obj 不赋值
+                代码执行
+                    obj = { name: "tom" };  给全局变量obj设置为一个对象，地址为(0001)
+                    函数执行
+                        函数内部预解析
+                        函数内部代码执行
+                            -> 形参赋值  形参obj的值为全局变量obj, 地址0001，  { name: "tom" }
+                            -> obj.name = "nick";  形参obj(地址0001) 的name值进行修改 {name: 'nick'}
+                            -> obj = {}; 
+                                形参此刻是一个新的对象，地址为(0002) 
+                            -> obj.name = "jerry"; 给(0002)这个地址的obj添加属性name
+                            -> 函数内打印 console.log(obj.name);， 这里的obj 的地址是0002
+                            -> 全局obj.name ,这里的全局的obj的地址是0001， {name:'nick'}
+                
+            */
+		</script>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+			             对象数据类型的基本操作(增删改查)
+			                 增 : 向对象中增加一个成员
+			                 删 : 向对象中删除一个成员
+			                 改 : 修改对象中某一个成员的值
+			                 查 : 访问某一个对象成员的值
+			         */
+
+			/*
+			             点操作符处理对象的基本操作
+			                 增: 对象名.键名 = 值
+			                 删: delete obj.键名
+			                 改: 对象名.键名 = 值
+			                     -> 对象中的键不允许重名
+			                     -> 再次设置的时候就是修改
+			                 查: 对象名.键名
+			                     -> 如果对象中有这个键名，那么访问的就是该键对应的值
+			                     -> 如果对象中没有这个键名, 那么就是undefined
+			          */
+
+			// var obj = {};
+			// console.log("原始对象", obj);
+
+			// // 1. 增
+			// // 给对象obj 添加一个name的键，赋值为 'jack'
+			// obj.name = "jack";
+			// obj.age = 18;
+			// obj.sex = "男";
+			// console.log("增加之后", obj);
+
+			// // 2. 删
+			// delete obj.age;
+			// console.log("删除之后", obj);
+
+			// // 3. 改
+			// obj.name = "tom";
+			// console.log("修改后", obj);
+
+			// // 4. 查
+			// console.log(obj.name);
+			// console.log(obj.age);
+
+			/*
+			             数组关联语法
+			                 增: 对象名['键名'] = 值
+			                 删: delete 对象名['键名']
+			                 改: 对象名['键名'] = 值
+			                 查: 对象名['键名']
+			         */
+
+			var obj = {};
+			console.log("原始对象", obj);
+
+			// 1. 增
+			obj["name"] = "tom";
+			obj["age"] = 18;
+			obj["sex"] = "男";
+			console.log("新增之后", obj);
+
+			// 2. 删
+			delete obj["age"];
+			console.log("删除之后", obj);
+
+			// 3. 改
+			obj["name"] = "jack";
+			console.log("修改之后", obj);
+
+			// 4. 查
+			console.log(obj["name"]);
+
+			/*
+			             两种操作语法的区别
+			             1. 当键名是符合变量命名规则和规范的时候，两个语法没有区别
+			             2. 操作不符合变量命名规则和规范，只能 使用数组关联语法
+			             3. 涉及变量相关的时候，只能使用数组关联语法
+			         */
+
+			var obj = {
+				name: "tom",
+				age: 18,
+				1: 100,
+				2: 245,
+				"aaa-bbb": "哈哈哈",
+			};
+
+			// console.log(obj);
+			// // 获取obj中的键名 name 对应的值
+			// console.log(obj.name);
+			// console.log(obj["name"]);
+
+			// // 获取obj中的键名 1 对应的值
+			// //  console.log(obj.1) // 报错
+			// console.log(obj["1"]);
+
+			// // 获取obj中的键名 'aaa-bbb' 对应的值
+			// // console.log(obj.aaa-bbb) // 这里认为是一个减法
+			// console.log(obj["aaa-bbb"]);
+
+			var a = "age";
+			// 点语法中， 只能准确访问对应的键名，点操作符后面的是真实存在的键名，和变量没有关系
+			// console.log(obj.a); // 这里获取的是obj中的a键名对应的值 undefined
+
+			// 数组关联语法，方括号中是一个引号包裹的，表示真实存在的键名
+			// 这里就是访问obj中键名a对应的值
+			// console.log(obj["a"]);
+
+			// 当方括号中没有引号，表示的是一个变量，这个时候会把变量a对应的值拿过来当做对象中的键名使用
+			// 这里的a被当做一个变量，获取的是变量a对应的值
+
+			console.log(obj[a]);
+			// 等价于 console.log(obj['age'])
+		</script>
+	</body>
+</html>

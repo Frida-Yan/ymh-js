@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                数据类型赋值的区别
+                    基本数据类型: 赋值以后，两个变量没有关系
+                    复杂数据类型: 赋值以后，两个变量操作一个存储空间
+
+                不同数据类型的存储
+                    - 基本数据类型: 直接存储在栈内存里面
+                    - 复杂数据类型:
+                        -> 地址存储在栈内存中
+                        -> 值存储在堆内存中
+            */
+
+			// 数据类型的存储
+			var a = 100;
+			var b = "hello";
+			var fn = function () {
+				console.log("fn");
+			};
+			var obj = {
+				name: "tom",
+				age: 18,
+			};
+
+			// 数据类型的赋值
+			// 基本数据类型
+			// var a = 100;
+			// var b = a;
+			// console.log(a);
+			// console.log(b);
+			// b = 200;
+			// console.log(a);
+			// console.log(b);
+
+			// 复杂数据类型
+			var a = { name: "tom" };
+			var b = a;
+			// 复杂数据类型的赋值，是把地址赋值给了变量，两个操作的是同一个空间
+			console.log(a);
+			console.log(b);
+			console.log("=========");
+			b.name = "jerry";
+			console.log(a);
+			console.log(b);
+		</script>
+	</body>
+</html>

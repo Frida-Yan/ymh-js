@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                练习 递归书写辗转相除法
+            */
+			// 接受两个参数，大数 小数
+			// function fn(max, min) {
+			// 	// 设置终止条件
+			// 	if (max % min === 0) return min;
+			// 	return fn(min, max % min);
+			// }
+			// console.log(fn(12, 8));
+
+			/*
+                练习 递归计算斐波那契数列
+                1 1 2 3 5 8 13 
+                - 第一位和第二位是1
+                - 第三位开始是前两位的和
+                需求： 书写一个函数，求数列第n位是多少
+            */
+
+			// function fn(n) {
+			// 	if (n === 1 || n === 2) {
+			// 		return 1;
+			// 	}
+			// 	return fn(n - 1) + fn(n - 2);
+			// }
+			// console.log(fn(20));
+
+			/*
+                编写一个函数，输入n为偶数时，调用函数求1/2 + 1/4 + 1/6 + ... + 1/n 
+                            输入n为奇数, 调用函数求1 + 1/3 + 1/5 + 1/7 + ... + 1/n 
+
+
+              fn(8) = 1/2 + 1/6 + 1/4 + 1/6 + 1/8 === 1/8 + fn(6) ===> 1/n + fn(n-2)
+              fn(6) = 1/2 + 1/4 + 1/6 === 1/6 + fn(4) === 
+              fn(4) = 1/2 + 1/4 === 1/4 + fn(2)
+              fn(2) = 1/2
+
+              fn(7) = 1 + 1/3 + 1/5 + 1/7 === 1/7 + fn(5) === fn(n) = 1/n + fn(n - 2)
+              fn(5) = 1 + 1/3 + 1/5 === 1/5 + fn(3)
+              fn(3) = 1 + 1/3 === 1/3 + fn(1)
+              fn(1) = 1
+
+              当2的是返回1/2
+              当1的时候返回1
+                
+            */
+			function fn(n) {
+				if (n === 1) {
+					return 1;
+				}
+				if (n === 2) {
+					return 1 / 2;
+				}
+				return 1 / n + fn(n - 2);
+			}
+			fn(8);
+		</script>
+	</body>
+</html>

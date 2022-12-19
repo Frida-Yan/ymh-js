@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                递归的缺点
+                    递归和循环有着类似的思想，但是建议尽量少用，因为运行效率低，可能出现死循环
+                    如果没有更好的算法或者方法，递归更加合适
+            */
+
+			/*
+                小花入职一家科技公司，月薪10000 ，每年涨薪5%, 30年后月薪多少
+            */
+			// var money = 10000;
+			// for (var year = 1; year <= 30; year++) {
+			// 	// money *= 1.05; // 43219.423751506656
+			// 	// money = money + money * 0.05;
+			// }
+			// console.log(money);
+
+			function fn(money, year) {
+				if (year > 30) {
+					return money;
+				}
+				return fn(money * 1.05, ++year);
+			}
+			console.log(fn(10000, 1));
+		</script>
+	</body>
+</html>
