@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                内存存储数据
+                    栈内存  堆内存
+                    基本数据类型： 直接存储在栈内存中
+                    复杂数据类型
+                        -> 把数据本体存储在堆内存中
+                        -> 把地址存储在栈内存的变量中
+
+                函数两个阶段做的事情(熟读并背诵)
+                    函数定义阶段
+                        1. 在堆内存中开辟一段存储空间
+                        2. 把函数体内的代码一模一样的存储在这个空间内(此时不解析变量)
+                        3. 把空间地址赋值给栈内存的变量中
+                    函数调用阶段
+                        1. 按照函数名内存储的地址找到对应的函数存储空间
+                        2. 在调用栈中开辟一段新的函数执行空间
+                        3. 在执行空间中进行形参赋值
+                        4. 在执行空间中进行预解析
+                        5. 在执行空间中执行函数体内的所有代码
+                        6. 代码执行完毕之后，函数执行空间立即销毁
+            */
+		</script>
+	</body>
+</html>
