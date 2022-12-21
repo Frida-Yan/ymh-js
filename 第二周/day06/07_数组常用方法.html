@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    数组常用方法
+        - 通用语法 数组名.方法()
+  */
+
+  /*
+    1. push()  修改原数组
+        - 语法  数组.push(数据)
+        - 作用 ： 向数组的末尾追加数据
+        - 返回值: 追加数据之后，返回数组的新长度
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+  //   console.log("原始数组", arr)
+  //   var res = arr.push("新来的")
+  //   console.log("push后", arr)
+  //   console.log("返回值", res)
+
+  /*
+    2. pop()  修改原数组
+        - 语法  数组.pop()
+        - 作用  删除数组的最后一个数据
+        - 返回值  被删除的数据
+  */
+  //   var arr = [100, 200, 300, 400, 500]
+  //   console.log("原始数组", arr)
+
+  //   var res = arr.pop()
+  //   console.log("pop后", arr)
+  //   console.log("返回值", res)
+
+  /*
+    3. unshift()  修改原数组
+        - 语法  数组.unshift()
+        - 作用  向数组的最前面插入一个数据
+        - 返回值  修改后的新数组的长度
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+  //   console.log("原始数组", arr)
+
+  //   var res = arr.unshift("新来的")
+  //   console.log("unshift后", arr)
+  //   console.log("返回值", res)
+
+  /*
+    4. shift() 
+        - 语法  数组.shift()
+        - 作用  删除数组里面的第一个数据
+        - 返回值   被删除的数据
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+  //   console.log("原始数组", arr)
+
+  //   var res = arr.shift()
+  //   console.log("shift后", arr)
+  //   console.log("返回值", res)
+
+  var arr = [100, 200, 300, 400, 500]
+  arr.push("新来的1", "新来的2")
+  console.log(arr)
+</script>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    练习
+    1. 生成一个数组
+        -> 要求 数组长度30
+        -> 要求 数组里面的每一项都是2开始的偶数
+        var arr = [2,4,6,8,10,12,14....60]
+  */
+
+  // 方案1
+  // 生成一个长度30的数组
+  //   var arr = new Array(30)
+
+  /*
+      索引     值
+      0        2
+      1        4
+      2        6
+      3        8
+      4        10
+      5        12
+
+      n        (n+1)*2
+  */
+
+  // 遍历数组，把数组里面的每一项修改为公式的结果
+  //   for (var i = 0; i < arr.length; i++) {
+  //     arr[i] = (i + 1) * 2
+  //   }
+  //   console.log(arr)
+
+  // 方案2
+  // 为什么生成一个长度30的数组
+
+  var arr = []
+  for (var i = 0; i < 30; i++) {
+    arr[i] = (i + 1) * 2
+  }
+  console.log(arr)
+
+  /*
+    练习2 
+    需要生成一个新数组，
+    把练习1的数组每五个数字叠加，求平均值，把这个平均值放到新数组中
+  */
+
+  /*
+     sum = 0
+     sum +=2
+     sum +=4
+     sum +=6
+     sum +=8
+     sum +=10
+
+     求平均值 把这个平均值 放到新数组中 
+     sum = 0 
+
+     sum += 12
+     sum += 14
+     sum += 16
+     sum += 18
+     sum += 20
+
+     怎么知道计算了5次，求和 ===> 需要有一个计数器
+  */
+
+  // 方案1
+  // 准备一个新数组, 放置求和的平均值
+  //   var arr2 = []
+  //   // 作为叠加的变量
+  //   var sum = 0
+  //   // 计数器
+  //   var count = 0
+
+  //   for (var i = 0; i < arr.length; i++) {
+  //     sum += arr[i]
+  //     count++
+  //     if (count % 5 === 0) {
+  //       // 求平均值 ，并且把这个值放到新数组中
+  //       // 求平均值
+  //       var num = sum / 5
+  //       // 把这个值放到新数组中 ， 就是在数组的最后一个 （arr.length-1） 后面再加一个 (arr.length -1 + 1)
+  //       arr2[arr2.length] = num
+  //       // 清空sum
+  //       sum = 0
+  //     }
+  //   }
+  //   console.log(arr2)
+
+  /*
+    索引为 4 9 14 19 24... 需要操作  
+     (i+1)% 5 ===0
+  */
+  // 方案2
+  var arr2 = []
+  // 求和
+  var sum = 0
+  for (var i = 0; i < arr.length; i++) {
+    sum += arr[i]
+    // 每五个处理
+    if ((i + 1) % 5 === 0) {
+      var num = sum / 5
+      arr2[arr2.length] = num
+      sum = 0
+    }
+  }
+  console.log(arr2)
+</script>

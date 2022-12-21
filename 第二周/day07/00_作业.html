@@ -57,21 +57,27 @@
   //   console.log(origin)
 
   // 方法2 ，先判断是升序还是降序，找到要插入的位置
-  var type = origin[0] < origin[origin.length - 1] ? "升序" : "降序"
-  for (var i = 0; i < origin.length; i++) {
-    if (type === "升序") {
-      if (origin[i] > n) {
-        index = i
-        break
-      }
-    } else {
-      if (origin[i] < n) {
-        index = i
-        break
-      }
-    }
-  }
+  // var type = origin[0] < origin[origin.length - 1] ? "升序" : "降序"
+  // for (var i = 0; i < origin.length; i++) {
+  //   if (type === "升序") {
+  //     if (origin[i] > n) {
+  //       index = i
+  //       break
+  //     }
+  //   } else {
+  //     if (origin[i] < n) {
+  //       index = i
+  //       break
+  //     }
+  //   }
+  // }
 
-  origin.splice(index, 0, n)
-  console.log(origin)
+  // origin.splice(index, 0, n)
+  // console.log(origin)
+
+  // 作业2
+  function map(arr) {
+    var res = []
+    for (var i = 0; i < arr.length; i++) {}
+  }
 </script>

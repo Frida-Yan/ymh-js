@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+
+  */
+
+  var arr = [3, 2, 4, 5, 9, 10, 1, 0]
+
+  // 第一轮比较
+  // 假设  [0] 位置的数据是最小的
+  var minIndex = 0
+  // 遍历数组， 找数组中  比 minIndex 小的数字的索引，找到了就把这个位置索引 赋 给 minIndex
+  // 找数组中最小的数字的索引
+
+  for (var i = 0; i < arr.length; i++) {
+    // 当前的 < minIndex  设置 minIndex为这个索引
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i
+    }
+  }
+
+  // 循环结束了之后，minIndex代表的就是最小的数字的索引
+  console.log(minIndex)
+  // 第一轮 把最小的放到 [0] 位置， 交换两个位置的数字
+  var tmp = arr[0]
+  arr[0] = arr[minIndex]
+  arr[minIndex] = tmp
+  console.log(arr)
+</script>

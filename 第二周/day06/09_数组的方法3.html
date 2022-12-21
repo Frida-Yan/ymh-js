@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    以下方法不修改原数组
+  */
+
+  /*
+    8. concat()
+        - 语法   原始数组.concat(数组1, 数组2, .... )
+        - 作用   进行数组拼接，把()中的数据拼在数组后面 
+        - 返回   拼接好的数组
+        - 和 push的区别
+            1. 是否修改原数组
+                push修改原数组
+                concat 不修改原数组
+            2. 插入数据
+                push 直接把数据插入
+                concat 如果遇到数组，会把数组拆开，把每一项依次放入
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+  //   var res = arr.concat("新来的")
+  //   arr.push("新来的")
+  //   console.log(arr)
+  //   console.log("修改后", res)
+
+  // concat 和 push的区别
+  //   arr.push(["新来的1", "新来的2"]) //  [100, 200, 300, 400, 500 , ['新来的1' , '新来的2'] ]
+  //   console.log(arr)
+
+  //   var res = arr.concat(["新来的1", "新来的2"])
+  //   console.log(res)
+
+  /*
+    9. join()
+        - 语法  数组.join('连接符')
+        - 作用  使用连接符，把数组里面的每一个数据都连接起来，变成一个字符串, (连接符不写 默认 逗号)
+        - 返回值  拼接好的字符串
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+
+  //   var arr = [2022, 12, 21]
+  //   var arr = [16, 28, 30]
+  //   var res = arr.join("-")
+  //   var res = arr.join(":")
+  //   var res = arr.join("aaaaaaaaaaaa")
+  //   var res = arr.join()
+  //   console.log(res)
+
+  /*
+    10  slice()
+        - 语法 数组.slice(开始索引, 结束索引)
+        - 作用  截取数组的部分内容
+        - 返回值 必然是一个新数组
+                 数组内部就是截取出的东西
+        - 参数特点
+            -> 包前不包后， 包含开始索引位置，不包含结束索引位置
+            -> 开始索引可以不写， 默认从0开始， 结束索引不写，默认到数组最后
+            -> 可以写负数， 表示倒数第几个
+  */
+
+  //   var arr = [100, 200, 300, 400, 500, 600, 700]
+  //   console.log("原始数组", arr)
+  //   // 从索引2 的位置 ，截取到索引5的位置
+  //   //   var res = arr.slice(2, 5)
+
+  //   //   var res = arr.slice(2)
+
+  //   var res = arr.slice(2, -1)
+  //   console.log(res)
+
+  /*
+    11. indexOf 
+        - 语法  
+                -> 数组.indexOf(数据)
+                -> 数组.indexOf(数据，开始索引)
+        - 作用  从前向后查找该数据在数组中第一次出现的位置
+        - 返回  
+                -> 如果数组中找到了该数据，那么返回第一次出现的索引
+                -> 如果没找到, 那么返回-1
+  */
+
+  //   var arr = [100, 200, 200, 300, 300, 400, 200, 500]
+
+  // 数组.indexOf(数据)
+  //   var i = arr.indexOf(200)
+  //   var i = arr.indexOf(2000)
+  //   console.log(i)
+
+  // 数组.indexOf(数据，开始索引)
+  //   var i = arr.indexOf(200, 1)
+  //   var i = arr.indexOf(200, 3)
+  //   console.log(i)
+
+  /*
+    12. lastIndexOf
+        - 语法 
+             -> 数组.lastIndexOf(数据)
+             -> 数组.lastIndexOf(数据, 开始索引)
+        - 作用 从后向前查找数据第一次在该数组中出现的位置
+        - 返回值
+                -> 能找到  返回索引
+                -> 找不到  返回-1
+  */
+
+  var arr = [100, 200, 200, 300, 300, 400, 200, 500]
+
+  //   var res = arr.lastIndexOf(200)
+  var res = arr.lastIndexOf(200, 5)
+  console.log(res)
+</script>

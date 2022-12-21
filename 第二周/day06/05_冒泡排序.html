@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    冒泡排序
+        - 数组排序算法的一种
+
+        逻辑
+            1. 拿到数组  的当前这个 和 下一个 进行比较
+                -> 如果 当前的这个  比 下一个大， 那么交换位置
+            2. 遍历数组，从头到尾依次做步骤1
+            3. 把步骤2重复arr.length-1次
+  */
+
+  var arr = [9, 3, 5, 2, 1, 4, 1, 8, 5, 7]
+  console.log("原始数组", arr)
+
+  // 1. [0] [1] 比较，如果[0] > [1] 交换位置
+  //   var tmp = arr[0]
+  //   arr[0] = arr[1]
+  //   arr[1] = tmp
+
+  // 2. 遍历数组，从头到尾依次做步骤1
+  //   for (var i = 0; i < arr.length - 1; i++) {
+  //     if (arr[i] > arr[i + 1]) {
+  //       var tmp = arr[i]
+  //       arr[i] = arr[i + 1]
+  //       arr[i + 1] = tmp
+  //     }
+  //   }
+  //   console.log("一轮循环", arr)
+
+  /*
+    数组的长度 arr.length === 10 
+    
+    当前的项的索引          下一个项的索引
+    0                       1
+    1                       2
+    2                       3
+    3                       4
+    4                       5 
+    5                       6
+    6                       7
+    7                       8
+    8                       9   --- 真正的比较应该到这里就停了
+    9                       10  --- 最后这个比较没有意义 没有索引[10]
+
+  */
+
+  // 步骤3 把步骤2 重复执行length-1 次
+
+  //   for (var j = 0; j < arr.length - 1; j++) {
+  //     for (var i = 0; i < arr.length - 1; i++) {
+  //       if (arr[i] > arr[i + 1]) {
+  //         var tmp = arr[i]
+  //         arr[i] = arr[i + 1]
+  //         arr[i + 1] = tmp
+  //       }
+  //     }
+  //   }
+  //   console.log(arr)
+
+  /*
+    步骤3 可以优化的空间 
+    j   外层循环 控制的是循环的次数       表示的比较几轮
+    i   内层循环 控制的是两两比较的次数   
+
+    j === 0    内层循环  arr.length - 1
+    j === 1    内层循环  arr.length - 1  - 1 (因为上一次比较已经确定了一个数的位置，所以本次比较可以少比较一次 ，)
+    j === 2    内层循环  arr.length - 1  - 2 (因为上一次比较已经确定了2个数的位置，所以本次比较可以少比较2次 ，)
+    j === 3    内层循环  arr.length - 1  - 3 (因为上一次比较已经确定了3个数的位置，所以本次比较可以少比较3次 ，)
+  */
+
+  for (var j = 0; j < arr.length - 1; j++) {
+    for (var i = 0; i < arr.length - 1 - j; i++) {
+      if (arr[i] > arr[i + 1]) {
+        var tmp = arr[i]
+        arr[i] = arr[i + 1]
+        arr[i + 1] = tmp
+      }
+    }
+  }
+  console.log(arr)
+</script>

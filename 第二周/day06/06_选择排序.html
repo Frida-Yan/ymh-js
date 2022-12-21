@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    选择排序
+        逻辑
+            1. 第一轮 找到数组内最小数字的索引
+               把这个索引和 [0] 位置交换
+            2. 第二轮  从[1] 开始，找数组内最小数字的索引，把这个索引和[1]交换
+
+            3. 重复上述的操作，直到数组的最后
+  */
+
+  var arr = [3, 2, 4, 5, 9, 10, 1, 0]
+  console.log("原始数组", arr)
+
+  // 第一轮
+  var minIndex = 0
+  // 遍历数组，找到最小的数字的索引，把这个索引赋值给minIndex
+  for (var i = 0; i < arr.length; i++) {
+    // 最小的数字的索引
+    // 判断当前的数字 < [minIndex] 位置的数字，
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i
+    }
+  }
+  //   console.log(minIndex)
+  // 交换  [0]  和 minIndex 位置的数据
+  var tmp = arr[0]
+  arr[0] = arr[minIndex]
+  arr[minIndex] = tmp
+  console.log("一轮过后", arr)
+
+  minIndex = 1
+  // 第二轮
+  for (var i = 1; i < arr.length; i++) {
+    // 找数组里面最小的
+    // 如果当前的这个 < minIndex
+    if (arr[i] < arr[minIndex]) {
+      minIndex = i
+    }
+  }
+  console.log(minIndex)
+  // 交换 [1] 和 [minIndex] 位置的数据
+  var tmp = arr[1]
+  arr[1] = arr[minIndex]
+  arr[minIndex] = tmp
+  console.log("二轮过后", arr)
+
+  /*
+    找规律
+
+    j   外层循环  控制比较几轮  0 ~ arr.length - 1   
+    i   内层循环  控制当前比较最小的数字的次数
+
+                第几轮          假设最小索引           循环开始         和哪个索引位置交换
+    j === 0;      1                0                   1                    0
+    j === 1       2                1                   2                    1
+    j === 2       3                2                   3                    2
+  */
+
+  for (var j = 0; j < arr.length - 1; j++) {
+    // 假设当前这一轮中最小数字的索引
+    var minIndex = j
+    // 内层循环 ，找当前这次循环中最小的数字
+    for (var i = j + 1; i < arr.length; i++) {
+      // 找最小的数字
+      if (arr[i] < arr[minIndex]) {
+        minIndex = i
+      }
+    }
+    // 内层循环结束 ，找到了本轮最小的数字
+    // 交换两位位置
+    var tmp = arr[j]
+    arr[j] = arr[minIndex]
+    arr[minIndex] = tmp
+  }
+  console.log("排序之后", arr)
+</script>

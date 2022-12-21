@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    数组常用方法2 
+  */
+  /*
+    5. reverse()  修改原数组
+        - 语法  数组.reverse()
+        - 作用  反转数组
+        - 返回值  反转以后的数组
+  */
+
+  //   var arr = [100, 200, 300, 400, 500]
+  //   console.log("原始数组", arr)
+
+  //   var res = arr.reverse()
+  //   console.log("reverse后", arr)
+  //   console.log("返回值", res)
+
+  /*
+    6. sort() 
+        - 语法 
+            -> 数组.sort()
+                排序的时候按照 unicode 编码进行排序
+                    0 - 9     48-57
+                    A - Z     65-90
+                    a - z     97-122
+            -> 数组.sort( function(a, b) { return a-b } )
+                    按照数字大小进行升序排序
+            -> 数组.sort( function(a,b) { return b-a } )
+                    按照数字大小进行降序排序
+
+        - 作用  排序
+        - 返回值： 排序好的数组
+
+
+  */
+
+  //   var arr = [1, 2, 100, 3, 20, 201, 400, 101]
+
+  //   var arr = ["apple", "Bana", "orange"]
+  //   console.log("原始数组", arr)
+
+  //   var res = arr.sort()
+
+  // 升序
+  //   var res = arr.sort(function (a, b) {
+  //     return a - b
+  //   })
+
+  // 降序
+  //   var res = arr.sort(function (a, b) {
+  //     return b - a
+  //   })
+
+  //   console.log("sort后", arr)
+  //   console.log("返回值", res)
+
+  /*
+    7. splice()  非常重要
+        - 语法   
+                -> 数组.splice(开始索引, 多少个)
+                -> 数组.splice(开始索引, 多少个, 插入的数据1, 插入的数据2....)
+        - 作用   截取数组部分内容，并选择性插入内容
+                -> 截取 从开始索引的位置开始，向后截取指定个数的内容
+        - 返回值  必然是一个新数组
+                 新数组里面包含截取出来的部分 
+  */
+
+  // splice 实现删除
+  //   var arr = [100, 200, 300, 400, 500, 600, 700]
+  //   console.log("原始数组", arr)
+  //   var res = arr.splice(2, 3)
+
+  // 删除 数组最后一个
+  //   var res = arr.splice(arr.length - 1, 1)
+
+  // 删除 数组的第一个
+  //   var res = arr.splice(0, 1)
+  //   console.log("splice后", arr)
+  //   console.log("返回值", res)
+
+  // splice实现插入
+  var arr = [100, 200, 300, 400, 500, 600, 700]
+  console.log("原始数组", arr)
+
+  // 插入  -> 数组.splice(开始索引, 多少个, 插入的数据1, 插入的数据2....)
+  //   var res = arr.splice(2, 3, "新来的")
+  //   var res = arr.splice(2, 0, "新来的")
+
+  // 实现 在数组的最后一个插入一项
+  //   var res = arr.splice(arr.length, 0, "新来的")
+
+  // 实现  在数组的开始位置插入一项
+  var res = arr.splice(0, 0, "新来的")
+
+  console.log("修改后", arr)
+  console.log("返回值", res)
+</script>

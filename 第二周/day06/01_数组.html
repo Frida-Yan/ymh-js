@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    认识数组数据类型
+        - 是js中复杂数据类型的一种 -- Array 
+        - 私人： 是一个盒子，放数据的盒子
+        - 有序的数据集合
+        - 数组里面的数据一般是同类型的
+
+    数组数据类型的创建
+        1. 字面量方式创建
+            1-1 创建空数组  var 变量名 = []
+            1-2 创建一个有数据的数组  var 变量名 = [数据1, 数据2, 数据3......]
+
+        2. 内置构造函数方式创建
+            2-1 创建空数组  var 变量名 = new Array()
+            2-2 创建有数据的数组  var 变量名 = new Array(数据1, 数据2, 数据3...)
+            2-3 创建指定长度的数组  var arr = new Array(数字)
+                -> 如果 () 只有一个值，并且这个值为数字，就认为创建一个指定长度的数组
+                        长度：表示数组里面有多少个数据
+                -> 数组全部用empty填充
+            
+  */
+
+  // 1. 字面量方式创建数组
+  // 1-1 创建一个空数组
+
+  //   var arr = []
+  //   console.log(arr)
+
+  // 1-2 创建一个有数据的数组;
+  //   var arr = [2, 5, 10, true, "小花", "hello ", { name: "小红" }]
+  //   console.log(arr)
+
+  // 2. 内置构造函数方式创建
+  // 2-1 创建空数组
+  //   var arr = new Array()
+  //   console.log(arr)
+
+  // 2-2 创建有数据的数组
+  var arr = new Array(1, 3, 6, true, false, "hello", { name: "小花" })
+  console.log(arr)
+
+  // 2-3 创建指定长度的数组
+  //   var arr = new Array(30)
+  //   console.log(arr)
+
+  /*
+    数组内数据的排列
+        - 数组内的数据按照顺序排列的
+            -> 每一个数据 都有一个序号
+            -> 这个序号， 叫做索引  或者 下标 (index)
+            -> 索引 从 0 开始 ，依次 +1
+        结论 ： 数组的最后一个数据的索引，必然是 length - 1
+  */
+</script>
