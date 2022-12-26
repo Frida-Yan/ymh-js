@@ -10,78 +10,80 @@
 </html>
 <script>
   /*
-      1. 已知一个排序好的数组
-        - 将数组按照原有顺序插入到数组内
+  1. 已知一个排序好的数组
+         - 将数组按照原有顺序插入到数组内
 
-        var origin = [ 10, 20, 30, 40, 50 ]
-        var n = 11
+         var origin = [ 10, 20, 30, 40, 50 ]
+         var n = 11
 
-        // 结果: [ 10, 11, 20, 30, 40, 50 ]
+         // 结果: [ 10, 11, 20, 30, 40, 50 ]
 
-        - 选做: 把该操作封装成函数
-      2. 封装函数, 把数组进行放大十倍的操作
-        function map(arr) {
-
-        }
-        // 将来使用的时候
-        var arr = [ 100, 200, 300 ]
-        var res = map(arr)
-
-        - 要求: 函数的返回值需要是一个新数组
-
-      3. 数组去重
-        - 去除数组内的重复项
-  */
-
-  // 作业1
-  var origin = [50, 40, 30, 20, 10]
+         - 选做: 把该操作封装成函数
+   */
+  var origin = [10, 20, 30, 40, 50]
+  //   var origin = [50, 40, 30, 20, 10]
   var n = 11
-  // 方法1 先放进去，再排序
-  // 1. 放进去
-  //   origin.push(n)
-  // 2. 排序 判断原来是升序还是降序
-  // 用[0]  [arr.length-1] 比较
+  // 方案1  直接扔到数组的最后， 然后根据原有顺序进行排序
+  // 步骤1 先判断原有顺序是升序还是降序
   //   var type = origin[0] < origin[origin.length - 1] ? "升序" : "降序"
-  //   switch (type) {
-  //     case "升序":
-  //       origin.sort(function (a, b) {
-  //         return a - b
-  //       })
-  //       break
-  //     case "降序":
-  //       origin.sort(function (a, b) {
-  //         return b - a
-  //       })
-  //       break
+  //   // 步骤2  把数据放到数组中
+  //   origin.push(n)
+  //   // 步骤3 排序
+  //   if (type === "升序") {
+  //     origin.sort(function (a, b) {
+  //       return a - b
+  //     })
+  //   } else {
+  //     origin.sort(function (a, b) {
+  //       return b - a
+  //     })
+  //   }
+
+  //   // 得到结果
+  //   console.log(origin)
+
+  // 方案2 判断升序还是降序 找到应该插入的位置
+  // 要插入的数字的下一位一定比这个大
+
+  //   // 先找到数组是升序还是降序
+  //   var type = origin[0] < origin[origin.length - 1] ? "升序" : "降序"
+
+  //   for (var i = 0; i < origin.length; i++) {
+  //     if (type === "升序") {
+  //       if (origin[i] > n) {
+  //         console.log(origin[i], i)
+  //         // 找到第一次出现的数字，停止， 该插入的位置i已经找打
+  //         origin.splice(i, 0, n)
+  //         break
+  //       }
+  //     } else {
+  //       if (origin[i] < n) {
+  //         console.log(origin[i], i)
+  //         // 找到第一次出现的数字，停止， 该插入的位置i已经找打
+  //         origin.splice(i, 0, n)
+  //         break
+  //       }
+  //     }
   //   }
   //   console.log(origin)
 
-  // 方法2 ，先判断是升序还是降序，找到要插入的位置
-  // var type = origin[0] < origin[origin.length - 1] ? "升序" : "降序"
-  // for (var i = 0; i < origin.length; i++) {
-  //   if (type === "升序") {
-  //     if (origin[i] > n) {
-  //       index = i
-  //       break
-  //     }
-  //   } else {
-  //     if (origin[i] < n) {
-  //       index = i
-  //       break
-  //     }
-  //   }
-  // }
-
-  // origin.splice(index, 0, n)
-  // console.log(origin)
-
-  // 作业2
+  /*
+    封装函数, 把数组进行放大十倍的操作
+        function map(arr) {
+           // 先有一个新数组
+           // 遍历原来的数组，每一项 * 10 放到新数组中
+        }
+  */
   function map(arr) {
+    // 先有一个新数组
     var res = []
+    // 遍历原来的数组，每一项 * 10 放到新数组中
     for (var i = 0; i < arr.length; i++) {
       res.push(arr[i] * 10)
     }
     return res
   }
-  console.log(map([100, 200, 300]))
+  var arr = [100, 200, 300]
+  var res = map(arr)
+  console.log(res)
 </script>

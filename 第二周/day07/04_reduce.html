@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                reduce 迭代
+                    - 语法 数组.reduce(function(prev, item , index, origin){},init)
+                        - prev
+                        - item
+                        - index
+                        - origin 
+                        - init 初始值
+                    - 作用 归并方法，整个数组迭代为一个结果
+                    - 返回值 最终迭代结果 
+                    - 注意 迭代条件以return 方式书写
+            */
+
+			var arr = [100, 200, 300, 400, 500];
+			var res = arr.reduce(function (prev, item, index, origin) {
+				console.log("prev", prev, "item", item);
+				// prev 迭代的结果 第一次指向数组的第一项，后面就是迭代的结果
+				// item 从数组的第二项开始的值
+				// console.log(item);
+				return prev + "^-^" + item;
+			});
+			console.log(res);
+
+			var b = arr.reduce(function (prev, item) {
+				prev.name += "?" + item;
+				return prev;
+			}, {});
+			console.log(b);
+		</script>
+	</body>
+</html>
