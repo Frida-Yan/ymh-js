@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    一切皆对象
+
+    基本数据类型    string boolean number undefined null
+    引用数据类型
+  */
+
+  /*
+    Math 对象
+        - 就是一堆方法操作数字
+        - 通用语法  Math.xx()
+  */
+
+  /*
+    1. random() 
+        - 语法 Math.random()
+        - 作用  获取随机数字
+        - 返回值  一个 0 ~ 1 之间的随机小数， 包含0 但是不包含1
+  */
+
+  // 1. random
+  //   console.log(Math.random());    0 ~ 0.999999
+
+  // 生成  0 ~ 9 的随机整数
+  //   console.log(parseInt(Math.random() * 10)); // 0 ~ 9.9999999
+  // 生成 1 ~ 10 的随机整数
+  //   console.log(parseInt(Math.random() * 10) + 1);
+
+  /* 
+    2. round() 
+        - 语法 Math.round(数字)
+        - 作用  四舍五入取整
+        - 返回值  取整后的结果
+  */
+
+  // 2. round
+  //   console.log(Math.round(4.3));
+
+  // 生成随机数   0 ~ 10
+  //   console.log(Math.random());  // 0 ~ 0.9999999
+  //   console.log(Math.round(Math.random() * 10)); // 0 ~ 9.999999  ==>  四舍五入取整  0 ~ 10
+
+  // 生成随机数  5 ~ 15
+  //   console.log(Math.round(Math.random() * 10) + 5);
+
+  // 封装一个函数， 生成一个指定范围的随机数
+
+  //   function randNum(min, max) {
+  //     return Math.round(Math.random() * (max - min)) + min;
+  //   }
+
+  //   // console.log(randNum(4, 9));
+
+  //   // 封装一个函数， 随机生成一个rgb颜色
+
+  //   function randColor() {
+  //     return `rgb(${randNum(0, 255)}, ${randNum(0, 255)}, ${randNum(0, 255)})`;
+  //   }
+  //   console.log(randColor()); // rgb(100, 200, 244)
+
+  /* 
+    3. ceil()
+        - 语法  Math.ceil()
+        - 作用 向上取整 
+  */
+
+  //   console.log(Math.ceil(-10.1));
+
+  /* 
+    4. floor()
+        - 语法  Math.floor()
+        - 作用  向下取整
+  */
+
+  //   console.log(Math.floor(-10.1));
+
+  /* 
+    5. abs() 
+        - 语法  Math.abs()
+        - 作用  取绝对值
+
+  */
+
+  //   console.log(Math.abs(10.5));
+
+  /* 
+    6. min()
+        - 语法  Math.min(数字1, 数字2, 数字3...)
+        - 作用 找到最小值
+  */
+
+  /* 
+    7. max()
+        - 语法  Math.max(数字1, 数字2, 数字3....)
+        - 作用 找到最大值
+  */
+
+  //   console.log(Math.min(10, 20, 30, 40));
+  //   console.log(Math.max(10, 20, 30, 40));
+
+  /* 
+    8. PI 
+        - 语法  Math.PI 
+        - 作用 π
+  */
+
+  console.log(Math.PI);
+</script>

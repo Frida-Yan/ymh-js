@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 600px;
+      }
+
+      td {
+        height: 50px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="box"></div>
+  </body>
+</html>
+<script>
+  /*
+
+  */
+
+  //   var obj = {
+  //     name: "小花",
+  //     age: 18,
+  //     score: 100,
+  //     like: ["唱跳", "rap", "篮球"],
+  //   }
+
+  //   var arr = [
+  //     {
+  //       name: "小花",
+  //       age: 18,
+  //       score: 100,
+  //       like: ["唱跳", "rap", "篮球"],
+  //     },
+  //     {
+  //       name: "tom",
+  //       age: 18,
+  //       score: 2,
+  //       like: ["rap", "篮球"],
+  //     },
+  //     {
+  //       name: "jerry",
+  //       age: 18,
+  //       score: 5,
+  //       like: ["篮球"],
+  //     },
+  //   ]
+
+  // 获取 tom 的like
+  //   console.log(arr[1].like)
+  //   console.log(arr[1]["like"])
+  //   console.log(arr[1][like])
+
+  var arr = [
+    { id: 1, chineseScore: 100, mathScore: 69, englishScore: 98 },
+    { id: 2, chineseScore: 78, mathScore: 78, englishScore: 34 },
+    { id: 3, chineseScore: 34, mathScore: 56, englishScore: 56 },
+    { id: 4, chineseScore: 89, mathScore: 34, englishScore: 96 },
+    { id: 5, chineseScore: 90, mathScore: 67, englishScore: 67 },
+    { id: 6, chineseScore: 23, mathScore: 90, englishScore: 45 },
+  ];
+
+  // 1. 根据每个人的中文 英语 数学 计算每个人的总和分数
+  // 2. 根据总成绩 > 200 评价 优秀 否则评价 一般
+  // 3. 按照总成绩进行降序排序
+
+  // 1. 根据每个人的中文 英语 数学 计算每个人的总和分数 增加一个key
+  // 2. 根据总成绩 > 200 评价 优秀 否则评价 一般       增加一个key
+
+  arr.forEach(function (item) {
+    item["total"] =
+      item["chineseScore"] + item["mathScore"] + item["englishScore"];
+
+    item["remark"] = item["total"] > 200 ? "优秀" : "一般";
+  });
+
+  // 3. 降序
+  arr.sort(function (a, b) {
+    return b.total - a.total;
+  });
+  console.log(arr);
+
+  // innerHTML 在元素中插入标签
+  var str = `<table><tr>
+    <td>id</td>
+    <td>语文</td>
+    <td>数学</td>
+    <td>英语</td>
+    <td>总分</td>
+    <td>评价</td>
+    </tr>`;
+
+  arr.forEach(function (item) {
+    str += `<tr>
+        <td>${item.id}</td>
+        <td>${item.chineseScore}</td>
+        <td>${item.mathScore}</td>
+        <td>${item.englishScore}</td>
+        <td>${item.total}</td>
+        <td>${item.remark}</td>
+    </tr>`;
+  });
+  str += "</table>";
+  box.innerHTML = str;
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    字符串的基本操作
+
+    1. length属性
+        - 表示字符串的长度，该字符串由多少字符组成
+        - 是一个 只读 属性
+        - 读
+            -> 语法  字符串.length
+  */
+
+  //   var str = "hello world";
+  //   console.log(str.length);
+
+  // 尝试修改， 修改失败
+  //   str.length = 3;
+  //   console.log(str);
+  //   console.log(str.length);
+
+  /* 
+    2. 索引属性
+        - 字符串按照索引排列， 从0开始， 依次 +1
+        - 是一个只读属性
+        - 读
+            -> 语法 字符串[索引]
+            -> 得到： 该索引位置的字符，没有就得到undefined
+  */
+  //   var str = "hello world";
+
+  //   console.log(str[0]);
+  //   console.log(str[100]);
+  // 尝试修改，修改失败
+  //   str[0] = "花";
+  //   console.log(str);
+
+  /* 
+    3. 遍历 
+        - 可以用for循环进行遍历
+  */
+
+  var str = "hello,world";
+  for (var i = 0; i < str.length; i++) {
+    // i 随着循环 表示下标 索引
+    console.log(str[i]); // 字符串的每一项
+  }
+</script>
