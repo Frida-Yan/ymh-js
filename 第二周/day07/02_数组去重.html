@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+        至少背4个
+  */
+  var arr = [1, 2, 3, 4, 5, 5, 6, 6, 1, 2, 3, 1, 1, 88, 2, 10]
+  console.log("原数组", arr)
+
+  /*
+    方法1 
+        1. 排序
+        2. 遍历 获取当前的和下一个，如果相同， 删除一个
+
+        缺点 
+            1. 修改原数组
+            2. 影响原数组的位置
+  */
+  // 1. 排序
+  //   arr.sort()
+  //   // 2. 遍历
+  //   for (var i = 0; i < arr.length; i++) {
+  //     // 判断 当前的和下一个是不是相等，是的话就删除一个
+  //     if (arr[i] === arr[i + 1]) {
+  //       arr.splice(i, 1)
+  //       i--
+  //     }
+  //   }
+  //   console.log("去重后", arr)
+
+  /*
+    方法2 
+        1. 直接遍历 
+        2. 判断从当前的向后查找，如果有一样的，就删除
+
+        缺点
+            修改原数组
+  */
+
+  //   for (var i = 0; i < arr.length; i++) {
+  //     // 从当前位置向后查找是否有一样的
+  //     // 查找的数据是谁  arr[i]
+  //     // 从哪个位置开始查找  从当前位置 向后找  i+1
+  //     var index = arr.indexOf(arr[i], i + 1)
+  //     if (index !== -1) {
+  //       // 删除
+  //       arr.splice(index, 1)
+  //       i--
+  //     }
+  //   }
+  //   console.log("去重后", arr)
+
+  /*
+    方案3 
+        1. 准备一个新数组
+        2. 把原始数组的内容每一个放到新数组中
+            新数组有没有这个数？ 有 不放 ： 放
+  */
+  // 1. 准备一个新数组
+  //   var newArr = []
+  //   for (var i = 0; i < arr.length; i++) {
+  //     // 当前项在新数组中有没有
+  //     if (newArr.indexOf(arr[i]) === -1) {
+  //       newArr.push(arr[i])
+  //     }
+  //   }
+  //   console.log("去重后", newArr)
+
+  /*
+    方案4 
+        1. 利用 Set数据结构
+            -> Set数据结构的特点 
+                1. 长得像数组
+                2. 天生不接受重复数据
+            -> 语法  new Set([数据1, 数据2, 数据3...])
+        2. 把 Set数据结构还原成数组
+            -> 方法1 Array.from(数据)
+                -> 作用  把其他数据类型还原成数组
+                -> 返回值 还原好的数组
+            -> 方法2  使用 扩展运算符 (...)
+                -> 把数据结构展开
+  */
+
+  //   console.log(new Set([1, 1, 2, 2, 3, 4, 5, 5]))
+  // 1. 利用Set结构 ，把数组内的重复数据删除
+  //   var s = new Set(arr)
+  //   console.log(s)
+  // 2. 把set结构转为数组
+  //   var res = Array.from(s)
+  //   console.log("去重后", res)
+
+  // 扩展运算符
+  //   console.log([1, 2, 3, ...[4, 5, 6]])
+  //   var res = [...s]
+  //   console.log("去重后", res)
+
+  // 整理一下
+  var r1 = Array.from(new Set(arr))
+  console.log(r1)
+  var r2 = [...new Set(arr)]
+  console.log(r2)
+
+  // 任务  案例掌握， 用自己的话术总结
+</script>

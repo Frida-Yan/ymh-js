@@ -1,72 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
 </html>
 <script>
-  /*
-    数组塌陷
-        用数组的长度进行循环的时候，使用一些可以修改原数组长度（splice pop）的方法，就会引起数组的变化
+	/*
+    数组塌陷 
+        当用数组的长度进行循环的时候，使用一些修改数组长度的方法(pop, splice)， 引起原数组的变化
   */
 
-  // 需求 每次删除数组的最后一个数据，直到把数组清空
-  //   var arr = [100, 200, 300, 400, 500, 600, 700, 800, 900]
-  //   console.log("原数组", arr)
+	var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+	console.log("原数组", arr);
 
-  //   for (var i = 0; i < arr.length; i++) {
-  //     console.log(arr, i)
-  //     arr.pop()
-  //   }
-  //   console.log(arr)
+	// 需求 每次删除一个数据，把数组清空
+	// pop 从数组的末尾开始删除
+	//   for (var i = 0; i < arr.length; i++) {
+	//     arr.pop()
+	//     console.log(arr, i)
+	//   }
+	//   console.log("删除后", arr)
 
-  /*
-    i ===0    arr.length = 9   arr.pop()  ==>  arr.length = 8
-    i ===1    arr.length = 8   arr.pop()  ==>  arr.length = 7
-    i ===2    arr.length = 7   arr.pop()  ==>  arr.length = 6
-    i ===3    arr.length = 6   arr.pop()  ==>  arr.length = 5
-    i ===4    arr.length = 5   arr.pop()  ==>  arr.length = 4
-    
-    循环从0 开始， 到arr.length结束， 此刻  i已经 === arr.length 所以循环结束
-    原因是因为  在删除的时候修改了数组长度，影响了循环的结束条件
+	/*
+    i 表示数组的位置
 
-    解决，让数组长度不要变 ==> 最开始的时候把数组长度当做一个固定的值存起来
-  
+    i === 0  arr.length = 14 ===>  arr.pop ====> arr.length = 13 
+    i === 1  arr.length = 13 ===>  arr.pop ====> arr.length = 12 
+    i === 2  arr.length = 12 ===>  arr.pop ====> arr.length = 11 
+    i === 3  arr.length = 11 ===>  arr.pop ====> arr.length = 10 
+    i === 4  arr.length = 10 ===>  arr.pop ====> arr.length = 9 
+    i === 5  arr.length = 9 ===>  arr.pop ====> arr.length = 8 
+    i === 6  arr.length = 8 ===>  arr.pop ====> arr.length = 7 
+    i === 7  arr.length = 7 ===>  arr.pop ====> arr.length = 7 
+
+    循环从0开始 ，到arr.length结束， i === 7 的时候， arr.length也等于7 循环结束
+    因为 删除的时候修改了数组长度，影响了循环的结束条件
+
+    解决: 让数组长度不要变化， 提前设置一个变量，把长度保存在这个变量里面
   */
 
-  //   var len = arr.length
-  //   for (var i = 0; i < len; i++) {
-  //     console.log(arr, i)
-  //     arr.pop()
-  //   }
-  //   console.log("修改后", arr)
+	//   var len = arr.length
+	//   for (var i = 0; i < len; i++) {
+	//     arr.pop()
+	//     console.log(arr, i)
+	//   }
+	//   console.log("删除后", arr)
 
-  // 需求 用 splice 实现 从开头的位置一个一个删数组的数据，直到清空数组
-  var arr = [100, 200, 300, 400, 500, 600, 700, 800, 900]
-  console.log("原数组", arr)
-  //   for (var i = 0; i < arr.length; i++) {
-  //     arr.splice(i, 1)
-  //     console.log(arr, i)
-  //   }
-  //   console.log("删除后", arr)
+	// 用splice删除
+	//   for (var i = 0; i < arr.length; i++) {
+	//     arr.splice(i, 1)
+	//     console.log(arr, i)
+	//   }
+	//   console.log(arr)
 
-  /*
-    i === 0  arr.length === 9   ==> splice ===> arr.length === 8 
-    i === 1  arr.length === 8   ==> splice ===> arr.length === 7 
-    i === 2  arr.length === 7   ==> splice ===> arr.length === 6 
-
-    随着循环，splice每次都会让数组长度变化
+	/*
+    删除的时候 会缩短数组， 循环也会向后进行
     解决
-        1. 倒着循环 ： 删除是从前向后删除，所有倒着循环不会影响前面的数据
+        方法1 倒着循环
   */
 
-  for (var i = arr.length - 1; i >= 0; i--) {
-    arr.splice(i, 1)
-    console.log(arr, i)
-  }
-  console.log("删除后", arr)
+	//   for (var i = arr.length - 1; i >= 0; i--) {
+	//     arr.splice(i, 1)
+	//     console.log(arr, i)
+	//   }
+	//   console.log(arr)
+
+	/*
+    方法2  i--
+  */
+
+	//   for (var i = 0; i < arr.length; i++) {
+	//     arr.splice(i, 1)
+	//     i--
+	//     console.log(arr, i)
+	//   }
+	//   console.log(arr)
+
+	// 删除  数组中 偶数的数据
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] % 2 === 0) {
+			arr.splice(i, 1);
+			i--;
+		}
+	}
+	console.log(arr);
 </script>
