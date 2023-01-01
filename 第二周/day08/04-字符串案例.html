@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    案例  统计字符串中每一个字符出现的次数 
+  */
+
+  var str = "aaaaabbbbcccdddabacdbdeeekkriiriffssdfad";
+
+  // 思考， 如果保存这个结果
+  /* 
+     'a 1次  b 2次'
+     '[a, 1, b,2,c,4]'
+
+     用下面的格式保存结果
+     {
+        a: 1, 
+        b: 2,
+        c: 3,
+     }
+  */
+
+  // 1. 准备一个空对象
+  // 2. 遍历字符串，拿到每一个字符
+  // 3. 把这个字符当做对象的键
+  //    => 如果 对象中有这个键 说明重复了， 就把这个键对应的值+1
+  //   =>  如果 对象中没有这个键 说明没有重复，第一次出现， 该值为1
+
+  var obj = {};
+
+  //   for (var i = 0; i < str.length; i++) {
+  //     var item = str[i]; // 每一个字符
+  //     if (obj[item] === undefined) {
+  //       // 该字符不在对象中
+  //       obj[item] = 1;
+  //     } else {
+  //       obj[item]++;
+  //     }
+  //   }
+  //   console.log(obj);
+
+  // 简化
+
+  //   for (var i = 0; i < str.length; i++) {
+  //     var item = str[i]; // 每一个字符
+  //     if (obj[item]) {
+  //       obj[item]++;
+  //     } else {
+  //       obj[item] = 1;
+  //     }
+  //   }
+  //   console.log(obj);
+
+  // 简化
+  for (var i = 0; i < str.length; i++) {
+    var item = str[i]; // 每一个字符
+    obj[item] ? obj[item]++ : (obj[item] = 1);
+  }
+  console.log(obj);
+</script>

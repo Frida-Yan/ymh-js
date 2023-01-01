@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    浏览器的弹出层
+        1. 提示框
+            - 语法  window.alert('提示文本')
+            - 形式  一个提示文本 + 一个确认
+
+        2. 询问看 
+            - 语法 window.confirm('提示文本')
+            - 形式 一个提示文本 + 确认 + 取消
+            - 返回值
+                true 点击确认
+                false 点击取消
+
+        3. 输入框
+            - 语法 window.prompt('提示文本')
+            - 形式 一个输入框 + 确认 + 取消
+            - 返回值
+                点击确认 输入的内容的字符串格式
+                点击取消 null
+  */
+  //   var res = window.confirm("提示文本");
+  //   console.log(res);
+
+  var res = window.prompt("提示文本");
+  console.log(res);
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="username" />
+      <input type="text" name="phone" />
+      <button type="submit">提交</button>
+    </form>
+
+    <div id="box">点击跳转</div>
+    <div id="reload">点击刷新</div>
+  </body>
+</html>
+<script>
+  // file:///D:/%E5%B7%A5%E4%BD%9C/%E4%B8%8A%E8%AF%BE%E5%86%85%E5%AE%B9/2215/week3/day11/%E4%BB%A3%E7%A0%81/16-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6.html
+
+  // https://www.baidu.com/
+  /*
+    浏览器的地址栏组成
+        1. 协议  两台电脑通信，必须添加协议(http https file ftp), 浏览器会自动补全协议
+        2. 域名(ip)  电脑的唯一表示，由于ip地址不方便记忆，产生了域名
+        3. 端口 
+                端口可以自由分配， 只要没有占用，就可以使用
+                http 默认端口 80
+                https 默认端口443
+        4. 路径  找到文件的地址 用/分割
+        5. 数据  地址栏可以携带内容， 携带的内容用?拼接在地址栏后面，如果有多条数据，用&符号进行链接
+        6. 哈希值(hash)  地址栏后面可以携带哈希值(#拼接在后面)，用来进行单页面跳转
+
+  */
+
+  /* 
+    操作地址栏 - location对象
+        1. href属性  读写浏览器地址栏的内容
+            - 读
+                -> 语法  window.location.href
+                -> 得到是该页面在地址栏完整的地址
+            - 写
+                -> 语法  window.location.href = '地址'
+                -> 作用  修改地址栏的地址 跳转
+
+        2. search属性 获取地址栏上面的数据(查询字符串的内容), 包含问号
+            - window.location.search
+
+        3. hash属性  获取地址栏上面的hash值 包含#
+            - window.location.hash
+
+        4. reload方法
+            - 语法 window.location.reload
+            - 作用 重新加载页面(刷新)
+  */
+  //   console.log(window.location.href);
+
+  //   box.onclick = function () {
+  //     window.location.href = "http://www.baidu.com";
+  //   };
+
+  // search
+  //   console.log(window.location.search);
+
+  // hash
+  //   console.log(window.location.hash);
+
+  // reload
+  reload.onclick = function () {
+    window.location.reload();
+  };
+</script>

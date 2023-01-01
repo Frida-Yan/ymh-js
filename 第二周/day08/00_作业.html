@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			// 封装一个生成随机数的方法
+			function randomNum(a, b) {
+				return (
+					Math.round(Math.random() * Math.abs(a - b)) + Math.min(a, b)
+				);
+			}
+			/*
+			             封装函数获取一个 十六进制 的随机颜色字符串
+			         */
+
+			// 方法1
+
+			// function randomColor() {
+			// 	// 1. 生成一个随机数 0 ~ 15
+			// 	// 2. 转十六进制
+			// 	// 3. 重复6次
+
+			// 	// 准备一个变量作为结果
+			// 	var res = "#";
+			// 	for (var i = 1; i <= 6; i++) {
+			// 		var num = randomNum(0, 15).toString(16);
+			// 		res += num;
+			// 	}
+			// 	return res;
+			// }
+			// console.log(randomColor());
+
+			// 方法2
+			function randomColor() {
+				// 1. 生成 0~255的一个随机数
+				// 2. 转16进制 不是两位数的补0
+				// 3. 重复3次
+				var res = "#";
+				for (var i = 1; i <= 3; i++) {
+					var num = randomNum(0, 255);
+					var s = num.toString(16);
+					if (num <= 15) {
+						s = 0 + s;
+					}
+					res += s;
+				}
+				return res;
+			}
+			console.log(randomColor());
+		</script>
+	</body>
+</html>

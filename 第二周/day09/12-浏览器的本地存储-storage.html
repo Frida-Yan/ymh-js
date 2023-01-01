@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">删除localStorage</button>
+    <button id="btn1">删除sessionStorage</button>
+  </body>
+</html>
+<script>
+  /*
+    浏览器的本地存储  (重点)
+      - 在浏览器 这个 '软件' 中存储的一些内容
+
+      常见的本地存储
+        - storage
+          -> localStorage
+          -> sessionStorage
+        - cookie
+  */
+
+  /* 
+     localStorage
+        - 浏览器本地存储  持久存储
+        - 特点
+          1. 一旦存储 永久存在
+          2. 可以跨页面通讯
+          3. 只能存储基本数据类型，不能存储引用数据类型
+
+       操作
+        - 增  window.localStorage.setItem(key, value)
+        - 删  window.localStorage.removeItem(key)
+        - 清除  window.localStorage.clear()
+        - 查   window.localStorage.getItem(key)
+          -> 如果 localStorage 内有这个key, 那么就是该key对应的value 
+          -> 如果localStorage 内没有这个key， 那么就是null
+ */
+
+  // 增  存了一个本地存储，名字是a, 值100
+  // window.localStorage.setItem("a", 100);
+  // window.localStorage.setItem("b", 200);
+
+  // var obj = { name: "小花", age: 18 };
+  // // 不能直接存引用数据类型
+  // // window.localStorage.setItem("c", obj);
+  // // 如果需要存引用数据类型 ===> 需要用json格式字符串转换
+  // window.localStorage.setItem("c", JSON.stringify(obj));
+
+  // // 删
+  // btn.onclick = function () {
+  //   // window.localStorage.removeItem("a");
+  //   window.localStorage.clear();
+  // };
+
+  /* 
+    sessionStorage 
+      - 会话级别的存储，浏览器一旦关闭，就销毁
+      - 特点
+        1. 浏览器一旦关闭，就销毁
+        2. 不能跨页面，只能在同页面中
+        3. 只能存储基本数据类型，不能存储引用数据类型
+
+      操作
+        - 增 window.sessionStorage.setItem(key, value)
+        - 删 window.sessionStorage.removeItem(key)
+        - 清除  window.sessionStorage.clear()
+        - 查 window.sessionStorage.getItem(key)
+          -> 如果 sessionStorage 内有这个key, 那么就是该key对应的value 
+          -> 如果 sessionStorage 内没有这个key， 那么就是null
+  */
+
+  // 增
+  window.sessionStorage.setItem("a", 1000);
+  window.sessionStorage.setItem("b", 2000);
+  btn1.onclick = function () {
+    // window.sessionStorage.removeItem("a");
+    // window.sessionStorage.clear();
+    window.location.href = "./test.html";
+  };
+</script>

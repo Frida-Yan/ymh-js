@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    时间对象
+        1. 创建
+            var time = new Date()
+            得到的是终端的时间
+        2. 创建指定日期
+            1) 传递一个数字  var time = new Date(数字)
+                从 格林威治 （1970-1-1 00:00:00 ） 时间向后顺延的毫秒数 
+            2) 传递多个数字  var time = new Date(年, 月, 日, 时,分,秒, 毫秒)
+                数字0表示1月
+            3) 传递字符串 
+                 var time = new Date('YYYY-MM-DD HH:mm:ss')
+                 var time = new Date('YYYY/MM/DD HH:mm:ss')
+        3. 时间对象的常用方法
+            获取            设置
+            getFullYear     setFullYear
+            getMonth        setMonth
+            getDate         setDate
+            getDay          - 
+            getHours        setHours
+            getMinutes      setMinutes
+            getSeconds      setSeconds
+            getTime         setTime
+        4. 定时器
+            1) 定时器的分类
+                - 间隔定时器    setInterval(函数, 毫秒)
+                - 延迟定时器    setTimeout(函数, 毫秒)
+            2) 定时器的返回值
+                数字
+            3) 关闭定时器
+                clearInterval 
+                clearTimeout
+            4) 代码的同步异步
+                - 同步 
+                    代码从上到下 从左到右依次执行，如果上一行代码没有执行完，下一行等待
+                - 异步
+                    代码遇到异步的时候，会先把异步代码放到异步队列，先执行所有同步代码，再执行异步队列中的代码
+                - 定时器是异步代码
+                    先执行定时器外面的代码，在去执行定时器里面的代码
+
+        BOM 
+            - 浏览器对象模型
+            - 浏览器可视窗口尺寸
+                宽度  window.innerWidth
+                高度  window.innerHeight
+            - 浏览器的弹出层
+                window.alert
+                window.confirm
+                window.prompt
+            - 浏览器的常见事件
+                window.onload  浏览器外部资源加载完毕后执行
+                window.onresize  窗口尺寸修改触发
+                window.onscroll   滚动条滚动
+            - 浏览器的地址栏
+                地址栏的组成  
+                    协议  域名 端口号 路径  数据  哈希
+                操作地址栏 
+                    1. href 
+                    2. hash 
+                    3. search 
+                    4. reload 刷新 
+  */
+</script>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<script>
+			/*
+                数组塌陷
+                    - 利用数组长度进行遍历的时候，pop或者splice对数组长度的影响
+                    - 解决方法
+                        1. 用变量存储数组的初始长度作为循环的终止条件
+                        2. 反方向循环
+                        3. i--
+
+                数组去重
+                    1. 修改原数组
+                        1) 影响原数组顺序
+                        2) 不影响原数组顺序
+                    2. 不修改原数组，用新数组
+
+                数组常用方法
+                    push
+                    pop
+                    unshift
+                    shift
+                    reverse
+                    sort
+                    splice 
+                    ============= 以上修改原数组 ==============
+                    concat
+                    join
+                    slice
+                    indexOf
+                    lastIndexOf
+                    includes(数据)
+                    forEach(function({item, index, origin}) {} )
+                    map(function({item, index, origin}) {} )
+                    filter(function({item, index, origin}) {})
+                    find(function({item, index, origin}) {})
+                    findIndex(function({item, index, origin}) {})
+                    every(function({item, index, origin}) {})
+                    some(function({item, index, origin}) {})
+                    reduce(function() {prev, item, index, origin} , init)   
+                        -> 当init没有的时候，prev表示数组的[0]项，数组从[1]项开始循环，循环length-1
+                        -> 当init有的时候， prev第一次表示的是init, 数组从[0]项开始循环，循环length
+
+                数学常用方法
+                    random()
+                    round
+                    ceil
+                    floor
+                    abs
+                    max
+                    min
+                    PI
+
+                进制转换
+                    1. 十进制转其他进制
+                        数字.toString(要转换的进制)
+                    2. 其他进制转十进制
+                        parseInt(数字,该数字是几进制)
+                
+                保留小数位
+                    数字.toFixed()
+
+                
+            */
+		</script>
+	</body>
+</html>
