@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+	</head>
+	<body>
+		<input type="checkbox" class="all" /> 全选 <br />
+		---------- <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<input type="checkbox" class="checkbox" /> <br />
+		<script>
+			var all = document.querySelector(".all");
+			var checkList = [...document.querySelectorAll(".checkbox")];
+
+			all.onclick = function () {
+				checkList.forEach(function (item) {
+					item.checked = all.checked;
+				});
+			};
+
+			// checkList.forEach(function (item) {
+			// 	item.onclick = function () {
+			// 		var count = 0;
+			// 		checkList.forEach(function (ele) {
+			// 			if (ele.checked) {
+			// 				count++;
+			// 			}
+			// 			console.log(count);
+			// 		});
+			// 		all.checked = count === checkList.length;
+			// 	};
+			// });
+
+			checkList.forEach(function (item) {
+				item.onclick = function () {
+					var flag = checkList.every(function (ele) {
+						return ele.checked;
+					});
+					all.checked = flag;
+				};
+			});
+		</script>
+	</body>
+</html>
