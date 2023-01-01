@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    迭代    
+        21. reduce
+            - 语法  
+                    数组.reduce(function(prev, item, index, origin){} , init)
+                        -> prev 迭代的结果
+                        -> item 数组的每一项
+                        -> index 数组每一项的索引
+                        -> origin 原始数组
+                        -> init 迭代的初始值(可选)
+
+            - 作用  迭代 把整个数组迭代为一个结果 
+            - 返回值  最终迭代的结果
+            - 注意： 迭代条件用return形式书写
+
+            prev的值， 如果书写了init, prev第一次就是init的值， 如果没有书写init, prev第一次就是[0]的值
+            如果书写了init, 循环执行了length次， 如果没有书写init, 循环执行length-1次，从[1]开始循环
+
+  */
+
+  var arr = [100, 200, 300, 400, 500]
+
+  //   var res = arr.reduce(function (prev, item, index) {
+  //     console.log(prev, item, index) // 迭代的结果
+  //     return prev + item
+  //   })
+
+  //   var res = arr.reduce(function (prev, item, index) {
+  //     console.log(prev, item, index) // 迭代的结果
+  //     // 把上一次的结果当做下一次开始的条件
+  //     return prev + "-" + item
+  //   }, 50)
+  //   console.log(res)
+
+  // 累加 求数组每一个数组的和
+  //   var res = arr.reduce(function (prev, item) {
+  //     return prev + item
+  //   })
+
+  //   console.log(res)
+
+  // 累加 ，求数组的每一个数字的和 + 50
+  //   var res = arr.reduce(function (prev, item) {
+  //     return prev + item
+  //   }, 50)
+  //   console.log(res)
+
+  // [1, 2, 3, 4, 5] 求  1^2 + 2^2 +3 ^2 +...+ 5^2
+
+  var res = arr.reduce(function (prev, item) {
+    return prev + item * item
+  })
+
+  console.log(res)
+</script>

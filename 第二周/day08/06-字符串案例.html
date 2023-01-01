@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
 </html>
 <script>
-  /*
+	/*
     案例1  反转字符串 
   */
 
-  var origin = "abcde";
+	var origin = "abcde";
 
-  // 方法1
-  //   var str = "";
-  //   for (var i = 0; i < origin.length; i++) {
-  //     str = origin[i] + str;
-  //   }
-  //   console.log(str);
+	// 方法1
+	//   var str = "";
+	//   for (var i = 0; i < origin.length; i++) {
+	//     str = origin[i] + str;
+	//   }
+	//   console.log(str);
 
-  // 方法2
-  // 转为数组， 反转 转为字符串
+	// 方法2
+	// 转为数组， 反转 转为字符串
 
-  //   var r1 = origin.split("");
-  //   console.log(r1);
-  //   var r2 = r1.reverse();
-  //   console.log(r2);
-  //   var r3 = r2.join("");
-  //   console.log(r3);
+	//   var r1 = origin.split("");
+	//   console.log(r1);
+	//   var r2 = r1.reverse();
+	//   console.log(r2);
+	//   var r3 = r2.join("");
+	//   console.log(r3);
 
-  //   var res = origin.split("").reverse().join("");
-  //   console.log(res);
+	//   var res = origin.split("").reverse().join("");
+	//   console.log(res);
 
-  /* 
+	/* 
     2. 连字符 转 驼峰
 
         get-element-class-name  转为 getElementClassName
@@ -45,7 +45,7 @@
         [get, Element, Class, Name] ===> getElementClassName
   */
 
-  /* 
+	/* 
     3. 替换敏感词
     origin =  as小明bdd小明adf小明asdfa小明asdfasdf 
     '小明'是敏感词, 替换成'**'

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<!-- 
+    十六进制颜色 
+    #rrggbb
+    每一位 的范围 0 ~ f
+
+    十进制     0 1 2 3 4 5 6 7 8 9 
+    十六机制   0 1 2 3 4 5 6 7 8 9 a b c d e f 
+
+
+ -->
+<script>
+  /*
+    进制转换
+  */
+
+  /*
+    1. 十进制 转为 其他进制
+        - 语法  十进制数字.toString(要转换的进制)
+        - 返回值  一个字符串格式的数字
+  */
+  //   var num = 255;
+  //   console.log(num.toString(2));
+  //   console.log(num.toString(16));
+
+  /*
+    2. 其他进制转为十进制
+        - 语法  parseInt(数字, 该数字原来是几进制)
+        - 返回值， 转换好的十进制数字
+  */
+
+  //   console.log(parseInt("ff", 16));
+
+  // 封装一个函数， 生成随机十六进制颜色  #aabbcc
+  // 方案1
+
+  function randNum(min, max) {
+    return Math.round(Math.random() * (max - min)) + min;
+  }
+  //   function randColor() {
+  //     // 1. 生成一个 0 ~ 15 的随机数
+  //     // 2. 把这个数字转为十六进制
+  //     // 3. 重复6次
+  //     var str = "#";
+  //     for (var i = 0; i < 6; i++) {
+  //       var num = randNum(0, 15);
+  //       num = num.toString(16);
+  //       //   console.log(num);
+  //       str += num;
+  //     }
+  //     return str;
+  //   }
+  //   console.log(randColor()); // #aacbb2
+
+  // 方案2
+  // # 112243
+  // 生成一个0 ~ 255 之间的数字 重复3次
+
+  //   function randColor() {
+  //     var str = "#";
+  //     for (var i = 0; i < 3; i++) {
+  //       // 什么时候需要前面 补 0
+  //       // 在十进制的时候判断这个数字转成十六进制是不是一位，是就前面补0
+  //       var num = randNum(0, 255);
+
+  //       if (num <= 15) {
+  //         // 前面补0
+  //         num = "0" + num.toString(16);
+  //       } else {
+  //         num = num.toString(16);
+  //       }
+  //       str += num;
+  //     }
+  //     return str;
+  //   }
+  //   console.log(randColor());
+
+  // 面试题
+  //   [1, 2, 3].map(parseInt);
+  // 等价于
+
+  // parseInt(数字, 该数字是几进制) ===> 转好的十进制数字
+  // 第一次遍历  parseInt(1, 0) 没有0进制， 认为 parseInt(1,0) 把该数字转为十进制的1
+  // 第二次遍历  parseInt(2, 1) 这里是把1进制的2转为十进制 ， 1进制中只有0， 没有2，返回NaN
+  // 第三次遍历  parseInt(3, 2) 这里是把2进制的3转为十进制， 2进制中只有 0 1 ， 没有3， 返回NaN
+  //   [1, 2, 3].map(function (item, index) {
+  //     return parseInt(item, index);
+  //   }); // [1, NaN, NaN]
+
+  /*
+    保留小数 
+        - toFixed()
+        - 语法 数字.toFixed(小数位)
+  */
+  //   var num = 100;
+  //   var num = 100.23456;
+  //   console.log(num.toFixed(2));
+  //   console.log(num.toFixed(3));
+
+  var n = 100.1234567;
+  console.log(n.toFixed(4));
+  console.log(n.toFixed(5));
+</script>

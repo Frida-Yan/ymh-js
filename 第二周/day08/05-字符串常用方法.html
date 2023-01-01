@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
 </html>
 <script>
-  /*
+	/*
     字符串常用方法
         - 语法  字符串.方法名()
         - 所有的字符串方法都不修改原始字符串
   */
-  /* 
+	/* 
     1. charAt()
         - 语法  字符串.charAt(索引)
         - 返回值 该索引位置的字符， 如果没有该索引位置，返回空字符串
  */
 
-  //   var str = "abcde";
-  //   console.log(str.charAt(0));
-  //   console.log(str.charAt(100));
+	//   var str = "abcde";
+	//   console.log(str.charAt(0));
+	//   console.log(str.charAt(100));
 
-  /* 
+	/* 
     2. charCodeAt
         - 语法 字符串.charCodeAt(索引)
         - 返回值  该索引位置的字符对应的unicode编码，如果没有该索引位置，返回的是NaN
   */
 
-  //   var str = "abcde";
-  //   console.log(str.charCodeAt(0));
-  //   console.log(str.charCodeAt(100)); // NaN
+	//   var str = "abcde";
+	//   console.log(str.charCodeAt(0));
+	//   console.log(str.charCodeAt(100)); // NaN
 
-  /* 
+	/* 
     3. toUpperCase
         - 语法 字符串.toUpperCase()
         - 作用 把字符串的所有内容转大写
   */
-  //   var str = "abcde";
-  //   console.log(str.toUpperCase());
+	//   var str = "abcde";
+	//   console.log(str.toUpperCase());
 
-  /* 
+	/* 
     4. toLowerCase()
         - 语法 字符串.toLowerCase()
         - 作用 把字符串的所有内容转小写
   */
 
-  //   var str = "ABCDE";
-  //   console.log(str.toLowerCase());
+	//   var str = "ABCDE";
+	//   console.log(str.toLowerCase());
 
-  /* 
+	/* 
     5. substr()
         - 语法 字符串.substr(开始索引,多少个)
         - 返回值  截取后的字符串
   */
 
-  //   var str = "2022-12-28";
-  //   console.log(str.substr(0, 7));
+	//   var str = "2022-12-28";
+	//   console.log(str.substr(0, 7));
 
-  /* 
+	/* 
     6. substring()
         - 语法  字符串.substring(开始索引, 结束索引)
         - 特点 包前不包后 
   */
 
-  //   var str = "abcdefg";
-  //   console.log(str.substring(0, 4));
+	//   var str = "abcdefg";
+	//   console.log(str.substring(0, 4));
 
-  /* 
+	/* 
     7. slice()
         - 语法 字符串.slice(开始索引, 结束索引)
         - 特点 包前不包后, 可以写负数
   */
 
-  //   var str = "abcdefg";
-  //   console.log(str.slice(4, -1));
+	//   var str = "abcdefg";
+	//   console.log(str.slice(4, -1));
 
-  /* 
+	/* 
     8. split()
         - 语法 字符串.split('分隔符')
         - 把字符串按照分隔符进行分割，返回一个数组
   */
 
-  //   var str = "2022-12-28";
-  //   console.log(str.split("-"));
-  //   console.log(str.split("")); // 经典用法 把每一位拆开
+	//   var str = "2022-12-28";
+	//   console.log(str.split("-"));
+	//   console.log(str.split("")); // 经典用法 把每一位拆开
 
-  /* 
+	/* 
     9. concat()
         - 语法 字符串.concat(字符串1, 字符串2, 字符串3 .... )
         - 拼接字符串
   */
 
-  //   var str = "你好，小花";
-  //   console.log(str.concat("真好看"));
+	//   var str = "你好，小花";
+	//   console.log(str.concat("真好看"));
 
-  /* 
+	/* 
     10. indexOf
         - 语法 字符串.indexOf(查找的字符, 开始的索引)
         - 返回值
@@ -105,41 +105,41 @@
             如果没有，返回-1
   */
 
-  //   var str = "小1花， 小红， 小花好看， 小花美丽， 美丽的小花";
-  //   console.log(str.indexOf("小花"));
+	//   var str = "小1花， 小红， 小花好看， 小花美丽， 美丽的小花";
+	//   console.log(str.indexOf("小花"));
 
-  /* 
+	/* 
     11. includes()
         - 语法  字符串.includes(字符串片段)
         - 返回值
             原始字符串中有查找的内容，返回true
             没有 返回false
   */
-  //   var str = "小1花， 小红， 小花好看， 小花美丽， 美丽的小花";
-  //   console.log(str.includes("小"));
+	//   var str = "小1花， 小红， 小花好看， 小花美丽， 美丽的小花";
+	//   console.log(str.includes("小"));
 
-  /* 
+	/* 
     12. trim()
         - 字符串.trim()
         - 作用 去掉首尾空格
    */
 
-  //   var str = `
+	//   var str = `
 
-  //         你好    小花
+	//         你好    小花
 
-  //         `;
-  //   console.log(str);
-  //   console.log(str.trim());
+	//         `;
+	//   console.log(str);
+	//   console.log(str.trim());
 
-  /* 
+	/* 
     13. replace()
         - 语法  字符串.replace(换下字符, 换上字符)
         - 作用 替换字符串内容 
         - 注意 只能换一个 
   */
 
-  var str = "美丽的小明，好看的小明";
+	var str = "美丽的小明，好看的小明";
 
-  console.log(str.replace("明", "花"));
+	console.log(str.replace("明", "花"));
 </script>

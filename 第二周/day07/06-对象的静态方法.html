@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+     对象的静态方法  
+
+    静态方法
+        构造函数开头，直接绑定在构造函数上面的方法，直接使用
+  */
+
+  /* 
+    1. Object.keys()
+        - 语法  Object.keys(对象)
+        - 作用  把对象的key放到一个数组中返回 
+        - 返回值  一个数组，内容是对象的所有key 
+  */
+
+  //   var obj = {
+  //     name: "小花",
+  //     age: 18,
+  //     score: 100,
+  //     like: ["唱跳", "rap", "篮球"],
+  //   }
+
+  //   console.log(Object.keys(obj))
+
+  /* 
+    2. Object.values()
+        - 语法  Object.values(对象)
+        - 作用 把对象的value值放到一个数组中返回 
+        - 返回值  是一个新数组 ，放置对象中所有的value
+  */
+
+  var obj = {
+    name: "小花",
+    age: 18,
+    score: 100,
+    like: ["唱跳", "rap", "篮球"],
+  }
+
+  console.log(Object.values(obj))
+</script>
