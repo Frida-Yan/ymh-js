@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    代码的异步执行
+
+    什么是非异步执行代码
+        - 按照从上到下的顺序， 从左到右顺序
+        - 如果上一句没有执行完，那么下一句代码等待
+
+    什么是异步代码
+        - 当代码执行遇到异步的时候，会把该代码放到 异步队列 中等待
+        - 等所有的同步代码代码完毕，开始执行 异步队列 的代码
+        - 两个定时器都是异步代码
+
+    两个定时器
+        - 都是异步代码
+        - 都是先执行定时器外面的代码，后执行定时器里面的代码
+  */
+
+  //   console.log(1);
+  //   for (var i = 1; i < 100000; i++) {}
+  //   console.log(2);
+
+  //   console.log(1);
+  //   setTimeout(() => {
+  //     console.log("异步代码");
+  //   }, 2000);
+  //   console.log(2);
+
+  console.log(1);
+  setTimeout(() => {
+    console.log("异步代码");
+  }, 0);
+  console.log(2);
+</script>

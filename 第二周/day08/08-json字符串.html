@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    json字符串  （zhei sen）
+
+    JS 把字符串分为几种格式
+    1. 普通字符串 'adsfasfasksdfhaiu'
+    2. 数字字符串 '234234234'
+    3. html字符串 '<h1></h1>'
+    4. 查询字符串 'key=value&key1=value1&key2=value2'
+        -> 一条信息  key=value
+        -> 多条信息  用&链接
+    5. json格式字符串
+       -> '{"username": "小花", "phone": "123456"}'
+       -> '[ {"username": "小花"} , {"username": "小明"} ]'
+
+       特点
+        1. 对象中的key value都要用双引号包裹起来
+        2. 数字 和 布尔 可以不包裹
+        3. 不接受函数
+  */
+
+  // 1. 把 json格式转为 js格式
+  // '{"username": "小花", "phone": "123456"}'
+
+  /* 
+      语法  JSON.parse(json格式字符串)
+  */
+
+  //   var str = '{"username": "小花", "phone": "123456"}';
+  //   var res = JSON.parse(str);
+  //   console.log(res);
+
+  // 2. 把 js格式  转为 json 格式字符串
+
+  /* 
+     语法  JSON.stringify(js数据结构)
+  */
+
+  var obj = { name: "小花", age: 18 };
+  var str = JSON.stringify(obj);
+  console.log(str);
+</script>

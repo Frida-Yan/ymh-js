@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      回顾
+
+      1. BOM
+        + 浏览器对象模型
+        + 一整套操作浏览器相关内容的属性和方法
+
+      2. 浏览器可视窗口尺寸
+        + window.innerWidth
+        + window.innerHeight
+
+      3. 浏览器的弹出层
+        + window.alert()
+        + window.confirm()
+        + window.prompt()
+
+      4. 浏览器的常见事件
+        + window.onload = function () {}
+          => 时机: 所有外部资源(html, css, js, 视音频等)加载完毕后触发
+        + window.onresize = function () {}
+          => 时机: 当窗口尺寸改变的时候
+        + window.onscroll = function () {}
+          => 时机: 当滚动条滚动的时候
+
+      5. 浏览器的地址栏
+        + href
+          => 读:
+            -> 语法: window.location.href
+            -> 得到: 当前页面的地址栏完整地址
+          => 写:
+            -> 语法: window.location.href = '值'
+            -> 作用: 修改当前页面的地址栏地址, 就是本页面跳转
+        + reload()
+          => 语法: window.location.reload()
+          => 作用: 刷新页面
+
+      6. 浏览器的标签页
+        + window.open()
+        + window.close()
+
+      7. 浏览器的历史记录
+        + window.history.back()
+        + window.history.forward()
+        + window.history.go(参数)
+          => 正整数: 前进
+          => 0: 刷新
+          => 负整数: 回退
+
+      8. 浏览器卷去的尺寸
+        + 卷去的高度
+          => 语法:
+            -> document.documentElement.scrollTop
+        + 卷去的宽度
+          => 语法:
+            -> document.documentElement.scrollLeft
+
+      9. 浏览器滚动到
+        + window.scrollTo()
+        + 参数方案1: 传递数字
+          => window.scrollTo(x, y)
+          => 必须传递两个参数
+          => 只能瞬间定位
+        + 参数方案2: 传递对象
+          => window.scrollTo({ left: yyy, top: xxx, behavior: 'smooth' })
+          => 可以只定位一个方向
+          => 默认是瞬间定位, behavior 属性决定是否平滑滚动
+
+      10. 浏览器本地存储 - storage
+        + localStorage
+          => 永久存储
+          => 增: window.localStorage.setItem(key, value)
+          => 删: window.localStorage.removeItem(key)
+          => 清除: window.localStorage.clear()
+          => 查: window.localStorage.getItem(key)
+        + sessionStorage
+          => 临时存储
+          => 增: window.sessionStorage.setItem(key, value)
+          => 删: window.sessionStorage.removeItem(key)
+          => 清除: window.sessionStorage.clear()
+          => 查: window.sessionStorage.getItem(key)
+
+      11. 浏览器本地存储 - cookie
+        + 特点:
+          1. 只能存储字符串, 并且固定格式
+            => 'key=value; key2=value2'
+          2. cookie 存储大小限制
+            => 4KB 左右
+          3. cookie 存储时效性
+            => 默认是会话级别时效, 可以手动设置过期时间
+          4. 前后端交互
+            => 只要 cookie 空间内有内容, 会在前后端交互的时候, **自动** 携带到后端
+          5. 前后端操作
+            => 前端可以依靠 JS 操作
+            => 任何一个后端语言都可以操作
+          6. cookie 的操作必须依赖服务器打开页面
+            => 本地打开页面不能操作 cookie
+          7. cookie 按照域名存储
+            => 哪一个域名存储的 cookie, 哪一个域名使用
+        + 操作:
+          => 设置一条 cookie
+            -> 语法: document.cookie = 'key=value'
+          => 设置一条带有过期时间的 cookie
+            -> 语法: document.cookie = 'key=value;expires=时间对象'
+          => 获取 cookie
+            -> 语法: document.cookie
+            -> 获取到的就是完整的 cookie 字符串
+
+      12. 本地存储的区别
+        + storage 和 cookie 的区别
+          1. 出现的时间
+            => cookie: 一直就有
+            => storage: H5 才有
+          2. 存储大小
+            => cookie: 4KB 左右
+            => storage: 20M 左右
+          3. 前后端交互
+            => cookie: 自动携带
+            => storage: 需要手动设置
+          4. 前后端操作
+            => cookie: 前后端都可以操作
+            => storage: 只能依靠前端 JS 来操作
+          5. 时效性
+            => cookie: 默认会话级别, 可以手动设置
+            => storage: 只能是 永久存储 或者 临时存储
+        + localStorage 和 sessionStorage 的区别
+          1. 过期时间
+            => localStorage: 永久存储
+            => sessionStorage: 临时存储
+          2. 跨页面通讯的能力
+            => localStorage 可以跨页面通讯
+            => sessionStorage 只能是本页面跳转的可以通讯
+    */
+    </script>
+  </body>
+</html>

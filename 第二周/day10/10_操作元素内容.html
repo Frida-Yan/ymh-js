@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>
+    hello
+    <p>你好 世界</p>
+    world
+  </div>
+
+  <input type="text">
+
+  <script>
+    /*
+      操作元素内容
+
+      1. innerHTML
+        + 读:
+          => 语法: 元素.innerHTML
+          => 得到: 以字符串的形式给你该元素下的所有内容(包含超文本)
+        + 写:
+          => 语法: 元素.innerHTML = '值'
+          => 注意: 完全覆盖式的书写
+          => 注意: 可以解析 html 结构标签
+
+      2. innerText
+        + 读:
+          => 语法: 元素.innerText
+          => 得到: 该元素内的所有文本内容, 不包裹超文本内容
+        + 写:
+          => 语法: 元素.innerText = '值'
+          => 注意: 完全覆盖式的书写
+          => 注意: 不会解析 html 结构标签
+
+      3. value
+        + 专门用来操作表单元素
+        + 读:
+          => 语法: 表单元素.value
+          => 得到: 该表单元素的 value 值
+        + 写:
+          => 语法: 元素.value = '值'
+    */
+
+    // 0. 获取元素
+    var ele = document.querySelector('div')
+    var inp = document.querySelector('input')
+
+
+    // 1. innerHTML
+    // 1-1. 获取
+    // console.log(ele.innerHTML)
+    // 1-2. 设置
+    // ele.innerHTML = '<h1>你好 我是新来的</h1>'
+
+    // 2. innerText
+    // 2-1. 获取
+    // console.log(ele.innerText)
+    // 2-2. 设置
+    // ele.innerText = '<h1>你好 我是新来的</h1>'
+
+    // 3. value
+    // 3-1. 获取
+    console.log(inp.value)
+    // 3-2. 设置
+    inp.value = '你好 世界'
+
+
+  </script>
+</body>
+</html>

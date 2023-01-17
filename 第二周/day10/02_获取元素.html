@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="box">123</div>
+  <ul>
+    <li>1</li>
+    <li class="box">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li class="box">6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <p>1</p>
+  <p>2</p>
+
+  <input type="text">
+  <input type="password">
+
+  <script>
+    /*
+      获取元素
+        + 捕获到一个或者一组 html 标签
+        + JS 内把标签分成两类
+          => 非常规元素
+            -> html: document.documentElement
+            -> head: document.head
+            -> body: document.body
+          => 常规元素
+            1. 根据 id 获取元素
+              => 语法: document.getElementById('id名')
+              => 作用: 通过元素的 id 获取页面元素
+              => 返回值:
+                -> 如果页面上有该 id 对应的元素, 那么就是这个元素
+                -> 如果页面上没有该 id 对应的元素, 那么就是 null
+            2. 根据 class 获取元素
+              => 语法: document.getElementsByClassName('类名')
+              => 作用: 通过元素的 class 获取页面元素
+              => 返回值: 必然是一个 伪数组
+                -> 如果页面上有该 class 对应的元素, 那么有多少获取多少, 放在伪数组内返回
+                -> 如果页面上没有该 class 对应的元素, 那么就是一个空的伪数组
+            3. 根据 tag 获取元素
+              => 语法: document.getElementsByTagName('标签名')
+              => 作用: 通过元素的 tag 获取页面元素
+              => 返回值: 必然是一个 伪数组
+                -> 如果页面上有该 标签名 对应的元素, 那么有多少获取多少, 放在伪数组内返回
+                -> 如果页面上没有该 标签名 对应的元素, 那么就是一个空的伪数组
+            4. 根据 选择器 获取一个元素
+              => 语法: document.querySelector('选择器')
+              => 作用: 通过 选择器 获取一个元素
+              => 返回值:
+                -> 如果页面上有该 选择器 对应的元素, 那么获取到的是满足选择器要求的 **第一个**
+                -> 如果页面上没有该 选择器 对应的元素, 那么就是 null
+            5. 根据 选择器 获取一组元素
+              => 语法: document.querySelectorAll('选择器')
+              => 作用: 通过 选择器 获取一组元素
+              => 返回值: 必然是一个 伪数组
+                -> 如果页面上有该 选择器 对应的元素, 那么有多少获取多少, 放在伪数组内返回
+                -> 如果页面上没有该 选择器 对应的元素, 那么就是一个空的伪数组
+    */
+
+
+    // 非常规元素
+    // 1. html
+    // var htmlEle = document.documentElement
+    // console.log(htmlEle)
+    // 2. head
+    // var headEle = document.head
+    // console.log(headEle)
+    // 3. body
+    // var bodyEle = document.body
+    // console.log(bodyEle)
+
+    // 常规元素
+    // 1. 根据 id 获取元素
+    // 根据 box 这个 id名 去获取元素
+    // var ele = document.getElementById('box')
+    // console.log(ele)
+
+    // 2. 根据 class 获取元素
+    // 根据 box 这个 类名 去获取元素
+    // var eles = document.getElementsByClassName('box')
+    // console.log(eles)
+
+    // 3. 根据 tag 获取元素
+    // 通过 p 这个 标签名 去获取元素
+    // var eles = document.getElementsByTagName('p')
+    // console.log(eles)
+
+    // 4. 根据 选择器 获取一个元素
+    // var ele = document.querySelector('ul > li:nth-child(2n)')
+    // var ele = document.querySelector('input[type=password]')
+    // console.log(ele)
+
+    // 5. 根据 选择器 获取一组元素
+    var eles = document.querySelectorAll('ul > li:nth-child(3n)')
+    console.log(eles)
+  </script>
+</body>
+</html>

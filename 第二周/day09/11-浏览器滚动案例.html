@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      body {
+        width: 100%;
+      }
+      #header {
+        position: fixed;
+        width: 100%;
+        height: 100px;
+        background-color: skyblue;
+        text-align: center;
+        font-size: 50px;
+        color: #fff;
+        font-weight: bold;
+        line-height: 100px;
+        transition: all 0.5s;
+        top: -100px;
+      }
+      #toTop {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        border: 5px double #000;
+        background-color: linen;
+        text-align: center;
+        line-height: 100px;
+        bottom: 80px;
+        right: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">网页头部</div>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>11</li>
+      <li>12</li>
+      <li>13</li>
+      <li>14</li>
+      <li>15</li>
+      <li>16</li>
+      <li>17</li>
+      <li>18</li>
+      <li>19</li>
+      <li>20</li>
+      <li>21</li>
+      <li>22</li>
+      <li>23</li>
+      <li>24</li>
+      <li>25</li>
+      <li>26</li>
+      <li>27</li>
+      <li>28</li>
+      <li>29</li>
+      <li>30</li>
+      <li>31</li>
+      <li>32</li>
+      <li>33</li>
+      <li>34</li>
+      <li>35</li>
+      <li>36</li>
+      <li>37</li>
+      <li>38</li>
+      <li>39</li>
+      <li>40</li>
+      <li>41</li>
+      <li>42</li>
+      <li>43</li>
+      <li>44</li>
+      <li>45</li>
+      <li>46</li>
+      <li>47</li>
+      <li>48</li>
+      <li>49</li>
+      <li>50</li>
+      <li>51</li>
+      <li>52</li>
+      <li>53</li>
+      <li>54</li>
+      <li>55</li>
+      <li>56</li>
+      <li>57</li>
+      <li>58</li>
+      <li>59</li>
+      <li>60</li>
+      <li>61</li>
+      <li>62</li>
+      <li>63</li>
+      <li>64</li>
+      <li>65</li>
+      <li>66</li>
+      <li>67</li>
+      <li>68</li>
+      <li>69</li>
+      <li>70</li>
+      <li>71</li>
+      <li>72</li>
+      <li>73</li>
+      <li>74</li>
+      <li>75</li>
+      <li>76</li>
+      <li>77</li>
+      <li>78</li>
+      <li>79</li>
+      <li>80</li>
+      <li>81</li>
+      <li>82</li>
+      <li>83</li>
+      <li>84</li>
+      <li>85</li>
+      <li>86</li>
+      <li>87</li>
+      <li>88</li>
+      <li>89</li>
+      <li>90</li>
+      <li>91</li>
+      <li>92</li>
+      <li>93</li>
+      <li>94</li>
+      <li>95</li>
+      <li>96</li>
+      <li>97</li>
+      <li>98</li>
+      <li>99</li>
+      <li>100</li>
+    </ul>
+    <div id="toTop">回到顶部</div>
+  </body>
+</html>
+<script>
+  //   header.style.background = "red";
+  //   header.style.backgroundColor = "red";
+  //   header.style["background-color"] = "red";
+  /*
+    需求 
+        1. 滚动条高度>=350  头部 和 回到顶部出现
+            监听滚动条高度
+            window.onscroll
+        2. 点击回到顶部，页面向上滚动到0
+            window.scrollTo({})
+  */
+
+  window.onscroll = function () {
+    var scroll = document.documentElement.scrollTop;
+    if (scroll >= 350) {
+      toTop.style.display = "block";
+      header.style.top = "0px";
+    } else {
+      toTop.style.display = "none";
+      header.style.top = "-100px";
+    }
+    toTop.onclick = function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  };
+</script>
