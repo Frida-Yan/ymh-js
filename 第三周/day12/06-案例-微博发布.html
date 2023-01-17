@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      textarea {
+        width: 500px;
+        height: 300px;
+        margin: 30px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        margin: 30px;
+      }
+      li {
+        list-style: none;
+        border: 1px solid #000;
+        padding: 10px;
+        width: 500px;
+        height: 50px;
+        position: relative;
+      }
+      span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+      <li>
+        发布好的内容
+        <span>x</span>
+      </li>
+    </ul>
+  </body>
+</html>
+<script>
+  /*
+    创建一个li标签 内容是 获取 textarea 里面的内容 插入到ul的最上面
+    点击li 可以把当前这个标签删除
+
+    ？ 什么时候创建li标签 插入
+  */
+  // 0 获取元素
+  var btn = document.querySelector("button");
+  var textarea = document.querySelector("textarea");
+  var ul = document.querySelector("ul");
+
+  // 由于所有的操作时机都是点击时候触发
+  btn.onclick = function () {
+    // 1 获取textarea里面的内容
+    var text = textarea.value;
+    if (text === "") {
+      alert("请输入内容");
+      return;
+    }
+    // 2. 创建一个li
+    var li = document.createElement("li");
+    // 3. li标签里面放置 内容
+    li.innerText = text;
+    // 4. 把li标签插入到ul里面的最上面
+    ul.insertBefore(li, ul.firstElementChild);
+    // 5. 把输入框里面的值清空
+    textarea.value = "";
+
+    // 6. 删除
+    li.onclick = function () {
+      if (window.confirm("确定要删除吗")) {
+        li.remove();
+      }
+    };
+  };
+</script>

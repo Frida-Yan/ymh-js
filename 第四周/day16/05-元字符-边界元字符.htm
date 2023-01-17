@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        元字符-边界元字符
+            1. ^ 表示开头
+            2. $ 表示结尾
+
+            当 开头^和结尾$一起使用的时候，表示从开头到结尾
+    */
+    // 1. ^
+    // 规则 表示字符串必须由一位数字开头
+    // var reg = /^\d/
+    // console.log(reg.test('sksflksdfglkd'));
+    // console.log(reg.test('3adfadfasf'));
+    // console.log(reg.test('33asdfasdfas'));
+
+    // 2. $
+    // 规则 表示字符串必须由一位数字结尾
+    // var reg = /\d$/
+    // console.log(reg.test('asfasdfasdfasdf'));
+    // console.log(reg.test('1asfasdfasdfasdf'));
+    // console.log(reg.test('1asfasdfasdfasdf6'));
+
+    // 3. 
+    // 规则 字符串从开头到结尾只能由一位数字组成
+    var reg = /^\d$/
+    console.log(reg.test('12341234'));
+    console.log(reg.test('1abc2'));
+    console.log(reg.test('5'));
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        构造函数的书写
+            - 构造函数其实就是一个函数, 只不过使用的时候需要和new 关键字连用
+
+            注意
+                1. 首字母大写(推荐)
+                    方便区分
+                2. 构造函数里面不要书写return
+                    -> return 一个基本数据类型，写了白写
+                    -> return 一个复杂数据类型，构造函数没用
+                3. 构造函数的调用必须和new连用
+                    -> 只有和new连用，才有构造函数的能力
+                    -> 不和new连用，就是一个普通函数
+                4. 构造函数的this
+                    -> 构造函数的this指向 本次调用 被自动创建的对象
+                        -> 我们管自动创建出来的对象叫做 实例对象
+                        -> 我们管这个创建对象的过程叫做  实例化 的过程
+                5. 箭头函数没有this , 构造函数不能使用箭头函数书写
+                    
+    */
+
+    // 1. 首字母大写
+    // function fn1(){}
+    // function Fn2(){}
+
+    // new Fn2()
+
+    // 2. 构造函数里面不要书写return
+
+    // function Fn1() {
+    //     // return 'hello'
+    //     // return [100, 200, 300]
+    // }
+
+    // const obj1 = new Fn1()
+    // console.log(obj1);
+
+    // 3. 构造函数的调用必须和new连用
+    // function Fn1() {
+    //     // 自动创建了一个对象 a
+    // }
+
+    // // 没有new 普通函数 没有return 返回undefined
+    // // const obj1 = Fn1()
+    // const obj1 = new Fn1()
+    // // console.log(obj1);
+
+    // 4. 构造函数的this
+
+    // function Fn1(name, age) {
+    //     this.name = name
+    //     this.age = age
+    // }
+
+    // // 利用 Fn1 这个构造函数 实例化 了一个 对象，把这个对象赋值给了obj1
+    // // obj1 是Fn1的实例对象
+    // // new Fn1('小花', 17) ===> 实例化
+    // // obj1 ====> 实例对象
+    // const obj1 = new Fn1('小花', 17)
+
+</script>

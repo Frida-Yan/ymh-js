@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        标识符
+            - 修饰整个正则表达式的符号 , 书写在正则表达式外面
+            eg:  var reg = /abcd/标识符
+
+            1. i 
+                - 忽略大小写
+            2. g
+                - 意义 全局
+                - 欠着
+    */
+
+    // 1. i 
+    // 表示 验证字符串的时候，忽略大小写
+    var reg = /^[abcd]$/i
+    console.log(reg.test('a'));
+    console.log(reg.test('b'));
+    console.log(reg.test('c'));
+    console.log(reg.test('d'));
+    console.log(reg.test('A'));
+</script>

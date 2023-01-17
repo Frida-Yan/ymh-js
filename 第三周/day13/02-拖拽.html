@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  /*
+    案例 拖拽
+        1. 什么时候触发效果
+            1) 鼠标按下
+            2) 鼠标抬起
+            3) 鼠标移动
+        2. 什么范围触发效果
+            1) 鼠标按下     div
+            2) 鼠标抬起     div
+            3) 鼠标移动     document
+        3. 什么效果
+            1) 鼠标按下     保证div可以拖拽
+            2) 鼠标抬起     保证div不可以拖拽
+            3) 鼠标移动     设置div top left   
+                                获取 移动的时候 光标距离窗口左上角的位置  -  初始的时候 光标距离元素左上角的位置
+  */
+
+  // 0 获取元素
+  var div = document.querySelector("div");
+
+  // 0 准备变量
+  var flag = false; // 默认元素不可以拖拽
+  var startX = 0;
+  var startY = 0;
+
+  // 1. 鼠标按下
+  div.onmousedown = function (e) {
+    // 开启开关
+    flag = true;
+    // 记录刚开始的时候鼠标距离元素左上角的位置
+    startX = e.offsetX;
+    startY = e.offsetY;
+  };
+
+  // 2. 鼠标抬起
+  div.onmouseup = function () {
+    // 开关关闭
+    flag = false;
+  };
+  // 3. 鼠标移动
+  document.onmousemove = function (e) {
+    // 如果开关关闭 不能拖拽
+    if (!flag) {
+      // 如果代码进入这里，表示开关关闭，也就是鼠标抬起，不能拖拽
+      return;
+    }
+    // 表示可以拖拽
+    console.log("可以拖拽");
+
+    // 设置 div 的top left
+    // 获取 移动的时候 光标距离窗口左上角的位置  -  初始的时候 光标距离元素左上角的位置
+    var x = e.clientX - startX;
+    var y = e.clientY - startY;
+    div.style.top = y + "px";
+    div.style.left = x + "px";
+  };
+
+  // 拓展， 让这个盒子不要超出浏览器窗口
+</script>

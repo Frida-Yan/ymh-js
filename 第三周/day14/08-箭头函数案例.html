@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    // const lis = document.querySelectorAll('li')
+    // lis.forEach(function (li) {
+    //     li.onclick = function () {
+    //         setTimeout(function () {
+    //             console.log(this);
+    //             // 希望这个this指向的是li 
+    //             // 打印出来li的内容 
+    //             console.log(this.innerHTML);
+    //         }, 2000);
+    //     }
+    // })
+
+    // const lis = document.querySelectorAll('li')
+    // lis.forEach(function (li) {
+    //     li.onclick = function () {
+    //         var fn = function() {
+    //             console.log(this);
+    //             console.log(this.innerHTML);
+    //         }
+    //         setTimeout(fn.bind(li), 2000);
+    //     }
+    // })
+
+
+    // const lis = document.querySelectorAll('li')
+    // lis.forEach(function (li) {
+    //     li.onclick = function () {
+    //         const that = this
+    //         setTimeout(function () {
+    //             console.log(that);
+    //             console.log(that.innerHTML);
+    //         }, 2000);
+    //     }
+    // })
+
+    // const lis = document.querySelectorAll('li')
+    // lis.forEach(function (li) {
+    //     li.onclick = function () {
+    //         setTimeout(()=>{
+    //             console.log(this);
+    //             console.log(this.innerHTML);
+    //         }, 2000);
+    //     }
+    // })
+
+    const lis = document.querySelectorAll('li')
+    lis.forEach(li => {
+        console.log(this);
+        li.onclick = ()=> {
+            setTimeout(()=>{
+                console.log(this);
+                console.log(this.innerHTML);
+            }, 2000);
+        }
+    })
+</script>

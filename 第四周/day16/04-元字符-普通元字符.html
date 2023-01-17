@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        元字符 - 普通元字符
+            1. \d     表示 一位 数字(0-9)
+            2. \D     表示 一位 非数字
+            3. \s     表示 一位 空白内容 (空格 缩进 制表符....)
+            4. \S     表示 一位 非空白内容
+            5. \w     表示 一位 数字(0-9) 字母(a-zA-Z) 下划线(_) 任意内容
+            6. \W     表示 一位 非数字字母下划线内容
+            7. .      表示 一位 非换行(\n)的任意内容
+            8. \      表示转义符
+                            -> 把有意义的符号转换成没有意义的文本
+                            -> 把没有意义的文本转换成有意义的符号
+    */
+
+    // 1. \d
+    // 规则 表示字符串中至少包含一位数字
+    // var reg = /\d/
+    // console.log(reg.test('asdfasdfasdfasdf')); // false
+    // console.log(reg.test('$asdfasdfasdfasdf')); // false
+    // console.log(reg.test('#asdfasdfasdfasdf')); // false
+    // console.log(reg.test('1asdfasdfasdfasdf')); // false
+    // console.log(reg.test('asdfasdfa888888sdfasdf'));  // true
+
+    // var reg = /\d\d/
+    // console.log(reg.test('asfdasdf1asdfasdf'));
+    // console.log(reg.test('asfdasdf88asdfasdf'));
+
+    // 2. \D
+    // 规则 表示字符串中至少包含 一位 非数字
+    // var reg = /\D/
+    // console.log(reg.test('1234567890'));
+    // console.log(reg.test('1234567890#'));
+    // console.log(reg.test('123456 7890'));
+    // console.log(reg.test('d1234567890'));
+
+    // 3. \s
+    // 规则 表示字符串至少一位 空白内容
+    // var reg = /\s/
+    // console.log(reg.test('afsdfasdfasdf'));
+    // console.log(reg.test('afsdfas dfasdf'));
+
+    // 4. \S
+    // 规则  表示字符串至少包含一位 非空白内容
+    // var reg = /\S/
+    // console.log(reg.test('                    '));
+    // console.log(reg.test('            1        '));
+
+    // 5. \w
+    // 规则 表示字符串至少包含一位 数字 字母 下划线 内容
+    // var reg = /\w/
+    // console.log(reg.test('!#$%&@*()'));
+    // console.log(reg.test('!#$%&@*()4'));
+    // console.log(reg.test('!#$%&@*()_'));
+    // console.log(reg.test('!#$%&@*()a'));
+    // console.log(reg.test('!#$%&@*()A'));
+
+    // 6. \W
+    // 规则 表示字符串至少包含一位 非数字字母下划线内容
+    // var reg = /\W/
+    // console.log(reg.test('!#$%&@*()'));
+    // console.log(reg.test('!#$%&@*()4'));
+    // console.log(reg.test('!#$%&@*()_'));
+    // console.log(reg.test('!#$%&@*()a'));
+    // console.log(reg.test('!#$%&@*()A'));
+    // console.log(reg.test('123456789_abc'));
+    // console.log(reg.test('123456789_abc#'));
+
+    // 7. .
+    // 规则 表示字符串内至少包含一位 非换行的任意内容
+    // var reg = /./
+    // // var test = 'a\na\na'
+    // // console.log(test);
+    // console.log(reg.test("\na"));
+
+    // 8. \ 转义符
+    // var reg = /d/ // 只要字符串中有字母d就可以， 此刻d是一个普通文本
+    // var reg = /\d/   // 只要字符串中有一位数字就可以， 此刻 \ 转义符把普通文本转成了有意义的符号
+    // console.log(reg.test('abcd'));
+
+    // var reg = /./ // 表示字符串中至少包含一位非换行的任意内容
+    // // 此刻 . 是有意义的符号
+
+    var reg = /\./  // 此刻 . 前面有一个转义符，把有意义的符号转为 没有意义的文本
+    console.log(reg.test('\na.'));
+
+
+
+</script>

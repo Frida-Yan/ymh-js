@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="box"
+      id="tom"
+      style="height: 300px; width: 300px; background-color: red"
+    >
+      <p style="width: 100px; height: 100px; background-color: pink">
+        <span style="background-color: green">文字</span>
+      </p>
+    </div>
+    <button>复制</button>
+  </body>
+</html>
+<script>
+  /*
+    克隆节点
+        cloneNode
+            - 语法 节点.cloneNode(参数)
+                参数
+                    true          克隆后代节点
+                    false   默认  不克隆后代节点
+            - 把该节点复制一份一模一样的
+  */
+  var box = document.querySelector(".box");
+  var btn = document.querySelector("button");
+
+  btn.onclick = function () {
+    var res = box.cloneNode(true);
+    // 把res这个节点放到body里面的最后面 appendChild
+    document.body.appendChild(res);
+  };
+</script>

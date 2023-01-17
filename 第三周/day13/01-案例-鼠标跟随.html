@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+        width: 600px;
+        height: 40px;
+        border: 1px solid #000;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      ul {
+        margin: 100px;
+      }
+      p {
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+        position: absolute;
+        z-index: 999;
+        top: 10px;
+        left: 10px;
+        display: none;
+
+        /* 禁止p的鼠标效果 */
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="box">
+        第1个li
+        <p>第1个li里面的p</p>
+      </li>
+      <li>
+        第2个li
+        <p>第2个li里面的p</p>
+      </li>
+      <li>
+        第3个li
+        <p>第3个li里面的p</p>
+      </li>
+    </ul>
+  </body>
+</html>
+<script>
+  /*
+    案例 鼠标跟随
+        1. 在什么时候触发效果
+            鼠标移入
+            鼠标移出
+            鼠标移动
+        2. 在什么范围触发效果
+            鼠标移入   当前的li
+            鼠标移出   当前的li
+            鼠标移动   当前的li
+        3. 触发的效果是什么
+            鼠标移入   让当前的li里面的p出现        display: block
+            鼠标移出   让当前的li里面的p消失        display: none
+            鼠标移动   p跟着鼠标移动                left top   光标距离准确触发事件的元素的左上角的坐标 offsetX offsetY
+
+        一个小BUG 
+            当从右向左滑动， 没问题
+            当从左向右滑动   p标签抖动 
+
+            因为p是li的子元素
+                当光标在p标签身上，也会触发li的效果 (触发了父元素mousemove效果)
+            因为offset 一套 是准确触发事件元素的左上角的坐标点
+                当光标在p身上 , offsetX offsetY获取的是光标距离p左上角的位置 
+                
+            解决
+                1. 让光标和p之间有个距离
+                2. 让p标签保持一个穿透效果    pointer-events: none;
+  */
+
+  // 0 获取元素
+  var liList = document.querySelectorAll("li");
+  // 1 遍历  li给每个添加效果
+  liList.forEach(function (li) {
+    // 1-1 鼠标移入
+    li.addEventListener("mouseover", overHandler);
+    // 1-2 鼠标移出
+    li.addEventListener("mouseout", outHandler);
+    // 1-3 鼠标移动
+    li.addEventListener("mousemove", moveHandler);
+  });
+
+  // 1-1 鼠标移入事件
+  function overHandler() {
+    // 让当前的li里面的p出现
+    // 找到当前的li ===> 关键字 this
+    // 找到li里面的p
+    this.firstElementChild.style.display = "block";
+  }
+
+  // 1-2 鼠标移出
+  function outHandler() {
+    // 让当前的li里面的p消失
+    // 当前的li ==> this
+    // 当前的li里面的p this.firstElementChild
+    this.firstElementChild.style.display = "none";
+  }
+
+  // 1-3 鼠标移动
+  function moveHandler(e) {
+    // 让 li 里面p 移动
+    // 获取 鼠标指针距离 li的左上角的值
+    var x = e.offsetX;
+    var y = e.offsetY;
+
+    this.firstElementChild.style.left = x + "px";
+    this.firstElementChild.style.top = y + "px";
+  }
+</script>

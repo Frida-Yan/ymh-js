@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>x坐标 <span class="x">0</span></h2>
+    <h2>y坐标 <span class="y">0</span></h2>
+  </body>
+</html>
+<script>
+  /*
+    案例  实时显示做标签
+
+    问题1 什么时候触发效果
+        鼠标移动的时候 mousemove
+    问题2 什么范围触发效果
+        整个可视窗口 document
+    问题3 触发的效果是什么
+        拿到 光标距离可视窗口 坐标 
+        赋值给 span
+  */
+
+  // 0 获取元素
+  var xBox = document.querySelector(".x");
+  var yBox = document.querySelector(".y");
+
+  document.onmousemove = function (e) {
+    var x = e.clientX;
+    var y = e.clientY;
+
+    // 把 x 和 y 放到span中
+    xBox.innerHTML = x;
+    yBox.innerHTML = y;
+  };
+</script>

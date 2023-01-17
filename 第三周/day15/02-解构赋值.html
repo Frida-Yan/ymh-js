@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+      ES6解构赋值
+          - 作用 快速从对象或者数组中获取数据
+    */
+
+    /* 
+       解构数组
+           - 语法  var [变量] = 数组
+           - 特点: 按照索引位置，依次给变量进行赋值
+        
+        解构多维数组
+           - 解构多维数组, 数组怎么写，解构怎么写，数组换成变量
+    */
+
+    // 解构数组 
+    // let arr = ['tom', 'jerry', 'nick', 'tony', 'jack']
+    // 想要获取数组中[0]项
+    //  let a = arr[0]
+    //  console.log(a);
+    // - 语法  var [变量] = 数组
+    // 把数组中的[0]项，赋值给a
+    // let [a] = arr
+    // 把数组中索引为1的这项,赋值给b
+    // let [a, b] = arr
+
+    // let [a,b,c,d,e] = arr
+    // console.log(e);
+
+    // 解构多维数组
+    // let arr = ['tom', 'jerry', [1, 2, 3, 4, [5, 6, ['nike']]]]
+    // // console.log(arr[2][4][2][0]);    
+
+    // let  [a, b, [c, d, e, f, [h, i, [j]]]] = arr
+    // console.log(j);
+
+    /* 
+        解构对象
+            - 语法  var { key } = 对象
+                -> 定义一个变量，获取的是该对象内 同名 key 的数据
+
+        起一个别名
+            - 获取的是对象内 name 属性，但是我定义的变量需要叫做 a
+            - 语法  var { key: 别名 } = obj
+
+        解构多维对象
+            - 对象怎么书写，解构就怎么书写，数据换成变量
+    */
+    let obj = {username: '小花', age: 18} 
+    // console.log(obj.username);
+    // var { key } = 对象 
+    // 定义了一个变量username ， 值是对象中同名属性username对应的属性值
+    // let { username } = obj
+    // let { age } = obj
+
+    // let { age, username } = obj
+    // console.log(username, age);
+
+    // 需求， 定义了一个变量a, 值是obj.username
+    // let a = obj.username 
+    // console.log(a);
+    // 起一个别名 - 语法  var { key: 别名 } = obj
+    // 定义了一个变量a , 值是obj中的username这个属性对应的值
+    // let { username: a } = obj
+    // console.log(a);
+
+
+    // 解构多维对象
+    let info = {
+        username: 'tom',
+        age: 18, 
+        phone: 123456, 
+        like: ['唱', '跳', 'rap', '篮球'],
+        time: '两年半', 
+        score: {
+            chinese: 80,
+            math: 100,
+            english: 300,
+        }
+    }
+
+    let  {
+        username,
+        age, 
+        like: [a, b, c, d],
+        time, 
+        score: {
+            chinese,
+            math,
+            english,
+        },
+        phone: tel
+    } = info
+    console.log(time , c, tel);
+
+
+
+    
+</script>

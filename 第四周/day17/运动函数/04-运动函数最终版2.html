@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            /* left: 0px; */
+            left: 300px;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <p></p> -->
+</body>
+
+</html>
+<script>
+    /*
+        最终版2
+        问题   到不了目标
+        分析  以 0 ~ 100 为例
+        假设  当前的位置 是91
+              -> 本次运动的距离是多少？    (100-91)/10 = 0.9
+              -> 把元素设置到 91.9 的位置
+              -> 但是浏览器能描述的最小像素是1px
+              -> 设置了91.9px, 但是浏览器真实表现为91px
+
+              -> 下一次运动的时候，当前位置仍然是91
+
+        原因   计算的时候，一定有小于1的数字，浏览器设置不了0.x的像素
+        解决   取整
+               -> 向上取整
+
+
+        ================================================================
+
+
+
+        问题   反方向移动的时候， 不能到达目标位置
+         分析  以 109 ~ 100 为例
+        假设  当前的位置 是109
+              -> 本次运动的距离是多少？    (100-109)/10 = -0.9
+              -> -0.9 向上取整 0
+              本次运动0
+
+
+        解决   取整
+               -> 向下取整
+
+        问题： 只能向一个方向
+        解决
+            判断 duration > 0 向上    0.9 ==>1
+                <0 向下              -.9 ==> -1
+
+        
+    */
+
+
+    const div = document.querySelector('div')
+
+    div.onclick = function () {
+        // move(div, 'left', 100)
+        move(div, 'left', 500)
+        // move(div, 'left', 100)
+    }
+
+
+    function move(ele, type, target) {
+        const timer = setInterval(() => {
+            // 1. 获取当前的值
+            let current = parseInt(window.getComputedStyle(ele)[type])
+            // 2. 计算剩余路程的1/10 ，也就是本次运动的距离， 向上取整
+
+            let duration = (target - current) / 10
+            duration = duration > 0 ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10)
+            // 3. 判断当前的位置要不要停止定时器
+            if (current === target) {
+                clearInterval(timer)
+            } else {
+                ele.style[type] = current + duration + 'px'
+            }
+
+        }, 20);
+    }
+
+</script>

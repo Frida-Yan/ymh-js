@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 300px;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <p></p> -->
+</body>
+
+</html>
+<script>
+    /*
+        第二版
+
+        问题 当元素初始值不在0的时候，总要回归依次0的位置
+        原因 在定义init的时候，把它定义为0
+        解决 把初始值定义为元素本身的值
+        代码 获取元素本身的type对应的样式值 
+             获取元素样式 （行内 非行内都要获取）
+             语法  window.getComputedStyle(元素).样式名
+    */
+
+
+    const div = document.querySelector('div')
+
+    div.onclick = function () {
+        move(div, 'left', 500)
+    }
+
+
+    function move(ele, type, target) {
+        let init = parseInt(window.getComputedStyle(ele)[type])
+        const timer = setInterval(() => {
+            init += 5
+            ele.style[type] = init + 'px'
+
+            if (init >= target) {
+                clearInterval(timer)
+            }
+
+        }, 20);
+    }
+
+</script>

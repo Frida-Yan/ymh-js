@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        list-style: none;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+        text-align: center;
+        line-height: 100px;
+        font-size: 30px;
+        margin: 10px;
+        flex-shrink: 0;
+        background-color: #fff;
+      }
+      ul {
+        padding: 30px;
+        background-color: orange;
+        display: flex;
+        width: 700px;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击</button>
+    <ul>
+      <li>li1</li>
+      <li>li2</li>
+      <li>li3</li>
+      <li>li4</li>
+      <li>li5</li>
+    </ul>
+  </body>
+</html>
+<script>
+  // 点击按钮 一次出现5个li， li标签里面有数字, 点击li，打印里面的文字
+  /*
+      1. 什么时候触发效果
+         1) 点击 按钮
+         2) 点击 li
+      2. 什么范围触发效果
+         1) 点击 按钮
+         2) 点击 li
+      3. 什么效果
+         1) 点击 按钮 一次出现5个li， li标签里面有数字
+         2) 点击 li  打印里面的文字
+  */
+
+  //   var btn = document.querySelector("button");
+  //   var ul = document.querySelector("ul");
+  //   var liList = document.querySelectorAll("li");
+  //   var count = 6;
+  //   btn.onclick = function () {
+  //     var str = "";
+  //     for (var i = 1; i <= 5; i++) {
+  //       str += `<li>li${count}</li>`;
+  //       count++;
+  //     }
+
+  //     ul.innerHTML += str;
+  //   };
+
+  //   // 通过遍历的方式给每个元素添加事件
+  //   // 1. 操作元素太多 损耗性能
+  //   // 2. 新添加的元素无法获取
+  //   liList.forEach(function (li) {
+  //     li.onclick = function () {
+  //       console.log(li.innerHTML);
+  //     };
+  //   });
+
+  /* 
+    事件委托
+        - 把子元素的事件交给父元素来绑定
+        - 在父元素的事件内， 通过事件目标（e.target） 判断准确触发事件的元素
+
+        优点
+            1. 操作最少的dom 
+            2. 对于后面添加的元素很友好
+  */
+
+  var btn = document.querySelector("button");
+  var ul = document.querySelector("ul");
+  var count = 6;
+  btn.onclick = function () {
+    var str = "";
+    for (var i = 1; i <= 5; i++) {
+      str += `<li class='box'>li${count}</li>`;
+      count++;
+    }
+
+    ul.innerHTML += str;
+  };
+  ul.onclick = function (e) {
+    // console.log(e);
+    // console.log("事件目标", e.target);
+    // e.target.style.background = "green";
+    // e.target就是当前准确触发事件的元素
+    // console.log(e.target.nodeName);
+
+    // if (e.target.nodeName === "LI") {
+    //   console.log(e.target.innerHTML);
+    // }
+
+    if (e.target.className === "box") {
+      e.target.style.background = "green";
+    }
+  };
+</script>

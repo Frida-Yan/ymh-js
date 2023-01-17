@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="" />
+  </body>
+</html>
+<script>
+  /*
+    事件对象信息 --- 键盘相关
+        1. 按下按个键
+        2. 按下的是否是组合键
+
+        1. 按下的是哪一个按键
+            事件对象内有一个信息，keyCode
+        2. 按下的是否是组合键
+            在事件对象中有四个信息
+                shiftKey
+                ctrlKey
+                altKey
+                metaKey
+                以上四个信息值都是false, 按下的时候是true
+  */
+
+  var inp = document.querySelector("input");
+  inp.onkeydown = function (e) {
+    // 获取键盘编码
+    // console.log(e.keyCode);
+    // 获取功能键
+    // console.log(e);
+    // 2. 按下的是否是组合键
+    if (e.keyCode === 65 && e.shiftKey && e.ctrlKey) {
+      console.log("同时按下 a + shift + ctrl");
+    }
+  };
+</script>

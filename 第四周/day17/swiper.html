@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper/swiper-bundle.css">
+    <style>
+        .banner {
+            width: 600px;
+            height: 300px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper banner">
+        <div class="swiper-wrapper">
+            <div style="background-color: skyblue;" class="swiper-slide">Slide 1</div>
+            <div style="background-color: orange;" class="swiper-slide">Slide 2</div>
+            <div style="background-color: pink;" class="swiper-slide">Slide 3</div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+    <!-- 导航等组件可以放在Swiper容器之外 -->
+</body>
+
+</html>
+<script>
+    /*
+        swiper 工具库 轮播图
+        https://www.swiper.com.cn/index.html
+    */
+</script>
+<script src="./swiper/swiper-bundle.js"></script>
+<script>
+    new Swiper('.swiper', {
+        // direction: 'vertical', // 垂直切换选项
+        loop: true, // 循环模式选项
+        effect: 'cards'
+    })
+
+</script>

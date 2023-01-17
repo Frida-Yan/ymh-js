@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            /* left: 0px; */
+            left: 300px;
+            opacity: 1;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <p></p> -->
+</body>
+
+</html>
+<script>
+    /*
+       问题 运动的type为opacity ，一动不动
+       原因 设置的时候， 添加了一个px单位，但是opacity没有单位
+
+       问题 运动是瞬间的
+       原因 向上向下取整，直接把值变为 0 / 1
+       解决
+            方案1 修改取整代码 --- 不推荐
+            方案2 目标和获取的时候放大100倍，设置的时候缩小100倍
+        
+    */
+
+
+    const div = document.querySelector('div')
+
+    div.onclick = function () {
+        move(div, 'opacity', 0.56)
+    }
+
+
+    function move(ele, type, target) {
+        // 如果是opacity 那么目标放大100 
+        if (type === 'opacity') {
+            target *= 100
+        }
+        const timer = setInterval(() => {
+            // 1. 获取当前的值
+            // 1-1 如果是opacity 当前值放大100
+            let current
+            if (type === 'opacity') {
+                current = window.getComputedStyle(ele)[type] * 100
+            } else {
+                current = parseInt(window.getComputedStyle(ele)[type])
+            }
+            // 2. 计算剩余路程的1/10 ，也就是本次运动的距离， 向上取整
+            // 2-1 判断是不是opacity
+            let duration = (target - current) / 10
+            duration = duration > 0 ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10)
+
+            // 3. 判断当前的位置要不要停止定时器
+            if (current === target) {
+                clearInterval(timer)
+            } else {
+                // 判断type是不是opacity
+                if (type === 'opacity') {
+                    ele.style[type] = (current + duration) / 100
+                } else {
+                    ele.style[type] = current + duration + 'px'
+                }
+            }
+
+        }, 20);
+    }
+
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button>按钮</button>
+  </body>
+</html>
+<script>
+  // 点击 按钮 ，div出现
+  // 点击 document ， div消失
+  var div = document.querySelector("div");
+  var btn = document.querySelector("button");
+
+  // 由于事件冒泡，btn的点击事件会向上冒泡，触发到document
+  btn.onclick = function (e) {
+    // 阻止事件传播
+    e.stopPropagation();
+    div.style.display = "block";
+    console.log(1);
+  };
+
+  document.onclick = function () {
+    div.style.display = "none";
+    console.log(2);
+  };
+
+  /* 
+    阻止事件传播
+        - 什么时候需要阻止事件传播
+            当我们的父子级结构都有相同的事件类型，就需要阻止事件传播
+        - 如何阻止事件传播
+            -> 语法  事件对象.stopPropagation()
+
+  */
+</script>

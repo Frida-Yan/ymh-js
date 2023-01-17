@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+      Map 和 Set数据结构
+          - ES6新增的数据结构
+          - 特点: 不接受重复数据
+    */
+
+    /* 
+      Set数据结构
+          - 是一个类似于 数组的数据结构
+          - 按照索引排列
+  
+      创建 Set 数据结构
+          - 语法 var s = new Set([数据1, 数据2, 数据3....])
+  
+      Set 数据结构的属性和方法
+          1. size 属性
+              -> 语法 数据结构.size 
+              -> 该数据结构中有多少个数据
+          2. add() 方法
+              -> 语法  数据结构.add(数据)
+              -> 向该数据结构添加内容
+          3. has() 方法
+              -> 语法  数据结构.has(数据)
+              -> 查找Set中是否有该数据
+                  true     该数据结构内有该数据
+                  false    该数据结构内没有该数据
+          4. delete()方法
+              -> 语法  数据结构.delete(数据)
+              -> 删除数据
+          5. clear() 方法
+              -> 语法  数据结构.clear()
+              -> 清除该数据结构内所有内容
+          6. forEach() 方法
+              -> 语法  数据结构.forEach(function(value, key, origin){})
+    */
+    // 创建Set数据结构
+    const s = new Set([100, 200, 300])
+//   console.log(s);
+//   console.log(s.size);
+
+  // 添加 add
+//   s.add(400)
+//   console.log(s);
+
+// has 
+//   console.log(s.has(100));
+//   console.log(s.has(500));
+
+// delete 
+// s.delete(100)
+// console.log(s);
+
+// clear 
+// s.clear() 
+// console.log(s);
+
+// s.forEach(function(value, key, origin){
+//     console.log(value, key, origin);
+// })
+
+
+/* 
+    Map 数据结构
+        - 类似于对象的数据结构，它的key可以是任何数据类型
+        - 可以被看做为一个  值 = 值 的数据结构
+    创建一个 Map数据结构
+        - 语法  var m = new Map( [ [key, value], [key, value] ] )
+
+    Map 数据结构的属性和方法
+        1. size 属性
+            -> 语法  数据结构.size
+            -> 该数据结构内有多少个数据
+        2. set() 方法
+            -> 数据结构.set(key, value)
+            -> 向该数据结构添加内容
+        3. get() 方法
+            -> 数据结构.get(key)
+            -> 返回值  该数据结构内key对应的value
+        4. has() 方法
+            -> 数据结构.has(key)
+            -> 该数据结构中是否有该数据
+                true
+                false
+        5. delete() 方法
+            -> 数据结构.delete(key)
+            -> 删除该数据结构内某一个数据
+        6. clear() 方法
+            -> 数据结构.clear()
+            -> 清除该数据结构里面的所有内容 
+        7. forEach()
+            -> 数据结构.forEach(function(value, key, origin){})
+*/
+ // 创建map数据结构
+ var m = new Map([ ['name', '小花'], ['age', 18] ])
+//  console.log(m);
+//  console.log(m.size);
+//  m.set('time', '两年半')
+//  console.log(m);
+
+// get 
+// console.log(m.get('name'));
+// has 
+// console.log(m.has('name'));
+// console.log(m.has('username'));
+// delete 
+// m.delete('name') 
+// console.log(m);
+// clear 
+// m.clear() 
+// console.log(m);
+// forEach
+m.forEach(function(value, key, origin){
+    console.log(value, key, origin);
+})
+</script>

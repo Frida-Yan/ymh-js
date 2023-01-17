@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    ES6 扩展运算符
+        - 运算符 ...
+            -> 展开运算符: 数组 对象  实参
+            -> 合并运算符: 解构，形参 
+    
+        - 展开运算符 
+            -> 作用 把数据集合展开(数组，对象，Set, Map ....)
+            -> 就是把数据最外面的符号去掉
+
+        - 合并功能
+            -> 把多个数据合并成一个数据
+  */
+
+   // 展开运算符  
+//    let arr = [1, 2, 3, 4, 5]
+//    let arr1 = [100, 200, 300]
+   
+//     //    console.log(...arr);
+//     // let arr3 = [1000, 2000, ...arr]
+//     // let arr3 = [...arr, 1000, 2000]
+//     // console.log(arr3);
+
+//     // console.log(Math.max(100, 200, 300));
+//     // console.log(Math.max(...[100, 200, 300])); 
+
+//     let obj = {name: 'tom'}
+//     let obj1 = {age: 18, ...obj} 
+//     console.log(obj1);
+
+//    function fn(...arg) {
+//      console.log(arg);
+//    }    
+//    console.log(fn(100, 200, 300, 400)); 
+
+ // 接受两个参数，第一个参数表示[0]实参,第二个参数表示从[1] ~ [最后]
+  function fn(a, ...arg) {
+    console.log(a, ...arg);
+  }
+  fn(100, 200, 300, 400, 500)
+</script>

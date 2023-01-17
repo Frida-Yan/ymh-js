@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        正则表达式的常用方法
+            1. 匹配
+                - 语法 正则.test(要检测的字符串)
+                - 返回值
+                    true 字符串满足要求
+                    false 字符串不满足要求
+            2. 捕获
+                - 欠着
+    */
+
+    // 1. 要准备一个正则表达式
+    var reg = /abcd/
+    // 规则: 字符串中需要包含一个 'abcd' 字符串片段
+    // var res = reg.test('abcdadjflasfalkjglakdg')
+    // var res = reg.test('adjflasfalkjglakdgabcd')
+    var res = reg.test('adjflasfalab    cdkjglakdg')
+    console.log(res);
+</script>

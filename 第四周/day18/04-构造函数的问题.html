@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        构造函数的问题
+            - 书写在构造函数里面的方法，在实例化的过程中，会占据多余的内存空间，导致性能损耗
+    */
+
+    // 1 函数数据类型的创建
+    // const fn = function() {}
+    // 在内存中开辟一段空间
+
+    // 2 对象内书写函数
+    // const obj = {
+    //     f1(){},
+    //     f2(){}
+    // }
+    // // f1 f2 要在内存中开辟两段空间
+
+
+    // 3 在函数中书写函数
+    // function fn() {
+    //     const f = function () { }
+    // }
+
+    // // 当fn调用的时候，里面的代码会在内存中开辟一段空间
+    // fn()
+
+    // 4. 在构造函数中书写方法
+    // function CreateObj(name, age) {
+    //     this.name = name
+    //     this.age = age
+
+    //     this.sayHi = function () {
+    //         console.log(this.name);
+    //     }
+    // }
+
+    // const obj1 = new CreateObj('小花', 17)
+    // const obj2 = new CreateObj('小明', 77)
+    // const obj3 = new CreateObj('小明', 77)
+    // const obj4 = new CreateObj('小明', 77)
+    // const obj5 = new CreateObj('小明', 77)
+    // const obj6 = new CreateObj('小明', 77)
+    // const obj7 = new CreateObj('小明', 77)
+    // const obj8 = new CreateObj('小明', 77)
+    // const obj9 = new CreateObj('小明', 77)
+    // const obj10 = new CreateObj('小明', 77)
+
+    // console.log(obj1, obj2);
+    // // 每次执行构造函数的时候，都会创建一个新对象
+    // // console.log(obj1 === obj2);
+    // // 每次执行构造函数的时候，创建一个新对象，创建一个新的函数，把这个函数当做新对象的方法， 在内存中占据一段新的空间
+    // console.log(obj1.sayHi === obj2.sayHi);
+
+    function sayHi() {
+        console.log(this.name);
+    }
+
+    function CreateObj(name, age) {
+        this.name = name
+        this.age = age
+        this.sayHi = sayHi
+    }
+
+    const obj1 = new CreateObj('小花', 17)
+    const obj2 = new CreateObj('小明', 77)
+    console.log(obj1, obj2);
+    obj1.sayHi()
+    obj2.sayHi()
+</script>

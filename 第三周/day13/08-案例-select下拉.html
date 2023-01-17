@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>模拟select控件</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      body,
+      div,
+      form,
+      h2,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        list-style-type: none;
+      }
+      body {
+        background: #23384e;
+        font: 12px/1.5 "微软雅黑";
+      }
+      #search,
+      #search form,
+      #search .box,
+      #search .select,
+      #search a {
+        background: url(search.jpg) no-repeat;
+      }
+      #search,
+      #search .box,
+      #search form {
+        height: 34px;
+      }
+      #search {
+        position: relative;
+        width: 350px;
+        margin: 10px auto;
+      }
+      #search .box {
+        background-position: right 0;
+      }
+      #search form {
+        background-repeat: repeat-x;
+        background-position: 0 -34px;
+        margin: 0 20px 0 40px;
+      }
+      #search .select {
+        float: left;
+        color: #fff;
+        width: 190px;
+        height: 22px;
+        cursor: pointer;
+        margin-top: 4px;
+        line-height: 22px;
+        padding-left: 10px;
+        background-position: 0 -68px;
+      }
+      #search a {
+        float: left;
+        width: 80px;
+        height: 24px;
+        color: #333;
+        letter-spacing: 4px;
+        line-height: 22px;
+        text-align: center;
+        text-decoration: none;
+        background-position: 0 -90px;
+        margin: 4px 0 0 10px;
+      }
+      #search a:hover {
+        color: #f60;
+        background-position: -80px -90px;
+      }
+      #search .sub {
+        position: absolute;
+        top: 26px;
+        left: 40px;
+        color: #fff;
+        width: 198px;
+        background: #2b2b2b;
+        border: 1px solid #fff;
+        display: none;
+      }
+      #search .sub li {
+        height: 25px;
+        line-height: 24px;
+        cursor: pointer;
+        padding-left: 10px;
+        margin-bottom: -1px;
+        border-bottom: 1px dotted #fff;
+      }
+      #search .sub li:hover {
+        background: #8b8b8b;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="search">
+      <div class="box">
+        <form>
+          <span id="select" class="select">请选择游戏名称</span>
+          <a href="javascript:;">搜索</a>
+        </form>
+      </div>
+      <ul id="sub" class="sub">
+        <li>地下城与勇士</li>
+        <li>魔兽世界（国服）</li>
+        <li>魔兽世界（台服）</li>
+        <li>热血江湖</li>
+        <li>大话西游II</li>
+        <li>QQ幻想世界</li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+  /* 
+    1. 什么时候触发
+       1) 点击span 
+       2) 点击document
+       3) 点击li
+    2. 什么范围触发
+       1) 点击span 
+       2) 点击document
+       3) 点击li
+    3. 什么效果
+        1) 点击span   ul出现
+        2) 点击document  ul 消失
+        3) 点击li    获取当前li里面的内容，把内容填到span中
+  */
+
+  // 1 1) 点击span   ul出现
+  select.onclick = function (e) {
+    // 阻止事件冒泡
+    e.stopPropagation();
+    sub.style.display = "block";
+  };
+
+  // 2. 2) 点击document  ul 消失
+  document.onclick = function () {
+    sub.style.display = "none";
+  };
+
+  // 3) 通过事件委托的方式 把点击事件添加给ul 获取当前li里面的内容，把内容填到span中
+  sub.onclick = function (e) {
+    // 通过事件目标进行判断   e.target
+    // 判断当前的事件目标是不是li 是的话就执行代码
+    if (e.target.nodeName === "LI") {
+      select.innerHTML = e.target.innerHTML;
+    }
+  };
+
+  // 3) 点击li    获取当前li里面的内容，把内容填到span中
+  // var liList = document.querySelectorAll(".sub li");
+  // liList.forEach(function (li) {
+  //   li.onclick = function () {
+  //     select.innerHTML = li.innerHTML;
+  //   };
+  // });
+</script>

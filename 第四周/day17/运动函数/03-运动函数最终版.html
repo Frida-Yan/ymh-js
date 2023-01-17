@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 300px;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <p></p> -->
+</body>
+
+</html>
+<script>
+    /*
+        最终版
+        问题   初始值 和 目标值 不是 5的 整数倍，就不能准确到达目标 
+        解决
+               方案1  每次运动的距离 修改为1
+               方案2  每次走总路程 的 十分之一  
+               方案3  每次走剩余路程的十分之一  (减速)
+    */
+
+
+    const div = document.querySelector('div')
+
+    div.onclick = function () {
+        move(div, 'left', 800)
+        // move(div, 'top', 500)
+    }
+
+
+    function move(ele, type, target) {
+        const timer = setInterval(() => {
+            // 1. 获取当前的值
+            let current = parseInt(window.getComputedStyle(ele)[type])
+            // 2. 计算剩余路程的1/10 ，也就是本次运动的距离
+            let duration = (target - current) / 10
+            // 3. 判断当前的位置要不要停止定时器
+            if (current === target) {
+                clearInterval(timer)
+            } else {
+                ele.style[type] = current + duration + 'px'
+            }
+
+        }, 20);
+    }
+
+</script>

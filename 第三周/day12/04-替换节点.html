@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>h1</h1>
+    </div>
+    <button>替换</button>
+  </body>
+</html>
+<script>
+  /*
+    替换节点
+        1. replaceChild()
+            - 语法 父节点.replaceChild(换上节点, 换下节点)
+            - 作用 在父节点中 用换上节点 替换 换下节点
+  */
+
+  var div = document.querySelector("div");
+  var h1 = document.querySelector("h1");
+  var btn = document.querySelector("button");
+
+  var h2 = document.createElement("h2");
+  h2.innerHTML = "你好，小花";
+  btn.onclick = function () {
+    div.replaceChild(h2, h1);
+  };
+</script>
