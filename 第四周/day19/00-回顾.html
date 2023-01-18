@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+      回顾
+          1. 面向对象开发
+              - 是一个开发思想
+              - 本质 面向过程的高度封装
+              - 核心 高内聚 低耦合
+              - 思想
+                  1. 首先创造一个机器，或者找到一个具备功能的机器
+                  2. 利用机器创建一个对象完成功能
+  
+          2. 构造函数
+              - 本质就是一个函数
+              - 使用的时候和 new 关键字连用
+              - 特点
+                  1. 自动创建一个对象
+                  2. 自动返回这个对象
+                  3. 让函数内的this指向这个对象
+              - 书写
+                  1. 首字母大写
+                  2. 不写return
+                  3. 必须和new连用
+                  4. 函数内的this指向当前实例
+          3. 构造函数的不合理
+              - 当我们把方法书写在函数内的时候，随着实例增加，会额外创建很多一样的函数方法，造成资源浪费
+          4. 原型
+              - 每一个函数天生自带一个属性 prototype（原型） ，是一个对象数据类型
+              - 每一个对象天生自带一个属性 __proto__ 指向所属的构造函数的原型 （prototype）
+              - 对象访问机制
+                  当访问一个对象的成员时，首先在自己身上查找，如果有直接使用
+                  如果没有，会自动到自己的__proto__查找
+              - 结论
+                  书写构造函数的时候
+                  属性写在函数中
+                  方法写在原型上
+          5. ES6 类的语法
+              - 语法
+                  class 类名{
+                      constructor(){
+                          构造器 书写构造函数里面的内容
+                      }
+  
+                      原型位置，书写构造函数原型的方法的 -- prototype
+                  }
+    */
+</script>
