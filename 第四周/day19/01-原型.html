@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        原型(prototype)
+            把公共的方法提取出来，在原型上书写，只用书写和创建一次
+    */
+
+    function Person() { }
+    // p1 是一个实例对象，是Person的实例对象
+    // p1 所属的构造函数就是Person
+    // p1 的 __proto__ 指向 Person.prototype
+    const p1 = new Person()
+
+    // 在JS中有若干内置构造函数
+    // Object
+    // Array
+    // Date
+    // RegExp
+    // Function
+    // 任何一个 数组， 所属的构造函数都是Array
+    // 任何一个 对象， 所属的构造函数都是Object
+    // ...
+
+
+</script>
