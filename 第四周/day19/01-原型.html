@@ -34,5 +34,56 @@
     // ...
 
     // 以数组为例
-    // 内置构造函数 Array 的原型 Array
+    // 任何一个数组 所属的构造函数都是Array
+    // Array的原型(prototype)上的方法，都可以给数组使用
+    // console.log(Array.prototype);
+
+    // 可以在这个内置构造函数的原型上扩展方法，让所有的数组都能使用这个方法
+    // Array.prototype.sing = function () {
+    //     console.log(this, '唱跳rap');
+    // }
+
+    // const arr = [1, 2, 3]
+    // const arr1 = [100, 200, 300]
+    // arr.sing()
+    // arr1.sing()
+
+    // 需求，扩展一个方法，返回数组里面的最大值
+    // 分析  要想所有数组都可以使用，写在数组的原型上
+    // Array.prototype.getMax = function () {
+    //     let Max = Math.max(...this)
+    //     return Max
+    // }
+    // console.log(arr1.getMax());
+
+    // 需求 扩展一个方法，给数组去重
+    // Array.prototype.noRepeat = function () {
+    //     let arr = []
+    //     this.forEach(item => {
+    //         if (!arr.includes(item)) {
+    //             arr.push(item)
+    //         }
+    //     })
+    //     return arr
+    // }
+
+    // const arr2 = [100, 200, 300, 100, 400, 400, 500, 100, 200]
+    // console.log(arr2.noRepeat());
+
+    function Teacher() { }
+    Teacher.prototype.sing = function () {
+        console.log('hello world');
+    }
+
+    function Student() { }
+    Student.prototype.sing = function () {
+        console.log('hello world');
+    }
+
+
+    const t = new Teacher()
+    t.sing()
+
+    const s = new Student()
+    s.sing()
 </script>
