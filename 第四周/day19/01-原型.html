@@ -70,15 +70,21 @@
     // const arr2 = [100, 200, 300, 100, 400, 400, 500, 100, 200]
     // console.log(arr2.noRepeat());
 
-    function Teacher() { }
-    Teacher.prototype.sing = function () {
+    Object.prototype.sing = function () {
         console.log('hello world');
     }
 
+    function Teacher() { }
+    // Teacher.prototype.sing = function () {
+    //     console.log('hello world');
+    // }
+
     function Student() { }
-    Student.prototype.sing = function () {
-        console.log('hello world');
-    }
+    // Student.prototype.sing = function () {
+    //     console.log('hello world');
+    // }
+
+
 
 
     const t = new Teacher()

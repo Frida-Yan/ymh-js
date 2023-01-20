@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        链式调用
+            - 调用一个对象的多个属性的时候，采用链式调用
+            - 本质 在原型方法中把this返回
+    */
+
+    /*
+        面试题
+            某个数字进行加减乘除运算
+            obj.add(1).sub(2).mult(3).div(4)
+    */
+
+    class count {
+        constructor(num) {
+            this.num = num
+        }
+        add(n) {
+            this.num += n
+            return this
+        }
+        sub(n) {
+            this.num -= n
+            return this
+        }
+        mult(n) {
+            this.num *= n
+            return this
+        }
+        div(n) {
+            this.num /= n
+            return this
+        }
+    }
+
+    const obj = new count(10)
+    // obj.add(10).mult(20)
+    console.log(obj.add(1).sub(2).mult(3).div(4));
+
+
+
+
+</script>

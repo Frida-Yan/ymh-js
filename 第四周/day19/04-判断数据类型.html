@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        判断数据类型
+
+        1. typeof
+            缺点: 只能进行基本数据类型判断
+        2. constructor
+            语法  数据结构.constructor
+            返回值  该数据结构所属的构造函数
+            缺点  undefined 和 null 检测不出来
+        3. instanceof
+            语法  数据结构 instanceof 构造函数
+            返回值
+                 true
+                 false
+            缺点  undefined 和 null 检测不出来
+        4. Object.prototype.toString.call
+            语法 Object.prototype.toString.call(要判断的数据类型)
+            返回值 '[object 数据类型]'
+            可以准确判断所有数据类型
+    */
+
+    // function Person() { }
+    // const p = new Person()
+
+    // constructor
+    // console.log(p.constructor);
+    // console.log([].constructor);
+    // console.log((function () { }).constructor);
+    // console.log(/^$/.constructor);
+
+    // // 判断一个数据是不是数组
+    // // console.log([].constructor === Array);
+
+
+    // instanceof
+    // function Person() { }
+    // const p = new Person()
+
+    // console.log(p instanceof Person);
+    // console.log(p instanceof Function);
+    // console.log([] instanceof Function);
+    // console.log([] instanceof Array);
+
+
+
+    // Object.prototype.toString.call
+    // console.log(Object.prototype);
+    // console.log(Array.prototype);
+    // console.log(String.prototype);
+
+    // 只有Object.prototype上的toString方法可以把数据结构的类型展示出来
+    // 转字符串的过程是按照数据类型转换的
+    // Object.prototype.toString 这个方法 会把this 按照数据结构转为字符串类型展示
+
+    // console.log(Object.prototype.toString.call(123));
+    // console.log(Object.prototype.toString.call(true));
+    // console.log(Object.prototype.toString.call(undefined));
+    // console.log(Object.prototype.toString.call(null));
+    // console.log(Object.prototype.toString.call({}));
+    // console.log(Object.prototype.toString.call([]));
+</script>
