@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        原型继承
+            - 利用自定义原型的方法来实现继承关系
+            - 核心 子类的原型指向父类的实例
+    */
+
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+
+    Person.prototype.sayHi = function () {
+        console.log(this.name);
+    }
+
+    function Student(sex, age) {
+        this.sex = sex
+        this.age = age
+    }
+    // 实现继承 
+    // 子类的原型指向父类的实例
+    // 子类的原型 Student.prototype
+    // 父类的实例 const p =  new Person()
+    const p = new Person('tom', 18)
+    Student.prototype = p
+
+    const s = new Student('男', 20)
+    console.log(s);
+    console.log(s.sayHi);
+
+    // 原型继承的原理
+    /*
+        Student.prototype 现在指向了父类的实例，也就是 new Person 产生的对象p
+        Student实例化的对象s 想要访问一个属性的时候，首先从自己身上找
+        如果没有，则沿着__proto__向上找
+        s.__proto__ === Student.prototype , Student.prototype === p
+        也就是说，现在s想要访问一个成员，沿着__proto__ 访问到了 p 上面
+        继续在p的上面查找，如果p没有，沿着p的__proto__向上查找
+        p的__proto__ 指向了构造函数Person的原型
+    */
+
+    /*
+        优点 可以继承父类的属性和方法
+    */
+    console.log(s.name);
+    // console.log(s.sayHi());
+
+    /*
+        缺点 
+            1. 子类的原型没有了
+            2. 继承下来的属性不在子类身上，在原型身上
+    */
+    const s1 = new Student('女', 17)
+    console.log(s1);
+</script>
