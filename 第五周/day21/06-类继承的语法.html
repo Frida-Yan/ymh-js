@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        类继承
+    */
+
+    // 先回忆一下借用继承
+
+    // function Father(name, age) {
+    //     this.name = name
+    //     this.age = age
+    // }
+    // Father.prototype.sayHi = function () {
+    //     console.log(this.name);
+    // }
+
+    // function Son(sex, ...arg) {
+    //     this.sex = sex
+    //     Father.call(this, ...arg)
+    // }
+    // const s = new Son('男', 'tom', 18)
+    // console.log(s);
+
+
+    /* 
+        类继承的语法
+            - 书写子类的时候
+              class 子类 extends 父类{
+                    constructor(){
+                        // 必须先写一个super() 相当于 借用继承中 把父类的方法用call在子类中执行一遍，把子类的属性添加上
+                        super()
+                    }
+              }
+            - ES6的类可以继承ES5的构造函数
+    */
+
+    // 创建一个父类--正常写
+    // class Father {
+    //     constructor(name, age) {
+    //         this.name = name
+    //         this.age = age
+
+    //     }
+
+    //     // 私有属性和方法
+    //     // 静态 书写在类自己身上，专门给自己使用，不可以被子类继承
+    //     // 动态 书写在原型上，专门为了给实例使用，可以被子类继承
+    //     // 静态语法 static 方法
+
+    //     static sing() {
+    //         console.log('只因你太美');
+    //     }
+
+    //     static num = 100
+
+    //     sayHi() {
+    //         console.log(this.name);
+    //     }
+    // }
+
+
+    // 用构造函数创建一个父类
+    // function Father(name, age) {
+    //     this.name
+    //     this.age
+    // }
+    // Father.prototype.sayHi = function () {
+    //     console.log(this.name);
+    // }
+    // // ES5父类的静态方法
+    // Father.sing = function () {
+    //     console.log('只因你太美');
+    // }
+    // 创建一个子类 
+    class Son extends Father {
+        // 正常写，子类构造函数中原来的内容
+        constructor(sex, ...arg) {
+            super(...arg)
+            this.sex = sex
+        }
+    }
+
+    const s = new Son('男', 'tom', 18)
+    console.log(s);
+    console.log(s.sayHi);
+    console.log(s.sing);
+</script>

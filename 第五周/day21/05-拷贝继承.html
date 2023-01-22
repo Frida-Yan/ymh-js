@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        拷贝继承
+            利用 for in 循环遍历对象
+            把所有内容复制一份放在子类的原型上
+
+        in关键字
+            语法 字符串 in 对象
+            得到 true/false
+                 判断 字符串 是不是对象中的一个 属性
+            特点 不光捕获对象自己身上的，原型上的也算，只要利用该对象内能访问到就行
+    */
+
+    // const obj = {
+    //     name: 'tom'
+    // }
+    // console.log('name' in obj);
+    // console.log('age' in obj);
+
+    // function Father(name) {
+    //     this.name = name
+    // }
+
+    // Father.prototype.sayHi = function () {
+    //     console.log(this.name);
+    // }
+
+    // const f = new Father('tom')
+    // console.log('name' in f);
+    // console.log('age' in f);
+    // console.log('sayHi' in f);
+
+    /* 
+        hasOwnPrototype() 方法
+        语法 对象.hasOwnPrototype('属性名')
+        返回值  true/false 
+                表示该属性名是否在该对象身上
+                只能表示对象自己身上的，原型上的不算
+    */
+
+    // function Person() {
+    //     this.name = 'name'
+    // }
+    // Person.prototype.age = 18
+    // const p = new Person()
+    // console.log(p.hasOwnPrototype('name'));
+    // console.log(p.hasOwnPrototype('age'));
+
+    /* 
+        书写for in 遍历的时候，不仅对象本身的属性可以获取到，原型上的也可以获取到
+    */
+
+    function Father(name, age) {
+        this.name = name
+        this.age = age
+    }
+    Father.prototype.sayHi = function () {
+        console.log(this.name);
+    }
+
+    // const f = new Father('tom', 18)
+
+    // for (let key in f) {
+    //     console.log(key, f[key]);
+    // }
+
+    // 创建一个子类
+    function Son(sex, ...arg) {
+        this.sex = sex
+        const f = new Father(...arg)
+        for (let key in f) {
+            Son.prototype[key] = f[key]
+        }
+    }
+
+    const s = new Son('男', 'tom', 19)
+    console.log(s);
+    console.log(s.name);
+
+    const s2 = new Son('女', 'lisa', 20)
+    console.log(s2);
+    console.log(s2.name);
+
+</script>

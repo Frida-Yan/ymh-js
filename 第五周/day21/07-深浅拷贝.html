@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        深浅拷贝
+            - 把一个数据结构内的所有内容复制一份放在另一个一模一样的数据结构内
+            - 拷贝的是数据结构，不是方法(一般不考虑函数，通常考虑的是数组和对象)
+
+        复制
+            - 赋值
+            - 浅拷贝
+            - 深拷贝
+    */
+
+    /* 
+        赋值
+            把一个数据结构的地址复制一份给另一个变量
+    */
+
+    // const o1 = { name: 'jack' }
+    // const o2 = o1
+    // console.log(o1, o2);
+    // o2.name = 'tom'
+    // console.log(o1, o2);
+
+    /* 
+        浅拷贝
+            原先是什么数据结构，创建一个一模一样的数据结构
+            依次遍历原始数据结构，把每一个数据复制一份放在新的数据结构内
+            只能拷贝一层数据结构
+                原始数据结构内的key存储的是基本数据类型，可以拷贝
+                存储的是引用数据类型，不行
+    */
+
+    // const o1 = {
+    //     name: 'jack', age: 18, info: {
+    //         width: 100,
+    //         height: 200
+    //     }
+    // }
+
+
+    // // 遍历原始数据 o1, 把内容复制一份放到o2中
+    // for (let k in o1) {
+    //     // 当k === info的时候，
+    //     // o1['info'] 存储的是一个对象的地址
+    //     // 把这个地址赋值给o2['info'] 存储的是同一个地址
+    //     o2[k] = o1[k]
+    // }
+    // // console.log(o1, o2);
+    // // o2.name = 'tom'
+    // // console.log(o1, o2);
+
+    // console.log(o1, o2);
+    // o2.info.width = 200
+    // console.log(o1, o2);
+
+    // 介绍一个方法
+    // Object.assign
+    // 语法 Object.assign(新对象, 原始对象)
+    // 返回值 把原始对象内的成员浅拷贝到新对象中
+
+    // const o2 = Object.assign({}, o1)
+    // console.log(o1, o2);
+    // o2.info.width = 200
+    // console.log(o1, o2); 
+
+    /* 
+        深拷贝
+            不管多少层数据结构，都百分百复制一份
+            变成两个完全一模一样但是毫不相干的数据结构
+    */
+
+    const o1 = {
+        name: 'tom',
+        age: 18,
+        info: {
+            width: 100,
+            height: 200
+        },
+        address: {
+            city: '浙江省杭州市',
+            desc: {
+                location: '上城区九堡街道旺田商务楼xxx'
+            }
+        },
+        hobby: ['唱', '跳', 'rap', '篮球']
+    }
+
+    // 递归深拷贝
+    // function deepClone(origin, target) {
+    //     // origin 原始数据
+    //     // target 目标对象
+    //     for (let k in origin) {
+    //         // 分析
+    //         // origin[k] 是一个什么数据类型
+    //         // 是对象 --- 不能直接存，递归
+    //         // 是数组 --- 不能直接存, 递归
+    //         // 是其他 --- 直接存
+    //         if (origin[k] instanceof Object) {
+    //             // origin[k] 是什么数据， target[k]就是什么数据
+    //             target[k] = {}
+    //             // 把origin[k]里面的数据深拷贝一份到target[k]里面
+    //             deepClone(origin[k], target[k])
+    //         } else if (origin[k] instanceof Array) {
+    //             // origin[k] 是什么数据， target[k]就是什么数据
+    //             target[k] = []
+    //             deepClone(origin[k], target[k])
+    //         } else {
+    //             target[k] = origin[k]
+    //         }
+    //     }
+    // }
+
+    // const o2 = {}
+    // deepClone(o1, o2)
+    // console.log(o1, o2);
+    // o2.address.desc.location = '111'
+    // console.log(o1, o2);
+
+    /* 
+        JSON格式字符串实现深拷贝
+    */
+    const jsonStr = JSON.stringify(o1)
+    console.log(jsonStr);
+    const o2 = JSON.parse(jsonStr)
+    console.log(o2);
+
+</script>

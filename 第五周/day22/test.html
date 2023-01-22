@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+      深浅拷贝
+        + 把一个数据结构内的所有内容复制一份放在另一个一模一样的数据结构内
+        + 注意: 表示拷贝的是数据结构, 不是方法(一般不考虑函数, 通常我们都是考虑的数组和对象)
+
+      复制
+        + 赋值
+        + 浅拷贝
+        + 深拷贝
+    */
+
+    /*
+      赋值:
+        + 把一个数据结构的地址复制一份给另一个变量
+        + 两个变量操作同一个存储空间
+    */
+    // const o1 = { name: 'Jack' }
+    // const o2 = o1
+    // console.log(o1, o2)
+    // o2.name = 'Rose'
+    // console.log(o1, o2)
+
+
+    /*
+      浅拷贝
+        + 原先是什么数据结构, 我创建一个一模一样的数据结构
+        + 依次遍历原始数据结构, 把每一个数据复制一份放在新的数据结构内
+        + 只能拷贝一层数据结构
+          => 原始数据结构内的 key 需要存储的是 基本数据类型
+          => 如果存储的是复杂数据类型, 那么不行
+    */
+
+    // const o1 = { name: 'Jack', age: 18, info: { weight: 180, height: 180 } }
+    // const o2 = {}
+    // // 遍历 原始数据(o1), 把内容复制一份到 o2 身上
+    // for (let k in o1) {
+    //   // 当 k === 'info' 的时候
+    //   // o2[k] = o1[k]
+    //   // 因为 o1[k] 存储的是某一个对象的地址
+    //   // 所以 o2[k] 存储的也是某一个对象的地址
+    //   o2[k] = o1[k]
+    // }
+    // console.log(o1, o2)
+    // o2.name = 'Rose'
+    // console.log(o1, o2)
+    // // 修改第二层数据
+    // o2.info.weight = 200
+    // console.log(o1, o2)
+
+    // Object 上有一个方法, 就是进行浅拷贝, 复制
+    // 语法: Object.assign(新对象, 原始对象)
+    // 返回值: 把原始对象内的成员浅拷贝的新对象内
+    // const o1 = { name: 'Jack', age: 18, info: { weight: 180, height: 180 } }
+    // const o2 = Object.assign({}, o1)
+    // console.log(o1, o2)
+    // // 修改第一层数据
+    // o2.name = 'Rose'
+    // console.log(o1, o2)
+    // // 修改第二层数据
+    // o2.info.weight = 200
+    // console.log(o1, o2)
+
+
+    /*
+      深拷贝:
+        + 不管多少层数据结构, 都百分百复制一份过来
+        + 变成两个完全一模一样但是毫不相干的数据结构
+    */
+
+    // const o1 = {
+    //   name: 'Jack',
+    //   age: 18,
+    //   info: {
+    //     weight: 180,
+    //     height: 180
+    //   },
+    //   address: {
+    //     city: '北京',
+    //     desc: {
+    //       scripts: 'xxx路xxx接到'
+    //     }
+    //   },
+    //   hobby: [ '篮球', '足球', '羽毛球' ]
+    // }
+
+    // 递归深拷贝
+    // function deepCopy(target, origin) {
+    //   // target 叫做目标对象
+    //   // origin 叫做原始对象
+    //   // 目标: 把 origin 内的内容深拷贝一份到 target 内
+
+    //   // 循环遍历 origin
+    //   for (let k in origin) {
+    //     // 如果 origin[k] 是一个对象, 不能直接转存
+    //     // 如果 origin[k] 是一个数组, 不能直接转存
+    //     if (origin[k].constructor === Object) {
+    //       // origin[k] 是一个对象, target[k] 应该是一个什么数据类型
+    //       target[k] = {}
+    //       // 把 origin[k] 里面的数据深拷贝一份到 target[k]
+    //       deepCopy(target[k], origin[k])
+    //     } else if (origin[k].constructor === Array) {
+    //       target[k] = []
+    //       deepCopy(target[k], origin[k])
+    //     } else {
+    //       // 既不是对象也不是数组, 直接转存
+    //       target[k] = origin[k]
+    //     }
+    //   }
+    // }
+
+    // function deepCopy(target, origin) {
+    //   for (let k in origin) {
+    //     if (origin[k].constructor === Object) {
+    //       target[k] = {}
+    //       deepCopy(target[k], origin[k])
+    //     } else if (origin[k].constructor === Array) {
+    //       target[k] = []
+    //       deepCopy(target[k], origin[k])
+    //     } else {
+    //       target[k] = origin[k]
+    //     }
+    //   }
+    // }
+
+
+    // const o2 = {}
+    // deepCopy(o2, o1)
+    // console.log(o1, o2)
+    // // 修改第一层数据
+    // o2.name = 'Rose'
+    // console.log(o1, o2)
+    // // 修改第二层数据
+    // o2.info.weight = 200
+    // console.log(o1, o2)
+    // // 修改第三层数据
+    // o2.address.desc.scripts = '你好 世界'
+    // console.log(o1, o2)
+    // o2.hobby[2] = '乒乓球'
+    // console.log(o1, o2)
+
+
+
+
+    // 假设: 我又一个对象叫做 obj
+    // 我想把 obj 内的内容深拷贝一份到 obj2
+    // const obj = { ... }
+    // const obj2 = {}
+    // deepCopy(obj2, obj)
+
+    // 假设: 我想把 abcdefg 内的内容深拷贝一份到 aaaaaaa
+    // deepCopy(aaaaaaa, abcdefg)
+
+
+
+    /*
+      JSON 格式字符串实现深拷贝
+    */
+    const o1 = {
+      name: 'Jack',
+      age: 18,
+      info: {
+        weight: 180,
+        height: 180
+      },
+      address: {
+        city: '北京',
+        desc: {
+          scripts: 'xxx路xxx接到'
+        }
+      },
+      hobby: ['篮球', '足球', '羽毛球']
+    }
+
+
+    // 把 o1 对象转换成一个 json 格式字符串
+    // const jsonStr = JSON.stringify(o1)
+    // console.log(jsonStr)
+    // // 把 jsonStr 这个字符串转换会 js 的数据结构
+    // const o2 = JSON.parse(jsonStr)
+
+    const o2 = JSON.parse(JSON.stringify(o1))
+    console.log(o1, o2)
+    // 修改第一层数据
+    o2.name = 'Rose'
+    console.log(o1, o2)
+    // 修改第二层数据
+    o2.info.weight = 200
+    console.log(o1, o2)
+    // 修改第三层数据
+    o2.address.desc.scripts = '你好 世界'
+    console.log(o1, o2)
+    o2.hobby[2] = '乒乓球'
+    console.log(o1, o2)
+
+
+  </script>
+</body>
+
+</html>
