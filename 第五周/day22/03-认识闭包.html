@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        认识闭包 
+            - 需要一个不会被销毁的函数执行空间
+            - 需要 直接 或者 间接 返回一个函数
+            - 内部函数使用外部函数的私有变量
+
+        概念 函数内的函数
+
+        特点
+            1. 可以在函数外面访问到函数内部的变量 --- 需要利用闭包函数
+            2. 延长了变量的生命周期 --- 需要利用闭包函数
+            3. 闭包函数(不会销毁的空间) -- 内存溢出
+    */
+
+    function outer() {
+        let a = 100
+        let b = 200
+
+        // inner是outer的闭包函数
+        function inner() {
+            // 现在使用了一个a变量，但是inner自己没有
+            // 使用的a变量是 外部函数outer的私有变量a 
+            // console.log(a); 
+            return a
+        }
+        return inner
+    }
+    // inner被返回赋值给了res
+    // 也可以说res是outer的闭包函数
+    const res = outer()
+    // console.log(res, 'res');
+
+    // 在outer函数外面使用了outer函数内的私有变量
+    // res()
+
+    // 可以在outer外面使用outer里面的私有变量
+    const r = res()
+    console.log(r);
+
+    const r1 = res()
+    console.log(r1);
+
+    // res = null
+</script>
