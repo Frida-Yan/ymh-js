@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inp1">
+    <input type="text" id="inp2">
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    /*
+        数据劫持
+            - 在访问或者修改对象的某个属性时，通过 （getter/setter）拦截这个行为，进行额外的操作
+            - 将原始的数据复制一份，通过复制的数据操作原始数据
+    */
+
+    // 原始数据
+    const obj = {
+        name: 'tom',
+        age: 18
+    }
+
+    // 目标数据
+    const target = {}
+    // 通过数据劫持，把原始数据复制到目标中
+    Object.defineProperty(target, 'name', {
+        get() {
+            return obj.name
+        },
+        set(val) {
+            obj.name = val
+            box.innerHTML = `你好,我叫${target.name}, 我今年${target.age}`
+        }
+    })
+    Object.defineProperty(target, 'age', {
+        get() {
+            return obj.age
+        },
+        set(val) {
+            obj.age = val
+            box.innerHTML = `你好,我叫${target.name}, 我今年${target.age}`
+        }
+    })
+
+    inp1.onchange = function (e) {
+        target.name = e.target.value
+    }
+    inp2.onchange = function (e) {
+        target.age = e.target.value
+    }
+
+
+
+    box.innerHTML = `你好,我叫${target.name}, 我今年${target.age}`
+
+</script>

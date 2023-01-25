@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="inp1">
+  <input type="text" id="inp2">
+  <input type="text" id="inp3">
+  <div class="box"></div>
+</body>
+
+</html>
+<script>
+  // 一.数据劫持
+  // 数据驱动视图，数据是操作的核心
+  // 数据劫持：指的是在访问或者修改对象的某个属性时，通过一段代码(getter/setter)拦截这个行为，进行额外的操作或者修改返回结果。
+  // 理解成将原始的数据复制一份，通过复制的数据操作原始数据。
+  const box = document.querySelector('.box');
+
+  const obj = { //原始对象
+    name: 'zhangsan',
+    age: 18,
+    sex: 'women'
+  }
+
+  const target = {}; //目标对象
+  Object.defineProperty(target, 'name', {
+    // 复制一份原始对象，利用劫持行为获取对应的原始对象的值
+    get() { //获取
+      return obj.name;
+    },
+    set(val) {
+      obj.name = val;
+      box.innerHTML = `我的姓名是${target.name},我今年${target.age}岁,我是${target.sex}的`;
+    }
+  });
+
+
+  Object.defineProperty(target, 'age', {
+    // 复制一份原始对象，利用劫持行为获取对应的原始对象的值
+    get() { //获取
+      return obj.age;
+    },
+    set(val) {
+      obj.age = val;
+      box.innerHTML = `我的姓名是${target.name},我今年${target.age}岁,我是${target.sex}的`;
+    }
+  });
+
+
+  Object.defineProperty(target, 'sex', {
+    // 复制一份原始对象，利用劫持行为获取对应的原始对象的值
+    get() { //获取
+      return obj.sex;
+    },
+    set(val) {
+      obj.sex = val;
+      box.innerHTML = `我的姓名是${target.name},我今年${target.age}岁,我是${target.sex}的`;
+    }
+  });
+
+  // 过程
+  // 劫持name属性，先修改目标对象的name属性值，触发set方法，set方法将修改后的值给原始对象的name
+  // 访问目标对象属性的时候，触发get方法，刚好把set设置的name属性值给了get返回值
+
+  inp1.oninput = function () {
+    target.name = this.value; //表单的值直接给了name属性。
+  }
+  inp2.oninput = function () {
+    target.age = this.value; //表单的值直接给了name属性。
+  }
+  inp3.oninput = function () {
+    target.sex = this.value; //表单的值直接给了name属性。
+  }
+  box.innerHTML = `我的姓名是${target.name},我今年${target.age}岁,我是${target.sex}的`;
+</script>
