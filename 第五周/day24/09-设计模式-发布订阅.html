@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+          设计模式 - 发布订阅
+    
+          例子: 买一本书
+            + 以前:
+              => 去到书店, 问店员有没有 <莫欺少年穷>
+              => 没有, 回去
+              => 一回再去问, 有没有
+              => 没有, 回去
+              => 一回再去问, 有没有
+              => ...
+            + 后来:
+              => 去到书店, 问店员有没有 <JavaScript 从入门到入土>
+              => 没有, 给店员留下一个联系方式
+              => 直到店员给你打电话, 你触发技能(去买回来)
+    
+          在 JS 内 发布订阅 使用最多的地方 (addEventListener)
+            => xxx.addEventListener('click', fn)
+    
+          思考:
+            + 以什么数据格式来记录
+              店员 = {
+                a: [ fn, fn ],
+                b: [ fn, fn, fn ]
+              }
+        */
+
+
+        class Observer {
+            constructor(name) {
+                this.name = name
+                // 记录手册
+                this.messages = {}
+            }
+
+            // 向手册上添加信息
+            add(type, fn) {
+                // 把它加到手册里面
+                // 判断一下, 如果 手里里面没有该 type 类型, 给他赋值为一个 []
+                if (!this.messages[type]) this.messages[type] = []
+
+                // 来到这里的时候, this.messages[type] 必然是一个数组
+                this.messages[type].indexOf(fn) === -1 && this.messages[type].push(fn)
+            }
+
+            // 移除手册上的信息
+            remove(type, fn) {
+                // 判断手册上是否有该列表
+                if (!this.messages[type]) return
+
+                // fn 函数不存在
+                if (!fn) return delete this.messages[type]
+
+                // fn 函数存在
+                this.messages[type] = this.messages[type].filter(item => item !== fn)
+            }
+
+            // 触发手册上的信息
+            trigger(type) {
+                // 判断手册上有没有该 type 类型
+                if (!this.messages[type]) return
+
+                // 组装一个 "事件对象"
+                const event = {
+                    type,
+                    target: this.name
+                }
+
+                this.messages[type].forEach(item => item(event))
+            }
+        }
+
+
+        // 创建一个店员
+        const jack = new Observer('Jack')
+
+        // 准备事件处理函数
+        function handlerA() { console.log('AAAAAA') }
+        function handlerB(e) { console.log('BBBBBB', e) }
+        function handlerC() { console.log('CCCCCC') }
+        function handlerD() { console.log('DDDDDD') }
+
+        // 你需要添加一个侦听器
+        jack.add('a', handlerA)
+        jack.add('a', handlerB)
+        jack.add('b', handlerB)
+        jack.add('b', handlerC)
+        jack.add('c', handlerC)
+        jack.add('c', handlerD)
+
+        // 你需要取消一个侦听器
+        jack.remove('a', handlerA)
+        jack.remove('c')
+
+        // 让 jack 通知 b 这本书到了
+        jack.trigger('b')
+
+
+        console.log(jack)
+
+
+
+
+    </script>
+</body>
+
+</html>

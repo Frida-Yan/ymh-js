@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        设计模式
+            - 为了实现某一类功能给出的简洁而优化的解决方案
+
+        设计模式 - 单例模式
+            - 核心意义 一个构造函数(类) 一生只有一个实例
+    */
+
+    // 类
+    class Dialog {
+        constructor(title) {
+            this.title = title
+        }
+    }
+
+    /*
+        思路
+            - 实例化一个 类 的时候
+            - 需要判断，如果这个类被实例化过，那么不需要再次实例化，直接拿到原来的实例化对象
+            - 如果没有实例化过，那么新实例化一个实例对象
+
+            - 单独找一个变量，初始化为null
+            - 每次创建实例的时候，都判断一下该变量的值
+                -> 如果为null，那么创建一个实例，赋值给该变量
+                -> 如果不为null, 那么不创建新的实例，直接使用该变量的值
+    */
+
+
+    // 找一个变量，初始化为null 
+    let instance = null
+    function singleton(str) {
+        // 判断
+        // 只有instance 为null, 就创建一个实例
+        if (!instance) instance = new Dialog(str)
+        return instance
+    }
+
+    // 创建实例的过程
+    const d1 = singleton('hello world')
+    console.log(d1);
+
+    const d2 = singleton('你好 小花')
+    console.log(d2);
+
+    console.log(d1 === d2);
+</script>

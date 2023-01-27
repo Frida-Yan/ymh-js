@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        这个构造函数的功能就是创建一个 div，添加到页面中
+
+        问题1 
+            instance这个变量放外面会污染全局 --- 闭包
+        问题2
+            传入的内容没有改
+        
+    */
+
+    class CreateDiv {
+        constructor() {
+            this.title = ''
+            this.div = document.createElement('div')
+            document.body.appendChild(this.div)
+        }
+        init(title) {
+            this.title = title
+            this.div.innerHTML = this.title
+        }
+    }
+
+    // let instance = null
+    // function singleton(str) {
+    //     // 判断
+    //     // 只有instance 为null, 就创建一个实例
+    //     if (!instance) instance = new CreateDiv(str)
+    //     return instance
+    // }
+    // 改成闭包 
+    const singleton = (function () {
+        let instance = null
+        return function (str) {
+            if (!instance) instance = new CreateDiv(str)
+            instance.init(str)
+            return instance
+        }
+    })()
+
+    // 创建实例的过程
+    const d1 = singleton('hello world')
+    console.log(d1);
+
+    const d2 = singleton('你好 小花')
+    console.log(d2);
+
+    const d3 = singleton('啦啦啦啦')
+
+</script>
