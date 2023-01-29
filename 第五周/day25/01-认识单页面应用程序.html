@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        .box {
+            width: 100%;
+            height: 100%;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box>.top {
+            height: 130px;
+            background-color: skyblue;
+        }
+
+        .box>.bottom {
+            flex: 1;
+            display: flex;
+        }
+
+        .box>.bottom>.slide {
+            width: 230px;
+            background-color: orange;
+            box-sizing: border-box;
+            padding: 15px;
+        }
+
+        .box>.bottom>.slide>a {
+            font-size: 22px;
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .box>.bottom>.content {
+            flex: 1;
+            box-sizing: border-box;
+            padding: 15px;
+            background-color: purple;
+
+            font-size: 100px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="top">顶部通栏</div>
+        <div class="bottom">
+            <div class="slide">
+                <a href="#/first">first</a>
+                <a href="#/second">second</a>
+                <a href="#/third">third</a>
+                <a href="#/fourth">fourth</a>
+            </div>
+            <div class="content router-view">
+                <!-- 路由出口标签, 将来切换路由的时候, 所有显示的结构都插入到这个标签内部 -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        /*
+          认识单页面应用程序
+            + SPA: single page application
+            + 大部分用于 移动端 / PC端的后台管理系统
+            + 切换依赖:
+              => 形式1: 依赖 hash 的改变(锚点)
+              => 形式2: 依赖历史记录(history)
+    
+          开发过程: 组件化开发
+            + 组件: 一段完整的 html+css+js 结构
+    
+          前端路由:
+            + 在页面内同一个位置, 根据不同的 hash 值显示不同的页面结构
+        */
+
+        // 2. 确认一个路由出口
+        //    在页面上标记一个标签, 将来所有的路由内容渲染在该标签内部
+        // 2. 确认所有的路由结构
+        //    在什么 hash 的时候, 显示哪一个路由结构
+        const template1 = `
+      <div>
+        first
+      </div>
+    `
+
+        const template2 = `
+      <div>
+        second
+      </div>
+    `
+
+        const template3 = `
+      <div>
+        third
+      </div>
+    `
+
+        const template4 = `
+      <div>
+        fourth
+      </div>
+    `
+
+        // 0. 获取路由入口标签
+        const routerView = document.querySelector('.router-view')
+
+        // 1. 捕获浏览器地址栏 hash 值的改变
+        //    语法: window.location.hash
+        //    得到: 该地址栏内的 hash 值, 锚点值
+        // console.log(window.location.hash)
+        //    事件: hashchange
+        //    时机: 当前地址栏 hash 值改变的时候触发
+        window.onhashchange = function () {
+            console.log('地址栏 hash 值改变了')
+            console.log(window.location.hash)
+
+            // 解构赋值: 等价于 const hash = window.location.hash
+            const { hash } = window.location
+
+            // 只要判断 hash 值, 进行不同结构的渲染
+            if (hash === '#/first') {
+                routerView.innerHTML = template1
+            } else if (hash === '#/second') {
+                routerView.innerHTML = template2
+            } else if (hash === '#/third') {
+                routerView.innerHTML = template3
+            } else if (hash === '#/fourth') {
+                routerView.innerHTML = template4
+            }
+        }
+    </script>
+</body>
+
+</html>
