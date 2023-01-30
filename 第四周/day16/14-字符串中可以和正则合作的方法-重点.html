@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        1. replace()
+            - 语法  字符串.replace(旧的字符, 新的字符)
+            - 语法  字符串.replace(正则表达式, 新的字符)
+                 可以使用全局匹配符g,表示全部替换
+    */
+
+    // var str = '小明真好看小明真好看小明真好看'
+    // // console.log(str.replace('明', '花'));
+    // console.log(str.replace(/明/g, '花'));
+
+    // 批量替换敏感词
+    // var arr = ['HH', 'MM', 'NN']
+    // var str = 'aHHdfasMMdfaNNdsfaNNsNNdffas'
+
+    // // var reg = /(MM|NN|HH)/g
+    // var str1 = arr.join('|')
+    // var reg = new RegExp(arr.join("|"), "g")
+    // // console.log(str1);
+    // console.log(str.replace(reg, '**'));
+
+    /*
+        2. search()
+            - 语法  字符串.search(字符串片段)
+            - 语法  字符串.search(正则表达式)
+    */
+
+    // var str = 'hello world'
+    // // console.log(str.search('ld'));
+    // // console.log(str.search('la'));
+
+    // console.log(str.search(/l{2}/));
+
+    /* 
+        3. match() 
+            - 语法 字符串.match(正则表达式)
+            - 返回值
+                如果传递的参数是字符串或者没有g的正则表达式， 那么效果和exec方法一模一样
+                如果传递的参数是一个有g的正则表达式，那么返回的是一个数组，里面有捕获的所有内容
+    */
+
+    var reg = /\d{3}/g
+    var str = 'a123sdfa456klsd789jflkasjf012dlk234asdf'
+
+    console.log(str.match(reg));
+</script>

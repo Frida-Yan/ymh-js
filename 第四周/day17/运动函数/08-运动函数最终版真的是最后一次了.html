@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            /* left: 0px; */
+            left: 300px;
+            opacity: 1;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <p></p>
+</body>
+
+</html>
+<script>
+    /*
+       问题 我想要在运动结束后做一些事情，但是做不到
+       原因 运动的代码是异步
+       解决
+            -> 调用move的时候，给move一个 信（接下来要做的事情）
+            -> 等move里面的运动完全结束之后， 把信打开
+            -> 执行信里面的操作
+            -> 这个信就是move的回调函数
+
+
+       回调函数  callback 
+       把函数a 当做实参 传递 给 函数b
+       函数b   用形参的方式 调用 函数a 
+
+       函数a 叫做 函数b 的回调函数 callback 
+       封装异步代码的时候，会用到
+    */
+
+
+    const div = document.querySelector('div')
+    const p = document.querySelector('p')
+
+    div.onclick = function () {
+        // move(div, {
+        //     left: 500,
+        //     top: 300,
+        //     opacity: 0.56,
+        //     'border-radius': 50
+        // }, () => {
+        //     // 希望div运动结束后，p运动起来
+        //     move(p, {
+        //         left: 500,
+        //         width: 300,
+        //         height: 300
+        //     })
+        // })
+
+        move(div, {
+            left: 500,
+            top: 300,
+            opacity: 0.56,
+            'border-radius': 50
+        })
+
+    }
+
+    function move(ele, options, cb = () => { }) {
+        // 计数器
+        let count = 0
+        // options 是一个对象 
+        for (let k in options) {
+            // 计数器++
+            count++
+            // k是对象的键名 
+            const type = k
+            let target = options[k]
+            // 如果是opacity 那么目标放大100 
+            if (type === 'opacity') {
+                target *= 100
+            }
+            const timer = setInterval(() => {
+                // 1. 获取当前的值
+                // 1-1 如果是opacity 当前值放大100
+                let current
+                if (type === 'opacity') {
+                    current = window.getComputedStyle(ele)[type] * 100
+                } else {
+                    current = parseInt(window.getComputedStyle(ele)[type])
+                }
+                // 2. 计算剩余路程的1/10 ，也就是本次运动的距离， 向上取整
+                // 2-1 判断是不是opacity
+                let duration = (target - current) / 10
+                duration = duration > 0 ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10)
+
+                // 3. 判断当前的位置要不要停止定时器
+                if (current === target) {
+                    clearInterval(timer)
+                    // 每关闭一个 计数器就少一个
+                    count--
+                    // 当计数器为0 的时候，运动真正结束
+                    if (count === 0) {
+                        // console.log('运动结束');
+                        // 执行回调函数 
+                        cb()
+                    }
+
+                } else {
+                    // 判断type是不是opacity
+                    if (type === 'opacity') {
+                        ele.style[type] = (current + duration) / 100
+                    } else {
+                        ele.style[type] = current + duration + 'px'
+                    }
+                }
+
+            }, 20);
+        }
+    }
+
+
+</script>

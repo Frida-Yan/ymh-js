@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        正则的两大特性
+            1. 懒惰
+                 - 每次捕获的时候都会从字符串[0]开始检索
+                 - 解决： 给正则添加标识符g
+            2. 贪婪
+                - 每次在捕获内容的时候，尽可能多的去捕获内容
+                - 解决：使用非贪婪限定符(在原来的限定符后面加一个?)
+                    => 贪婪      能拿多少拿多少
+                    => 非贪婪    能拿多少拿多少
+
+                贪婪限定符
+                    *
+                    +
+                    ?
+                    {n,}
+                    {n,m}
+                非贪婪限定符
+                    *?
+                    +?
+                    ??
+                    {n,}?
+                    {n,m}?
+    */
+
+    // 贪婪捕获
+    // var str = '1234567abcd'
+    // var reg = /\d*/
+    // console.log(reg.exec(str));
+
+    var str = '<div class="box" id="box"><span></span></div>'
+    // 贪婪限定符
+    // var reg = /<div.*>/
+    // console.log(reg.exec(str));
+    // 非贪婪限定符
+    var reg = /<div.*?>/
+    console.log(reg.exec(str));
+</script>

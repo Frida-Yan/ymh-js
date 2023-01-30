@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    ES6 的模块化开发(重点)
+        - 把完整功能，拆开成为一个个独立的功能(模块)
+            -> 一个js文件就是一个独立模块
+        - 按照业务需求，进行模块整合
+        - 模块化开发的步骤
+            - 把多个逻辑书写在多个js文件中
+            - 每个文件都是一个独立的模块 
+            - 该文件内，只能使用自己文件中的变量，不能使用其他文件的变量
+            - 按照需求，把模块组合
+
+        浏览器使用ES6 模块化语法的要求
+            script 标签必须要有一个 type = 'module' 属性
+            页面必须用服务器打开 (live server)
+  */
+
+  /* 
+    导入/导出
+        => 导出  在一个文件内向外暴露一些内容
+        => 导入  导入该文件的同时，拿到向外暴露的内容
+  
+  */
+
+  /* 
+    导出语法
+        - 语法1  export default 要导出的数据 (详见header.js)
+            -> 注意  一个文件只能导出一个default数据
+        - 语法2  export 定义变量 = 值 (详见footer.js)
+  */
+
+  /* 
+    导入语法
+        - 语法1 import 变量 from '文件' (详见index.js)
+          -> 这个语法必须对应导出语法1
+        - 语法2 import { 导出的内容 } from '文件'
+          -> 这个语法必须对应导出语法2
+          -> 批量导入 import * as 变量名 from '文件'
+            => 把所有导出的内容放到 变量名中，通过对象的语法获取
+  */
+</script>

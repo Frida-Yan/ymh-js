@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    
+
+    // let name = '小花'
+    // 键是name，值是变量name
+    //    let obj = {
+    //       name: name
+    //    }
+
+    // let obj = {
+    //     name: 'name'
+    // }
+
+    // let key = 'tom'
+    // let age = 18
+    // // {'tom': 18}
+    // key = 'jerry'
+    // age = 20
+    // // 想要让对象的键名是一个变量的话， 需要用[]包起来
+    // let obj = {
+    //     [key]: age
+    // }
+    // {'jerry': 20}
+    
+    // console.log(obj);
+
+    // let key = 'name'
+
+    // let obj = {
+    //     name: '18',
+    //     age: 20
+    // }
+    // 希望获取对象obj中键名为变量key的值
+    // key被引号包起来, 是一个字符串
+    // console.log(obj['key']);
+    // key没有被引号包起来，表示一个变量
+    // console.log(obj[key]);
+
+    /*
+      对象简写语法
+          1. 当对象的key value 是一模一样的时候，
+              -> 可以省略value不写
+              -> 注意： value必须是一个变量
+          2. 当对象内key对应的值是一个函数
+              -> 可以省略 function 和 冒号不写
+              -> 箭头函数不可以省略
+    */
+
+    // let name = 'tom'
+    // let obj = {
+    //     name: name
+    // }
+    // 等价于
+    // let obj = {
+    //     name
+    // }
+    // console.log(obj);
+
+    // 这个情况不可以省略，因为value是一个字符串
+    // let obj = {
+    //     name: 'name'
+    // }
+
+    // let obj = {name, age, list }
+    // 等价于
+    // let obj = {name: name, age: age, list: list}
+
+    // 对象简写语法 -- 函数
+    // let obj = {
+    //     fn: function(){
+    //         console.log(111);
+    //     }
+    // }
+
+    // 等价于
+    let obj = {
+        fn(){
+            console.log(111);
+        }, 
+        // 箭头函数无法省略
+        fn1: () => {
+            console.log(222);
+        }
+    }
+    obj.fn()
+</script>

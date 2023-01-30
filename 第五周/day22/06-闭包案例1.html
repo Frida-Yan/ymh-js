@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    // 1. 输出什么
+    // for (var i = 1; i <= 5; i++) {
+    //     setTimeout(function () {
+    //         console.log(i);
+    //     }, 1000);
+    // }
+    // 答案  5个6  for循环是同步的， 定时器是异步的，等for循环全部结束后，再执行异步的定时器代码，定时器中的变量是同一个
+
+    // 2.
+    // for (let i = 1; i <= 5; i++) {
+    //     setTimeout(function () {
+    //         console.log(i);
+    //     }, 1000);
+    // }
+
+    // 答案 1 2 3 4 5  因为let具有块作用域，声明的变量会绑定在块里面。
+
+    // 3.
+    // for (var i = 1; i <= 5; i++) {
+    //     function fn(i) {
+    //         window.setTimeout(function () {
+    //             console.log(i);
+    //         }, 0);
+    //     }
+    //     fn(i);
+    // }
+    // 答案 1 2 3 4 5  fn内部嵌套定时器的函数，定时器函数使用外部的变量，形成闭包，导致变量没有被销毁
+
+    // 4. 
+    for (var i = 1; i <= 5; i++) {
+        // 自执行函数 可以自动执行依次
+        ! function (i) {
+            window.setTimeout(function () {
+                console.log(i);
+            }, 0);
+        }(i);
+    }
+    // 答案 1 2 3 4 5  自执行函数内部嵌套定时器的函数，定时器函数使用外部的变量，形成闭包，导致变量没有被销毁
+
+</script>

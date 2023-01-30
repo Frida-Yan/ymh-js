@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        正则的捕获方式
+            - 语法  正则表达式.exec(字符串)
+            - 作用  从原始字符串中捕获到符合正则规则的字符串片段
+            - 返回值
+                   1. 当原始字符串没有符合规则的时候，返回null
+                   2. 当原始字符串由符合规则的片段的时候
+                        -> 返回值必然是一个数组，数组的[0] 是捕获出来的字符串片段
+                        -> 没有(), 没有g
+                            => 不管写多少次，只能捕获第一组匹配规则的字符串片段
+                        -> 有()
+                            => 会在返回值数组的[1]开始，依次是每一个()中单独的内容
+                        -> 有g
+                            => g 叫做全局标识符
+                            => 第二次捕获开始会从第一次捕获的结束为止开始检索
+                            => 直到找不到内容，返回null
+
+
+        扩展
+            匹配但是不捕获
+            - 当我们需要使用()这个整体作用的时候
+            - 但是不需要把()里面的内容单独捕获的时候
+            - 可以书写(?:)
+
+    */
+
+    // var reg = /\d{3}/
+    // 1. 没有符合规则的字符串片段
+    // var str = 'affasfasfasf'
+    // // console.log(reg.test(str));
+    // var res = reg.exec(str)
+    // console.log(res);
+
+    // 2. 有符合规则的字符串片段
+    // 2-1 没有() 没有g
+    var reg = /\d{3}/
+    var str = 'adfa123sals456hdfl789kasakhdf012'
+    var res = reg.exec(str)
+    console.log(res);
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+
+    // 2-2 有()
+    // var reg = /(\d{2})(\d{2})(\d{2})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|x)/
+    // var reg = /(\d{2})(\d{2})(\d{2})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(?:\d|x)/
+    // // var str = '222301200501011234'
+    // var str = '22230120050101123x'
+    // console.log(reg.exec(str));
+
+    // 2-3 有g
+    var reg = /\d{3}/g
+    var str = 'adfa123sals456hdfl789kasakhdf012'
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        两种创建方式的区别
+            创建方式
+                - 字面量
+                - 构造函数方式
+
+            区别
+                1. 书写标识符  i(忽略大小写) g(全局)
+                    -> 字面量方式直接书写在正则后面  var reg = /abcd/ig
+                    -> 构造函数方式用第二个参数的形式书写
+                        var reg = new RexExp('abcd', 'ig')
+                2. 拼接字符串
+                    -> 字面量不能直接拼接字符串
+                    -> 构造函数方式可以
+                3. 书写基本元字符 \d \w \s
+                    -> 字面量的方式可以直接书写基本元字符
+                    -> 构造函数的方式需要写双斜线 \\d \\w \\s
+    */
+    // 1. 书写标识符
+    // var r1 = /abcd/ig
+    // console.log(r1);
+    // console.log(r1.test('abCD'));
+
+    // var r2 = new RegExp('abcd', 'ig')
+    // console.log(r2);
+    // console.log(r2.test('abCD'));
+
+    // 2. 拼接字符串
+    // var s = 'HH'
+    // var n = 'NN'
+    // var reg = '/^' + s + n + '$/'
+    // console.log(typeof reg); // 字面量不可以拼接
+
+    // var s = 'HH'
+    // var n = 'NN'
+    // var reg = new RegExp('^' + s + n + '$')
+    // console.log(typeof reg);
+
+    // 3. 书写基本元字符 \d \w \s
+    // var r1 = /\d\s\w/
+    // console.log(r1);
+
+    // var r2 = new RegExp('\w\s\d')
+    // var r2 = new RegExp('\\w\\s\\d')
+    // console.log(r2);
+</script>

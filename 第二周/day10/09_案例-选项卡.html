@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol, li {
+      list-style: none;
+    }
+
+    .box {
+      width: 600px;
+      height: 400px;
+      border: 3px solid #333;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column
+    }
+
+    .box > ul {
+      height: 60px;
+      display: flex;
+    }
+
+    .box > ul > li {
+      flex: 1;
+      background-color: skyblue;
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .box > ul > li.active {
+      background-color: orange;
+    }
+
+    .box > ol {
+      flex: 1;
+      position: relative;
+    }
+
+    .box > ol > li {
+      width: 100%;
+      height: 100%;
+      background-color: purple;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      font-size: 100px;
+      color: #fff;
+
+      display: none;
+    }
+
+    .box > ol > li.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <ul>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <ol>
+      <li class="active">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ol>
+  </div>
+
+
+  <script>
+    /*
+      案例 - 选项卡(tab切换)
+        + 约定:
+          => 管 ul 下的 li 叫做 按钮
+          => 管 ol 下的 li 叫做 盒子
+        + 注意:
+          => 在循环绑定事件内, var 定义的循环控制变量没有用
+
+      需求:
+        1. 点击每一个 按钮 的时候做出一些操作
+          => 让 所有按钮中 只有点击的这个 按钮 有 active 类名
+          => 让 所有盒子中 只有和点击这个按钮配套的 盒子有 active 类名
+          => 例子:
+            -> 你点击的是 [0] 的 按钮
+              + ul 下只有 [0] 的按钮有 active
+              + ol 下只有 [0] 的盒子有 active
+            -> 你点击的是 [1] 的 按钮
+              + ul 下只有 [1] 的按钮有 active
+              + ol 下只有 [1] 的盒子有 active
+    */
+
+
+    // 0. 获取元素
+    // 0-1. 获取到所有按钮
+    var btns = document.querySelectorAll('ul > li')
+    var boxs = document.querySelectorAll('ol > li')
+
+    // 1. 循环遍历 btns
+    for (var i = 0; i < btns.length; i++) {
+      // 1-1. 把每一个元素的索引, 以自定义属性的形式记录在标签身上
+      btns[i].dataset.index = i
+
+      // 1-2. 给每一个元素绑定一个点击事件
+      btns[i].onclick = function () {
+
+        // 2. 拿到元素身上记录的自定义属性
+        var index = this.dataset.index - 0
+
+        // 3. 把 btns 和 boxs 内的每一个 li 去掉 active 类名
+        for (var j = 0; j < btns.length; j++) {
+          btns[j].classList.remove('active')
+          boxs[j].classList.remove('active')
+        }
+
+        // 4. 给 btns 和 boxs 内的 [index] 添加 active 类名
+        btns[index].classList.add('active')
+        boxs[index].classList.add('active')
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 1. 给 btns 内每一个按钮添加点击事件
+    // for (var i = 0; i < btns.length; i++) {
+
+    //   // 随着循环, 把每一个 li 的索引以自定义属性的方式记录在标签身上
+    //   btns[i].dataset.index = i
+
+    //   btns[i].onclick = function () {
+
+    //     // console.log('我被点击了')
+    //     // 关键点: 你点击的这个 li 的索引是多少
+    //     //   只要拿到我当前点击的这个 li 身上的一个叫做 data-index 的自定义属性
+    //     //   我就直到当前我点击的这个 li 索引是多少了
+    //     // console.log(i)
+    //     // 知识: 在点击事件的函数内, 可以使用一个关键字, 叫做 this
+    //     //   绑定在谁身上的事件, this 就是谁
+    //     // console.log(this)
+    //     // 拿到 this 身上的自定义属性
+    //     var index = this.dataset.index - 0
+    //     console.log(`我当前点击的这个 li 的索引是 ${ index }`)
+
+    //   }
+
+    // }
+
+    /*
+      打开页面, 循环开始执行
+        全局变量 i 赋值为 0
+          btns[0].onclick = function () { console.log(i) }
+        全局变量 i 赋值为 1
+          btns[1].onclick = function () { console.log(i) }
+        全局变量 i 赋值为 2
+          btns[2].onclick = function () { console.log(i) }
+        全局变量 i 赋值为 3
+          循环结束
+      当你可以触发点击事件的时候, 循环必然结束
+    */
+
+
+
+
+    // 1. 循环遍历 btns
+    // for (var i = 0; i < btns.length; i++) {
+
+    //   // 1-1. 把每一个元素的索引, 以自定义属性的形式记录在当前标签身上
+    //   btns[i].dataset.index = i
+
+    //   // 1-2. 给每一个元素绑定一个点击事件
+    //   btns[i].onclick = function () {
+    //     // 2. 拿到当前这个标签身上的自定义属性
+    //     var index = this.dataset.index - 0
+
+    //     // 3. 让 btns 内只有 [index] 的 li 有 active
+    //     // 3-1. 让 btns 内每一个都没有 active 类名
+    //     for (var j = 0; j < btns.length; j++) {
+    //       btns[j].classList.remove('active')
+    //     }
+    //     // 3-2. 让 btns 内 [index] 有 active
+    //     btns[index].classList.add('active')
+
+    //     // 4. 让 boxs 内只有 [index] 的 li 有 active
+    //     for (var k = 0; k < boxs.length; k++) {
+    //       boxs[k].classList.remove('active')
+    //     }
+    //     boxs[index].classList.add('active')
+
+    //   }
+    // }
+
+
+
+    // for (var i = 0; i < btns.length; i++) {
+
+    //   // 1-1. 把每一个元素的索引, 以自定义属性的形式记录在当前标签身上
+    //   btns[i].dataset.index = i
+
+    //   // 1-2. 给每一个元素绑定一个点击事件
+    //   btns[i].onclick = function () {
+    //     // 2. 拿到当前这个标签身上的自定义属性
+    //     var index = this.dataset.index - 0
+
+    //     // 3. 让 btns 内只有 [index] 的 li 有 active
+    //     // 3-1. 让 btns 内每一个都没有 active 类名
+    //     for (var j = 0; j < boxs.length; j++) {
+    //       btns[j].classList.remove('active')
+    //       boxs[j].classList.remove('active')
+    //     }
+    //     // 3-2. 让 btns 内 [index] 有 active
+    //     btns[index].classList.add('active')
+    //     boxs[index].classList.add('active')
+
+    //   }
+    // }
+  </script>
+</body>
+</html>

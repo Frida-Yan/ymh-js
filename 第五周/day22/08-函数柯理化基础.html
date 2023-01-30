@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        函数柯理化
+            - 把一次传递两个参数，变成两次每次传递一个参数
+            - 利用了闭包，把第一次传递的参数保存下来(延长生命周期)
+
+    */
+
+    // 柯理化
+    // 求和： 求 10 + x 的和
+    // function fn(num) {
+    //     return 10 + num
+    // }
+
+    // function fn1(num) {
+    //     return 20 + num
+    // }
+
+    // function curry(init) {
+    //     return function (num) {
+    //         return init + num
+    //     }
+    // }
+
+    // 一旦调用curry函数，传递参数
+    // 会形成一个闭包空间
+    // 空间中有一个init值是10 被保存下来
+    // const fn10 = curry(10)
+    // console.log(fn10(20));
+    // console.log(fn10(40));
+
+    // const fn20 = curry(20)
+    // console.log(fn20(20));
+
+    // console.log(curry(10)(20))
+
+    // 正则验证密码
+    // const reg = /^\w{6,12}$/
+    // const res = reg.test('asdfasdf')
+
+    // 把正则验证密码封装起来
+    // 方案1
+    // function testPwd(str) {
+    //     return /^\w{6,12}$/.test(str)
+    // }
+    // function testName(str){
+    //     return /^\w{7,12}$/.test(str)
+    // }
+
+    // 方案2
+    // function testReg(reg, str){
+    //     return reg.test(str)
+    // }
+    // const res = testReg(/^\w{6,12}$/, 'afasfadsf')
+
+    // 利用 闭包(柯理化) 封装
+    function test(reg) {
+        return function (str) {
+            return reg.test(str)
+        }
+    }
+    // 生成一个验证密码的函数
+    const testPwd = test(/^\w{6,12}$/)
+    const testName = test(/^\w{7,12}$/)
+
+    const res = testPwd('adfasdf')
+</script>

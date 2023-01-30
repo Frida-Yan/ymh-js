@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        借用构造函数继承/借用继承/call继承
+            - 核心 把父类构造函数当做普通函数调用，利用call来修改this指向
+    */
+
+    function Father(name, age) {
+        this.name = name
+        this.age = age
+    }
+    Father.prototype.sayHi = function () {
+        console.log(this.name);
+    }
+
+    function Son(sex, ...arg) {
+        this.sex = sex
+        // 实现继承
+        Father.call(this, ...arg)
+    }
+    const s = new Son('男', 'tom', 18)
+    console.log(s);
+    console.log(s.name);
+
+    /* 
+        分析
+        Father如果不和new使用的时候，就作为普通函数调用
+        普通函数调用， this指向 window 
+        希望son在调用的是，使用father里面的内容，同时把father里面的内容改成自己的，也就是说，希望father里面的this使用的是son的this 
+        需要使用call apply bind中的一个方法，改变this指向
+        需要father这个函数立即调用，所以不考虑bind
+        需要call和apply相比，参数的形式比较好控制，所以用call 
+
+        father.call(this,...arg)
+        立即执行father这个函数里面的代码，father里面的代码是把属性绑定到this身上，这里修改了this指向，所以属性都绑定到了son身上
+    */
+
+    /* 
+        优点 
+            把属性继承在了自己身上
+            有自己的原型
+    */
+    const s1 = new Son('女', 'lisa', 20)
+    // console.log(s1);
+
+    /* 
+        缺点
+            只能继承父类的属性，不能继承原型的方法
+    */
+    console.log(s1.sayHi);
+</script>

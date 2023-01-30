@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 200px;
+        background-color: pink;
+        position: absolute;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  /*
+    阻止默认行为
+        默认行为
+            表单标签提交
+            a标签点击
+            文本选择
+            右键
+            ....
+
+        - 阻止默认行为 
+            -> 语法 
+                标准浏览器  事件对象.preventDefault()
+                通用 return false
+
+  */
+
+  // 点击右键，右键本身的弹窗不出现，出现div, div的位置和光标的位置一样
+  // 点击左键 div消失
+
+  /* 
+        1. 什么时候触发
+            1) 右键点击
+            2) 左键点击
+        2. 什么范围触发
+            1) 右键点击  文档document
+            2) 左键点击  文档document
+        3. 什么效果
+            1) 右键点击  本身的弹窗不出现，出现div, div的位置和光标的位置一样
+            2) 左键点击  div消失
+  */
+
+  var div = document.querySelector("div");
+  // 右键点击
+  document.oncontextmenu = function (e) {
+    // 1-1 本身的弹窗不出现  阻止默认行为
+    e.preventDefault();
+    // 1-2 div出现
+    div.style.display = "block";
+    // 1-3 div的位置和光标的位置一样
+    var x = e.clientX;
+    var y = e.clientY;
+    div.style.left = x + "px";
+    div.style.top = y + "px";
+  };
+
+  // 2) 左键点击
+  document.onclick = function () {
+    div.style.display = "none";
+  };
+</script>

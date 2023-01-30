@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <p></p>
+</body>
+
+</html>
+<script>
+    /*
+        运动
+            - 用js模拟transition
+        
+        运动函数 
+            - 把运动过程用函数封装起来
+    */
+
+    // 点击div, 让div向右移动500px
+    // 0 获取元素
+    const div = document.querySelector('div')
+    // 1 绑定点击事件
+    // div.onclick = function () {
+    //     // div.style['left'] = 500 + 'px'
+
+    //     // 2 运动
+    //     // 2-1 定义一个初始值
+    //     let init = 0
+    //     const timer = setInterval(() => {
+    //         init += 5
+    //         div.style['left'] = init + 'px'
+
+    //         if (init >= 500) {
+    //             clearInterval(timer)
+    //         }
+
+    //     }, 20);
+    // }
+
+    div.onclick = function () {
+        // move(div, 'left', 500)
+        move(div, 'left', 1000)
+    }
+
+    // 点击p 向下500
+    const p = document.querySelector('p')
+    p.onclick = function () {
+        move(p, 'top', 500)
+    }
+
+    // 封装的运动函数
+    // 参数
+    //      1. 谁在动
+    //      2. 动哪个样式
+    //      3. 动到哪里 目标位置
+    // 返回值 不需要
+    function move(ele, type, target) {
+        // ele    运动元素
+        // type   运动的属性
+        // target 运动的目标
+
+        // 2-1 定义一个初始值
+        let init = 0
+        const timer = setInterval(() => {
+            init += 5
+            ele.style[type] = init + 'px'
+
+            if (init >= target) {
+                clearInterval(timer)
+            }
+
+        }, 20);
+    }
+
+</script>

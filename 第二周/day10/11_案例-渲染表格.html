@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      width: 500px;
+      margin: 30px auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <table border="1" cellspacing="0">
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>班级</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    /*
+      案例 - 渲染表格
+
+      数据渲染页面的 套路
+        1. 写好 html + css
+        2. 循环遍历数据, 重复生成你要重复出现的内容
+          => 以字符串的形式进行拼接
+          => 使用模板字符串, 重复结构直接去 html 内复制
+        3. 把你组装好的 字符串 插入到 指定结构内
+    */
+
+    // 准备一个数据
+    // var list = [ ... ]
+    var users = [
+      { id: 1, name: 'Jack', age: 18, gender: '男', classRoom: '2211' },
+      { id: 2, name: 'Rose', age: 20, gender: '女', classRoom: '2212' },
+      { id: 3, name: 'Jerry', age: 22, gender: '男', classRoom: '2211' },
+      { id: 4, name: 'Tom', age: 24, gender: '男', classRoom: '2212' }
+    ]
+    // 1. 获取元素
+    var tbodyEle = document.querySelector('tbody')
+
+    // 2. 生成结构
+    var str = ''
+    users.forEach(function (item) {
+      str += `
+        <tr>
+          <td>${ item.id }</td>
+          <td>${ item.name }</td>
+          <td>${ item.gender }</td>
+          <td>${ item.age }</td>
+          <td>${ item.classRoom }</td>
+        </tr>
+      `
+    })
+
+    // 3. 插入页面
+    tbodyEle.innerHTML = str
+  </script>
+</body>
+</html>

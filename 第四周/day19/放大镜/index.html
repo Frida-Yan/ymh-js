@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="box" id="box">
+        <!-- 展示图片的位置 -->
+        <div class="show">
+            <!-- <img src="./imgs/m.png" alt=""> -->
+            <div class="mask"></div>
+        </div>
+        <ul class="list">
+            <!-- 商品列表小图 -->
+            <!-- <li class="active" data-show='./imgs/m.png' data-enlarge='./imgs/b.png'>
+                <img src="./imgs/s.png" alt="">
+            </li>
+            <li data-show='./imgs/m.png' data-enlarge='./imgs/b.png'>
+                <img src="./imgs/s.png" alt="">
+            </li> -->
+        </ul>
+        <div class="enlarge">
+            <!-- 大图 -->
+            <!-- <img src="./imgs/b.png" alt=""> -->
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./enlarge.js"></script>
+<script>
+    // 面向对象的方式开发放大镜
+    const en = new Enlarge('#box')
+    console.log(en);
+</script>

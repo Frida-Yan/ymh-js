@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 0;
+            /* left: 0px; */
+            left: 300px;
+            opacity: 1;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 0;
+            /* left: 0; */
+            left: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- <p></p> -->
+</body>
+
+</html>
+<script>
+    /*
+       问题 当前运动函数只能运动一个属性
+       原因 参数位置不对
+       解决
+            方案1 增加参数位置
+            move(ele, type1, target1, type2, target2....)
+            缺点 麻烦
+
+            方案2 传递对象属性
+            动几个属性，就把这个属性当做一个对象传入
+            move(div, {
+                left: 500,
+                top: 300,
+                opacity: 1
+            })
+        
+    */
+
+
+    const div = document.querySelector('div')
+
+    div.onclick = function () {
+        // move(div, 'opacity', 0.56)
+        move(div, {
+            left: 500,
+            top: 300,
+            opacity: 0.56,
+            'border-radius': 50
+        })
+    }
+
+    function move(ele, options) {
+        // options 是一个对象 
+        for (let k in options) {
+            // k是对象的键名 
+            const type = k
+            let target = options[k]
+            // 如果是opacity 那么目标放大100 
+            if (type === 'opacity') {
+                target *= 100
+            }
+            const timer = setInterval(() => {
+                // 1. 获取当前的值
+                // 1-1 如果是opacity 当前值放大100
+                let current
+                if (type === 'opacity') {
+                    current = window.getComputedStyle(ele)[type] * 100
+                } else {
+                    current = parseInt(window.getComputedStyle(ele)[type])
+                }
+                // 2. 计算剩余路程的1/10 ，也就是本次运动的距离， 向上取整
+                // 2-1 判断是不是opacity
+                let duration = (target - current) / 10
+                duration = duration > 0 ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10)
+
+                // 3. 判断当前的位置要不要停止定时器
+                if (current === target) {
+                    clearInterval(timer)
+                } else {
+                    // 判断type是不是opacity
+                    if (type === 'opacity') {
+                        ele.style[type] = (current + duration) / 100
+                    } else {
+                        ele.style[type] = current + duration + 'px'
+                    }
+                }
+
+            }, 20);
+        }
+
+
+
+    }
+
+
+    // function move(ele, type, target) {
+    //     // 如果是opacity 那么目标放大100
+    //     if (type === 'opacity') {
+    //         target *= 100
+    //     }
+    //     const timer = setInterval(() => {
+    //         // 1. 获取当前的值
+    //         // 1-1 如果是opacity 当前值放大100
+    //         let current
+    //         if (type === 'opacity') {
+    //             current = window.getComputedStyle(ele)[type] * 100
+    //         } else {
+    //             current = parseInt(window.getComputedStyle(ele)[type])
+    //         }
+    //         // 2. 计算剩余路程的1/10 ，也就是本次运动的距离， 向上取整
+    //         // 2-1 判断是不是opacity
+    //         let duration = (target - current) / 10
+    //         duration = duration > 0 ? Math.ceil((target - current) / 10) : Math.floor((target - current) / 10)
+
+    //         // 3. 判断当前的位置要不要停止定时器
+    //         if (current === target) {
+    //             clearInterval(timer)
+    //         } else {
+    //             // 判断type是不是opacity
+    //             if (type === 'opacity') {
+    //                 ele.style[type] = (current + duration) / 100
+    //             } else {
+    //                 ele.style[type] = current + duration + 'px'
+    //             }
+    //         }
+
+    //     }, 20);
+    // }
+
+</script>

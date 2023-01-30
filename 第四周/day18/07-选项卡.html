@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            display: flex;
+            width: 500px;
+            height: 100px;
+            margin: 50px auto 0;
+        }
+
+        ul li {
+            flex: 1;
+            height: 100px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 100px;
+            font-size: 40px;
+        }
+
+        ol {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        ol li {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #000;
+            display: none;
+        }
+
+        .active {
+            background-color: orange;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab1">
+        <ul>
+            <li class="active">蔬菜</li>
+            <li>水果</li>
+            <li>零食</li>
+        </ul>
+        <ol>
+            <li>
+                <div>土豆</div>
+                <div>黄瓜</div>
+                <div>西红柿</div>
+            </li>
+            <li class="show">
+                <div>苹果</div>
+                <div>香蕉</div>
+                <div>橘子</div>
+            </li>
+            <li>
+                <div>薯片</div>
+                <div>可乐</div>
+                <div>炸鸡</div>
+            </li>
+        </ol>
+    </div>
+    <div class="tab2">
+        <ul>
+            <li class="active">蔬菜</li>
+            <li>水果</li>
+            <li>零食</li>
+            <li>药品</li>
+        </ul>
+        <ol>
+            <li>
+                <div>土豆</div>
+                <div>黄瓜</div>
+                <div>西红柿</div>
+            </li>
+            <li class="show">
+                <div>苹果</div>
+                <div>香蕉</div>
+                <div>橘子</div>
+            </li>
+            <li>
+                <div>薯片</div>
+                <div>可乐</div>
+                <div>炸鸡</div>
+            </li>
+            <li>
+                <div>连花清瘟</div>
+                <div>999</div>
+                <div>布洛芬</div>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>
+<script>
+    /* 
+        生成选项卡的构造函数需要什么属性和方法
+    */
+    // 构造函数
+    function Tabs(name) {
+        // 构造函数里面的this指向 创建好的新对象 tabs
+        // 可以先获取 名字为name的 元素
+        this.box = document.querySelector(name)
+        // 获取上面的tab盒子
+        this.btns = this.box.querySelectorAll('ul>li')
+        // 获取下面的container盒子
+        this.container = this.box.querySelectorAll('ol>li')
+        // 点击事件，遍历
+        // 封装一个函数，构造函数的方法写在原型上
+    }
+
+    // 构造函数的方法写在原型上
+    // init就是一个初始化方法, 设置了btns的点击切换事件
+    Tabs.prototype.init = function () {
+        // 这个this 指向的是 创建好的新对象 tabs
+        console.log(this, 1);
+        for (let i = 0; i < this.btns.length; i++) {
+            this.btns[i].addEventListener('click', () => {
+                console.log(this, 2);
+                // ? 这个this 指向的是谁 事件处理函数的this 指向的是事件源
+                // 这个this有问题，希望指向的是tabs, 也就是实例化的对象，也就是外面的this
+                // 希望把事件处理函数里面的this和父级统一
+                // 1. bind
+                // 2. 把父级的this保存 
+                // 3. 箭头函数
+                this.btns.forEach(item => {
+                    item.classList.remove('active')
+                })
+                this.btns[i].classList.add('active')
+
+                this.container.forEach(item => {
+                    item.classList.remove('show')
+                })
+                this.container[i].classList.add('show')
+            })
+        }
+    }
+
+    // 实例化
+    const tabs = new Tabs('.tab1')
+    // 实例化后的tabs就是一个选项卡demo
+    // tabs身上有一个init事件，这个事件是做启动，一旦启动了，就可以触发点击事件
+    tabs.init()
+
+    // 实例化
+    const tabs2 = new Tabs('.tab2')
+    tabs2.init()
+
+
+</script>

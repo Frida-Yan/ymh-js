@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  /*
+    事件绑定方式
+        - DOM 0级 事件
+            -> 语法   事件源.on事件类型 = 事件处理函数
+            -> 特点   同一个事件源的同一个事件类型只能绑定一个事件处理函数
+        
+        - DOM 2级 事件(事件侦听器 事件监听)
+            -> 语法   事件源.addEventListener('事件类型', 事件处理函数)
+            -> 特点   可以个同一个事件源的同一个事件类型绑定多个事件处理函数，会按照顺序依次触发
+
+  */
+
+  var div = document.querySelector("div");
+
+  //   div.onclick = function () {
+  //     console.log("绑定了一个点击事件");
+  //   };
+
+  //   div.onclick = function () {
+  //     console.log("再绑定一个事件");
+  //   };
+
+  // dom 2级事件
+
+  div.addEventListener("click", function () {
+    console.log("绑定一个点击事件");
+  });
+
+  function clickFn() {
+    console.log("再绑定一个点击事件");
+  }
+  div.addEventListener("click", clickFn);
+</script>

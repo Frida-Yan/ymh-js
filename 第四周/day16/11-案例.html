@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        案例 
+        把字符串中满足正则规则的片段全部获取，放到一个数组中返回
+    */
+
+    var reg = /\d{3}/g
+    var str = 'adfa123sals456hdfl789kasakhdf012'
+
+    // 思考
+    // 循环 执行重复的步骤
+    // 循环多少次，循环的终止条件是啥
+    // 只要捕获的结果不是null, 就要再次循环
+
+    // while(捕获的结果不是null){
+    //     把捕获的结果放到数组中
+    // }
+
+    // 0 准备一个新数组
+    var arr = []
+    var res = reg.exec(str)
+    while (res !== null) {
+        arr.push(res[0])
+        // 这段代码能不能结束 ? 
+        // 不能 res没有变化
+        // 修改res的值，让循环继续 
+        res = reg.exec(str)
+    }
+    console.log(arr);
+</script>

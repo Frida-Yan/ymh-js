@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单验证</title>
+</head>
+
+<body>
+    <fieldset style="width: 800px; margin: 50px auto">
+        <legend>表单注册：</legend>
+        <form action="success.html">
+            <p>
+                <label for="">用户名：</label><input type="text" class="username" /><span class="usernameSpan"></span>
+            </p>
+            <p>
+                <label for="">密&emsp;码：</label><input type="text" class="password" /><span class="passwordSpan"></span>
+            </p>
+            <p>
+                <label for="">手机号：</label><input type="text" class="tel" /><span class="telSpan"></span>
+            </p>
+            <p><input type="submit" value="用户注册" class="submit" /></p>
+        </form>
+    </fieldset>
+</body>
+
+</html>
+<script>
+    // 表单案例
+    /*
+        需求
+            点击用户名输入框，右侧展示文字 ‘中英文均可,最长14个英文或7个汉字’   文字黑色
+            用户名输入框失去焦点进行校验
+                1. 没有值的时候提示 用户名不能为空            文字红色
+                2. 有值但是长度不对的时候提示 用户名长度有误    文字红色
+                3. 有值但是格式不对的时候提示 用户名格式有误    文字红色
+                4. 有值且正确提示           √               文字绿色
+                5. 检查注册按钮是否禁用
+
+            点击密码输入框，右侧展示文字 ‘请输入6-12位密码’   文字黑色
+            密码输入框输入内容的时候进行密码强度判断
+                1. 允许 (数字，大写字母，小写字母，特殊字符)
+                2. 一种字符 弱(不允许通过)                 提示 弱 红色
+                3. 二种或者三种字符  中                    提示 中 橘色
+                4. 四种字符  强                           提示 强 绿色
+            密码输入框失去焦点进行校验  
+                1. 没有值的时候提示 密码不能为空            文字红色
+                2. 有值但是长度不对的时候提示 密码长度有误    文字红色
+                3. 有值且密码强度为强正确提示           √   文字绿色
+                4. 检查注册按钮是否禁用
+
+            点击电话输入框提示文字 请输入正确的11位手机号码     文字黑色
+            电话输入框失去焦点
+                1. 没有值的时候提示 电话不能为空            文字红色
+                2. 有值但是长度不对的时候提示 电话长度有误    文字红色
+                3. 有值但是格式不对的时候提示 电话格式有误    文字红色
+                4. 有值且正确提示           √               文字绿色
+                5. 检查注册按钮是否禁用
+    */
+
+    // 0 准备变量
+    let passwordFlag = false  // 设置密码强度
+    let usernameFlag = false // 设置用户名校验是否通过
+    let telFlag = false // 设置电话校验是否通过
+    // 0 准备元素
+    const username = document.querySelector('.username')
+    const usernameSpan = document.querySelector('.usernameSpan')
+    const password = document.querySelector('.password')
+    const passwordSpan = document.querySelector('.passwordSpan')
+    const tel = document.querySelector('.tel')
+    const telSpan = document.querySelector('.telSpan')
+    const submit = document.querySelector('.submit')
+
+    checkInput()
+    // 检查注册按钮的禁用启用状态
+    function checkInput() {
+        if (usernameFlag && passwordFlag && telFlag) {
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    }
+
+    // 1 点击用户名输入框，右侧展示文字 ‘中英文均可,最长14个英文或7个汉字’   文字黑色
+    username.onfocus = function () {
+        // 1-1 右侧展示文字
+        usernameSpan.innerHTML = '中英文均可,最长14个英文或7个汉字'
+        // 1-2 文字设置黑色
+        usernameSpan.style.color = '#333'
+    }
+    // 2 用户名输入框失去焦点进行校验
+    username.onblur = function () {
+        // 其他数据类型转布尔，只有5个转为false : ''  0 undefined null NaN
+        if (!this.value) {
+            // 2-1 没有值的时候提示 用户名不能为空            文字红色
+            usernameSpan.innerHTML = '用户名不能为空'
+            usernameSpan.style.color = 'red'
+            usernameFlag = false
+        } else {
+            // 2-2 有值但是长度不对的时候提示 用户名长度有误    文字红色
+            // 2-2-1 把一个中文转成两个英文
+            let str = this.value.replace(/[\u4e00-\u9fa5]/g, '**')
+            let len = str.length
+            if (len > 14) {
+                // 2-2-2 长度不对的时候
+                usernameSpan.innerHTML = '用户名长度有误'
+                usernameSpan.style.color = 'red'
+                usernameFlag = false
+            } else {
+                // 校验格式 只需要验证是不是中英文就可以
+                let reg = /^[a-zA-Z\u4e00-\u9fa5]+$/
+                let res = reg.test(this.value)
+                if (res) {
+                    // 验证通过，用户名正确
+                    usernameSpan.innerHTML = '√'
+                    usernameSpan.style.color = 'green'
+                    usernameFlag = true
+                } else {
+                    // 有值但是格式不对的时候提示 用户名格式有误    文字红色
+                    usernameSpan.innerHTML = '用户名格式有误'
+                    usernameSpan.style.color = 'red'
+                    usernameFlag = false
+                }
+            }
+        }
+        checkInput()
+    }
+
+    // 3 点击密码输入框，右侧展示文字 ‘请输入6-12位密码’   文字黑色
+    password.onfocus = function () {
+        passwordSpan.innerHTML = '请输入6-12位密码'
+        passwordSpan.style.color = '#333'
+    }
+
+    // 4 密码输入框容的时候进行密码强度判断
+    password.oninput = function () {
+        // 1. 允许 (数字，大写字母，小写字母，特殊字符)
+        // 2. 一种字符 弱(不允许通过)                 提示 弱 红色
+        // 3. 二种或者三种字符  中                    提示 中 橘色
+        // 4. 四种字符  强                           提示 强 绿色
+        // 计数器 统计密码的字符种类
+        let count = 0
+        let regNum = /[0-9]+/
+        let regUpper = /[A-Z]+/
+        let regLower = /[a-z]+/
+        let regOther = /[\W_]+/
+
+
+
+        if (regNum.test(password.value)) {
+            count++
+        }
+        if (regUpper.test(password.value)) {
+            count++
+        }
+        if (regLower.test(password.value)) {
+            count++
+        }
+        if (regOther.test(password.value)) {
+            count++
+        }
+
+        switch (count) {
+            case 1:
+                passwordSpan.innerHTML = '弱'
+                passwordSpan.style.color = 'red'
+                passwordFlag = false
+                break;
+            case 2:
+            case 3:
+                passwordSpan.innerHTML = '中'
+                passwordSpan.style.color = 'orange'
+                passwordFlag = false
+                break;
+            case 4:
+                passwordSpan.innerHTML = '强'
+                passwordSpan.style.color = 'green'
+                passwordFlag = true
+                break;
+        }
+    }
+
+    // 5. 密码输入框失去焦点进行校验
+    password.onblur = function () {
+        if (!this.value) {
+            // 没有值的时候提示 密码不能为空            文字红色
+            passwordSpan.innerHTML = '密码不能为空'
+            passwordSpan.style.color = 'red'
+            passwordFlag = false
+        } else {
+            let len = this.value.length
+            if (len < 6 || len > 12) {
+                // 有值但是长度不对的时候提示 密码长度有误    文字红色
+                passwordSpan.innerHTML = '密码长度有误'
+                passwordSpan.style.color = 'red'
+                passwordFlag = false
+            } else if (passwordFlag === true) {
+                // 有值且密码强度为强正确提示           √   文字绿色
+                passwordSpan.innerHTML = '√'
+                passwordSpan.style.color = 'green'
+            }
+        }
+        checkInput()
+    }
+
+    //  6. 点击电话输入框提示文字 请输入正确的11位手机号码     文字黑色
+    tel.onfocus = function () {
+        telSpan.innerHTML = '请输入正确的11位手机号码'
+        telSpan.style.color = '#333'
+    }
+
+    // 7. 电话输入框失去焦点
+    tel.onblur = function () {
+        // 7-1 没有值的时候提示 电话不能为空            文字红色 
+        if (!this.value) {
+            telSpan.innerHTML = '电话不能为空'
+            telSpan.style.color = 'red'
+            telFlag = false
+        } else {
+            let len = this.value.length
+            if (len !== 11) {
+                telSpan.innerHTML = '电话长度有误'
+                telSpan.style.color = 'red'
+                telFlag = false
+            } else {
+                // 格式校验
+                let reg = /^1\d{10}$/
+                if (reg.test(this.value)) {
+                    // 手机号格式正确
+                    telSpan.innerHTML = '√'
+                    telSpan.style.color = 'green'
+                    telFlag = true
+                } else {
+                    telSpan.innerHTML = '电话格式有误'
+                    telSpan.style.color = 'red'
+                    telFlag = false
+                }
+            }
+
+        }
+        checkInput()
+    }
+</script>

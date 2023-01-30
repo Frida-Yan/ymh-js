@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>第一个p</p>
+    <div class="box" id="box">
+      hello
+      <p>你好</p>
+      <!-- 注释 -->
+      <p>小花</p>
+      world
+    </div>
+    <p>第二个p</p>
+  </body>
+</html>
+<script>
+  /*
+    获取节点
+        - 获取元素节点
+            非常规元素节点
+                html: document.documentElement
+                body: document.body
+                head: document.head
+            常规元素节点
+                getElementById
+                getElementsByClassName
+                getElementsByTagName
+                querySelector
+                querySelectorAll
+
+  */
+
+  /*
+     - 获取节点的方式
+        1. childNodes
+            - 节点.childNodes
+            - 获取的是该节点所有的子级节点
+        2. children
+            - 节点.children
+            - 获取的是该节点的所有子级元素节点
+        3. firstChild
+            - 节点.firstChild
+            - 获取该节点的第一个子节点
+        4. firstElementChild
+            - 节点.firstElementChild
+            - 获取该节点的第一个子元素节点
+        5. lastChild
+            - 节点.lastChild
+            - 获取该节点的最后一个子节点
+        6. lastElementChild
+            - 节点.lastElementChild
+            - 获取该节点的最后一个子元素节点
+        7. previousSibling
+            - 节点.previousSibling
+            - 获取该节点的上一个兄弟节点
+        8. previousElementSibling
+            - 节点.previousElementSibling
+            - 获取该节点的上一个兄弟元素节点
+        9. nextSibling
+            - 节点.nextSibling
+            - 获取该节点的下一个兄弟节点
+        10. nextElementSibling
+            - 节点.nextElementSibling
+            - 获取该节点的下一个兄弟元素节点
+        11. parentNode
+            - 节点.parentNode
+            - 获取的该节点的父节点
+        12. parentElement
+            - 节点.parentElement
+            - 获取的该节点的父元素节点
+        13. attributes 
+            - 节点.attributes
+            - 获取该元素的所有属性节点
+
+  */
+  var div = document.querySelector("div");
+  // childNodes
+  //   console.log(div.childNodes);
+  // children
+  //   console.log(div.children);
+  // firstChild
+  //   console.log(div.firstChild);
+  // firstElementChild
+  //   console.log(div.firstElementChild);
+  // lastChild
+  //   console.log(div.lastChild);
+  // lastElementChild
+  //   console.log(div.lastElementChild);
+  // previousSibling
+  //   console.log(div.previousSibling);
+  // previousElementSibling
+  //   console.log(div.previousElementSibling);
+  // nextSibling
+  //   console.log(div.nextSibling);
+  // nextElementSibling
+  //   console.log(div.nextElementSibling);
+  // parentNode
+  //   console.log(div.parentNode);
+  // parentElement
+  //   console.log(div.parentElement);
+  // attributes
+  console.log(div.attributes);
+</script>

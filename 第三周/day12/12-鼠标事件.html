@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        overflow: hidden;
+      }
+      p {
+        padding: 0;
+        margin: 0;
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p></p>
+    </div>
+  </body>
+</html>
+<script>
+  /*
+    鼠标事件
+  */
+  var div = document.querySelector("div");
+  // * 1. click 鼠标左键点击
+  //   div.onclick = function () {
+  //     console.log("鼠标左键点击");
+  //   };
+
+  // 2. dblclick 鼠标左键双击
+  // 是要是300ms内有两次click就会触发双击
+  //   div.ondblclick = function () {
+  //     console.log("鼠标左键双击");
+  //   };
+
+  // *  3. contextmenu 鼠标右键单击
+  //   div.oncontextmenu = function () {
+  //     console.log("鼠标右键单击");
+  //   };
+
+  //  * 4. mousedown 鼠标按下
+  //   div.onmousedown = function () {
+  //     console.log("鼠标按下");
+  //   };
+
+  // *  5. mouseup 鼠标抬起
+  //   div.onmouseup = function () {
+  //     console.log("鼠标抬起");
+  //   };
+
+  // * 6. mousemove 鼠标移动
+  //   div.onmousemove = function () {
+  //     console.log("鼠标移动");
+  //   };
+
+  // 7. mouseover 鼠标移入
+  // 注意  mouseover 和 mouseout 在鼠标移入到子元素上依然可以触发
+  //   div.onmouseover = function () {
+  //     console.log("鼠标移入");
+  //   };
+
+  //   // 8. mouseout 鼠标移出
+  //   div.onmouseout = function () {
+  //     console.log("鼠标移出");
+  //   };
+
+  // * 9. mouseenter 鼠标移入事件
+  // mouseenter 和 mouseleave 在鼠标移入子元素的时候，不会触发
+  //   div.onmouseenter = function () {
+  //     console.log("鼠标移入事件");
+  //   };
+
+  // *  // 10. mouseleave 鼠标离开
+  //   div.onmouseleave = function () {
+  //     console.log("鼠标离开");
+  //   };
+</script>

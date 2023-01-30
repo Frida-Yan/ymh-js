@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="text" id="inp1">
+    <input type="text" id="inp2">
+</body>
+
+</html>
+<script>
+    /* 
+        封装函数实现数据劫持
+    */
+
+    // 原始对象
+    const obj = {
+        name: 'tom',
+        age: 18,
+        list: [1, 2, 3, 4]
+    }
+
+    function observer(obj, fn) {
+        let target = {}
+        for (let k in obj) {
+            Object.defineProperty(target, k, {
+                get() {
+                    return obj[k]
+                },
+                set(val) {
+                    obj[k] = val
+                    fn(target)
+                }
+            })
+        }
+        fn(target)
+        return target
+    }
+
+    let app = observer(obj, (target) => {
+        box.innerHTML = `我的姓名是${target.name},我今年${target.age}岁`
+    })
+    console.log(app);
+    inp1.oninput = function (e) {
+        app.name = e.target.value
+    }
+    inp2.oninput = function (e) {
+        app.age = e.target.value
+    }
+</script>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        函数柯理化封装
+            - 有可能是多个参数在互相利用
+            - 需要两个功能
+                1. 功能函数
+                2. 收集参数
+    */
+
+    /*
+        功能
+            拼接地址栏字符串
+            http://localhost:8080/abcde
+            
+            - 传输协议 http https
+            - 域名 localhost
+            - 端口号 0 ~ 65535
+            - 地址  /abcde  /a/b /a/b/index.html
+
+            -> 固定 传输协议 域名 端口号
+            -> 不固定 地址
+
+            http + localhost + 80 + 地址1
+            http + localhost + 80 + 地址2
+            https + localhost + 443 + 地址1
+            https + localhost + 443 + 地址2
+            https + 127.0.0.1 + 81 + 地址1
+            https + 127.0.0.1 + 82 + 地址2
+            https + 127.0.0.1 + 83 + 地址3
+            https + taobao.com + 123 + 地址1
+    */
+
+    // 柯理化函数的封装
+    //  把一个功能函数 按照 柯理化的方式 封装起来
+    //  让这个功能函数变成一种柯理化的调用方式
+
+    // function fn(a, b, c, d) {
+    //     return a + b + c + d
+    // }
+
+    // 柯理化函数封装
+    // fn()
+    // fn()()
+    // fn()()()
+    // fn()()()()
+
+    // 功能函数 必传
+    // 基础参数 可选
+    // function currying(功能函数, 基础参数) {
+    //     // 收集参数，判断是否符合功能函数所需的参数个数
+    //     // 如果够了 就进行功能函数调用
+    //     // 如果不够 继续收集 --- currying
+    // }
+
+    // 功能函数
+    function fn(a, b, c, d) {
+        return a + '://' + b + ':' + c + d
+    }
+    function currying(fn, ...arg) {
+        // ...arg收集了需要拼接的参数
+        // console.log('功能函数', fn);
+        // console.log('拼接的基本参数', ...arg);
+
+        // 在外部的函数进行参数处理
+        let _arg = arg || []
+        // 判断功能函数的参数需要几个
+        // 语法 函数名.length
+        // 得到 该函数的形参的个数 
+        const len = fn.length
+
+        // 返回一个内部函数
+        return function (...arg) {
+            _arg = [..._arg, ...arg]
+            // 进行判断个数
+            if (_arg.length < len) {
+                return currying(fn, ..._arg)
+            } else {
+                return fn(..._arg)
+            }
+        }
+    }
+    // currying(fn, 'http')
+
+    // 将来使用的时候
+    // const r1 = currying(fn, 'http')
+    // // console.log(r1);
+    // const r2 = r1('localhost')
+    // // console.log(r2);
+    // const r3 = r2('8080')
+    // console.log(r3);
+    // const r4 = r3('/a')
+    // console.log(r4);
+
+    // const r1 = currying(fn, 'http', 'localhost', '8080', '/a')
+
+    // const r1 = currying(fn, 'http', 'localhost')
+    // const r2 = r1('8080', '/a')
+    // console.log(r2);
+</script>

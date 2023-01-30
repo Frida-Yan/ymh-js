@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    this指向 (熟读并背诵全文  作业 抄)
+        什么是this 
+            -> 是一个js内的关键字
+            -> 是一个使用在作用域内的关键字
+                1. 要么使用在全局  (this => window)
+                2. 要么使用在函数内
+
+        函数内的this指向
+            -> 概念  不管函数怎么定义，不管函数在哪定义，只看函数调用方式
+            -> 函数的调用方式决定了函数的this
+                1. 普通调用
+                    - 函数名()
+                    - this ===> window 
+                2. 对象调用
+                    var obj = {
+                        a: function() {}
+                    }
+                    obj.a()
+                    - 对象名.函数名()
+                    - this ===> .前面是谁就是谁 
+                3. 定时器调用
+                    - setTimeout(函数, 数字)
+                    - setInterval(函数, 数字)
+                    - this ==> window 
+                4. 事件处理函数
+                    - 事件源.on事件类型 = 函数
+                    - 事件源.addEventListener(事件类型,函数)
+                    - this => 事件源
+
+                ....
+  */
+
+  // 在全局使用this  this指向window  , this === window
+  //   console.log(this);
+  //   console.log(window);
+  //   console.log(window === this);
+
+  // 1. 普通调用  this===> window
+  //   function fn() {
+  //     console.log(this); // window
+  //   }
+
+  //   fn();
+
+  // 2. 对象调用
+  //   function fn() {
+  //     console.log(this);
+  //     console.log(this.name);
+  //   }
+
+  //   // 把fn这个函数当做一个值存在对象中键名为f的位置
+  //   var obj = {
+  //     name: "小花",
+  //     f: fn,
+  //   };
+  //   obj.f();
+
+  // 3. 定时器调用 this 指向window
+  //   function fn() {
+  //     console.log(this);
+  //   }
+  //   setTimeout(fn, 2000);
+
+  //   var username = "tom";
+  //   function fn() {
+  //     console.log(this);
+  //     console.log(this.username);
+  //   }
+  //   var obj = {
+  //     username: "小花",
+  //     f: fn,
+  //   };
+  //   setTimeout(obj.f, 2000);
+
+  // 4. 事件处理函数 this指向事件源
+
+  //   function fn() {
+  //     console.log(this);
+  //   }
+  //   document.onclick = fn;
+
+  //   function fn() {
+  //     console.log(this);
+  //   }
+  //   var obj = {
+  //     username: "小花",
+  //     f: fn,
+  //   };
+  //   document.onclick = obj.f;
+
+  function fn() {
+    console.log(this);
+  }
+  var obj = {
+    username: "小花",
+    f: fn,
+  };
+  document.onclick = function () {
+    console.log(this, 1);
+    setTimeout(obj.f, 2000); // window
+  };
+
+  // 练习
+  //   function fn() {
+  //     console.log(this);
+  //     console.log(this.username);
+  //   }
+
+  //   var username = "tom";
+  //   var obj1 = { username: "jerry", f: fn };
+  //   var obj2 = { username: "nick", a: obj1 };
+
+  // 普通调用
+  //   fn();
+
+  // 对象调用
+  //   obj1.f();
+  //   obj2.a.f();
+
+  // 练习
+  var username = "tom";
+  function fn() {
+    console.log(this); // window
+    console.log(this.username); // tom
+
+    this.username = "jerry";
+    console.log(this.username); // jerry
+    console.log(window.username); // jerry
+  }
+  fn();
+</script>

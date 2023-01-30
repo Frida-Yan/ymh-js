@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+  </body>
+</html>
+<script>
+  /*
+    键盘事件
+        - 可以给所有元素绑定键盘事件, 不是所有元素都能触发键盘事件
+        - 一般给 window/document/表单元素 绑定键盘元素
+        - 键盘事件不考虑中文
+  */
+  var inp = document.querySelector("input");
+  // 1. keydown 键盘按下事件
+  //   inp.onkeydown = function () {
+  //     console.log("键盘按下事件");
+  //   };
+
+  // 2. keyup 键盘抬起
+  //   inp.onkeyup = function () {
+  //     console.log("键盘抬起");
+  //   };
+
+  // 3. keypress 键盘键入事件
+  // 注意  按下的内容必须和出现的内容一致
+  inp.onkeypress = function () {
+    console.log("键盘键入事件");
+  };
+</script>

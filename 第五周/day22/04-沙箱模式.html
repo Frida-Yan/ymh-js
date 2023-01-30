@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        沙箱模式
+            - 利用闭包
+            - 利用函数内 间接 返回一个对象
+            - 外部函数返回一个对象， 对象内书写多个函数
+    */
+
+    function outer() {
+        let a = 100
+        let b = 200
+
+        // 创建一个对象 -- 沙箱
+        const obj = {
+            // 书写一个函数，目的是为了获取私有变量a
+            getA: function () {
+                return a
+            },
+            getB() {
+                return b
+            },
+            setA: function (val) {
+                a = val
+            }
+        }
+
+        return obj
+    }
+
+    // 调用外部的函数，获取obj 
+    // const res = outer()
+
+    // 利用obj， 访问里面的变量
+    // console.log(res.getA()); // 100
+    // console.log(res.getB()); // 200
+
+    // // 修改a
+    // res.setA(1000)
+    // console.log(res.getA());
+
+    // =========================
+    // 思考
+    const res = outer()// 返回了一个对象
+    res.setA(1000)
+    console.log(res.getA());
+
+    const res1 = outer() // 返回了一个新对象
+    console.log(res1.getA());
+</script>

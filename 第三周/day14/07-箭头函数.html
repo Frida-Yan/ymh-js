@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        ES6 箭头函数
+            - ES6 中 新的书写函数的方式
+            - 是对于函数表达式的简写 
+    
+                事件源.on事件类型 = function(){}
+                xxx.forEach(function(){})
+                ...
+    
+            -> 语法  () => {}
+                ()  书写形参的位置
+                =>  箭头函数的标志
+                {}  书写代码的位置
+    
+            - 特点
+                1. 可以省略小括号不写
+                    -> 当形参只有一个的时候可以不写小括号
+                2. 可以省略大括号不写
+                    -> 当函数体只有一句话，可以不写大括号，
+                    -> 会自动把这句话的结果当做函数的返回值
+                3. 箭头函数没有arguments
+                    arguments: 是函数参数的默认集合，天生存在
+                4. 箭头函数没有this
+                    -> 箭头函数内的this 就是该作用域外部作用域的this 
+                    -> 箭头函数外面的函数this是啥，箭头函数this就是啥
+                    -> 注意: 事件处理函数不要用箭头函数，会改变this指向
+                5. 箭头函数不能当做构造函数使用
+                    -> 不能和 new 关键字连用
+      */
+    //    document.onclick = function() {
+    //     console.log(1);
+    //    }
+
+    //   document.onclick = () => {
+    //     console.log(1);
+    //   };
+
+    // 1. 当形参只有一个的时候可以省略小括号不写
+    //   const fn = a => {
+    //     return a + 10;
+    //   };
+    //   console.log(fn(5));
+
+    // 2. 当{}只有一句话，可以省略{}不写， 而且会自动把这句话当做函数的返回值
+    // const fn = a => a + 10
+    // console.log(fn(5));
+
+
+    // const arr = [
+    //     {id:1, username:'tom',age: 18},
+    //     {id:2, username:'jerry',age: 19},
+    //     {id:3, username:'nick',age: 20},
+    // ]
+    // const id = 3
+    // 找到数组中id为3的这一项  --> find 
+    // const res = arr.find(function(item){
+    //     return item.id === id
+    // })
+    // console.log(res);
+
+    // const res = arr.find(item=> item.id === id)
+    // console.log(res);
+
+    // 3. 箭头函数中没有arguments 
+    // function fn() {
+    //     // arguments 表示函数参数的集合
+    //     console.log(arguments, arguments.length, arguments[0]);
+
+    // }
+    // fn(10, 20, 30, 40)
+
+    // const fn = () => {
+    //     console.log(arguments);
+    // }
+    // fn(10, 20, 30, 40)
+
+    // 4. 箭头函数没有this 
+
+    // const fn = () => {
+    //     console.log(this);
+    // }
+    // fn()
+
+    // const obj = {
+    //     a: 100, 
+    //     f: ()=>{
+    //         console.log(this);
+    //     }
+    // }
+    // obj.f()
+
+    // document.onclick = () => {
+    //     console.log(this);
+    // }
+
+    // document.onclick = function() {
+    //     console.log(this); // 事件处理函数的this指向window
+    //     var fn = () => {
+    //         console.log(this, 1);
+    //     }
+    //     fn() // 箭头函数定义在事件处理函数作用域中，this指向父级
+    // }
+
+
+</script>

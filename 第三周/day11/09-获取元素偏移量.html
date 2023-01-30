@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      div {
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+        overflow: hidden;
+        margin: 40px;
+      }
+      p {
+        width: 300px;
+        height: 300px;
+        background-color: green;
+        margin: 30px;
+        overflow: hidden;
+      }
+      span {
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: cyan;
+        border: 10px solid #000;
+        margin: 20px;
+      }
+      h2 {
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        background-color: orange;
+        /* border: 10px solid red; */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div>
+      <p>
+        <span></span>
+      </p>
+    </div> -->
+
+    <h2></h2>
+  </body>
+</html>
+<script>
+  /* 
+        获取元素偏移量
+            1. offset 
+                - 获取偏移量参考元素
+                    -> 语法  元素.offsetParent
+                    -> 得到的是该元素偏移量参考的元素
+                        1. 如果该元素没有定位，参考body
+                        2. 如果该元素有定位，参考包含块
+                - 获取元素偏移量
+                    -> 语法  
+                        元素.offsetTop
+                        元素.offsetLeft
+                    -> 得到的是该元素 距离 参考父级 之间的距离
+            2. client
+                - 语法 
+                    元素.clientList
+                    元素.clientTop
+                - 得到的是 元素 (内容+padding) 与 border 左上角的间距
+                    就是上边框和左边框的宽度
+    */
+  // 0 获取元素
+  //   var span = document.querySelector("span");
+  //   console.log(span.offsetParent);
+  //   console.log(span.offsetTop, span.offsetLeft);
+
+  var h2 = document.querySelector("h2");
+  console.log(h2.clientTop, h2.clientLeft);
+</script>

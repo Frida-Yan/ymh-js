@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <span>1</span>
+      <span>2</span>
+    </div>
+  </body>
+</html>
+<script>
+  /*
+    插入节点
+        1. appendChild()
+            - 语法  父节点.appendChild(子节点)
+            - 作用  把 子节点 插入到 父节点中， 在最后面的位置
+        2. insertBefore()
+            - 语法  父节点.insertBefore(子节点, 谁的前面)
+            - 作用  把 子节点 插入到 父节点中，并且放到某一个节点的前面
+            - 注意  第二个参数必须写，但是第二个参数有没有可以忽略
+  */
+
+  // 1. appendChild()
+  //   var ele = document.createElement("h1");
+  //   ele.innerText = "你好";
+  //   console.log(ele);
+
+  // 获取元素
+  //   var div = document.querySelector("div");
+  // 父节点.appendChild(子节点)
+  //   div.appendChild(ele);
+
+  // 2. insertBefore
+  var ele = document.createElement("h1");
+  ele.innerText = "你好";
+  // 父节点.insertBefore(子节点, 谁的前面)
+  var div = document.querySelector("div");
+  var span = document.querySelector("span:nth-of-type(2)");
+
+  div.insertBefore(ele, span);
+</script>

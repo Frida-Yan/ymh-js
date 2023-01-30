@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+      }
+      ul {
+        display: flex;
+        width: 500px;
+        height: 100px;
+        margin: 50px auto 0;
+      }
+      ul li {
+        flex: 1;
+        height: 100px;
+        border: 1px solid #000;
+        text-align: center;
+        line-height: 100px;
+        font-size: 40px;
+      }
+      ol {
+        width: 500px;
+        margin: 0 auto;
+      }
+      ol li {
+        width: 500px;
+        height: 400px;
+        border: 1px solid #000;
+        display: none;
+      }
+      .active {
+        background-color: orange;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>蔬菜</li>
+      <li class="active">水果</li>
+      <li>零食</li>
+    </ul>
+    <ol>
+      <li>
+        <div>土豆</div>
+        <div>黄瓜</div>
+        <div>西红柿</div>
+      </li>
+      <li class="show">
+        <div>苹果</div>
+        <div>香蕉</div>
+        <div>橘子</div>
+      </li>
+      <li>
+        <div>薯片</div>
+        <div>可乐</div>
+        <div>炸鸡</div>
+      </li>
+    </ol>
+  </body>
+</html>
+<script>
+  /*
+    选项卡
+        点击对应的tab， 展示相应的内容
+
+        点击对应的tab， 
+            1. 该tab添加active名字，其他的tab应该去掉active名字
+            2. 内容展示相应的内容，对应的内容盒子应该有show,其他的去掉
+
+  */
+
+  /* 
+      for (var i = 0; i < tabList.length; i++) {
+        tabList[i].onclick = function () {
+            console.log(i);
+        };
+     }
+      用var声明的变量
+
+      第1次循环  var i = 0
+      第2次循环   i = 1     i是同一个变量
+      第2次循环   i = 2     i是同一个变量
+  */
+
+  /* 
+       for (let i = 0; i < tabList.length; i++) {
+            tabList[i].onclick = function () {
+            console.log(i);
+            };
+        }
+
+        {
+            第1次循环  let i = 0
+        }
+        {
+            第2次循环  let i = 1
+        }
+        {
+            第3次循环  let i = 2
+        }
+        let 声明的变量在每次的循环中都有个一个块级作用域 ， 每个块级作用域里面的i都是不一样
+  */
+
+  // 0 获取元素
+  // 0-1 获取tab盒子
+  var tabList = document.querySelectorAll("ul li");
+  // 0-2 获取内容盒子
+  var containerList = document.querySelectorAll("ol li");
+
+  for (let i = 0; i < tabList.length; i++) {
+    tabList[i].onclick = function () {
+      tabList.forEach(function (item) {
+        item.classList.remove("active");
+      });
+      tabList[i].classList.add("active");
+
+      containerList.forEach(function (item) {
+        item.classList.remove("show");
+      });
+      containerList[i].classList.add("show");
+    };
+  }
+</script>

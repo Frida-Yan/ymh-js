@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>h1标签</h1>
+    </div>
+
+    <ul>
+      <li>li1</li>
+      <li>li2</li>
+      <li>li3</li>
+      <li>li4</li>
+      <li>li5</li>
+    </ul>
+  </body>
+</html>
+<script>
+  /*
+    删除节点
+        1. removeChilde()
+            - 语法 父节点.removeChild(子节点)
+            - 作用 把 子节点 从 父节点中删除
+        2. remove 
+            - 语法 节点.remove()
+            - 作用 把自己删除
+  */
+
+  // 1. removeChild
+  //   var div = document.querySelector("div");
+  //   var h1 = document.querySelector("h1");
+
+  //   div.removeChild(h1);
+
+  // 2. remove
+  var liList = document.querySelectorAll("li");
+  liList.forEach(function (item) {
+    item.onclick = function () {
+      item.remove();
+    };
+  });
+</script>

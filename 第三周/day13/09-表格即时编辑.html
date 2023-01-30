@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+      </tr>
+      <tr>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+      </tr>
+      <tr>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+      </tr>
+      <tr>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+        <td>11111111111111</td>
+      </tr>
+    </table>
+  </body>
+</html>
+<script>
+  // 点击td td里面产生一个输入框，输入框的内容是td原来的文字，
+  // 输入框失去焦点，td里面变成文字，文字是输入框中已经输入好的内容
+
+  // 1. 什么时候触发
+  //     点击 td
+  //     input 失去焦点
+  // 2. 什么范围触发
+  // 3. 什么效果
+  //     点击 td  input出现 input里面的内容是td原来的文字
+  //     input 失去焦点  td里面变成文字
+
+  var tdList = document.querySelectorAll("td");
+  tdList.forEach(function (td) {
+    td.onclick = function () {
+      // 当td里面有一个input的时候就不需要触发下面的代码
+      // 当td里面没有input的时候就需要触发下面的代码
+      // "td里面没有子元素的时候"  td.children.length === 0
+      if (td.children.length === 0) {
+        var str = `<input type='text' value=${td.innerHTML}>`;
+        td.innerHTML = str;
+      }
+
+      // 输入框失去焦点
+      // 怎么获取输入框
+      td.children[0].onblur = function () {
+        // 输入框失去焦点
+        var value = td.children[0].value;
+        td.innerHTML = value;
+      };
+    };
+  });
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    创建节点
+        -> document.createElement()
+        -> document.createTextNode
+    插入
+        父节点.appendChild(子节点)
+        父节点.insertBefore(子节点,谁的前面)
+    删除 
+        父节点.removeChild(子节点)
+        节点.remove()
+    替换
+        父节点.replaceChild(换上, 换下)
+    克隆
+        节点.cloneNode()
+
+    节点属性
+        nodeType 节点类型
+        nodeName 节点名称
+        nodeValue 节点内容
+
+    事件三要素
+        事件源
+        事件类型 
+        事件处理函数
+
+    事件绑定
+        dom0级
+            事件源.on事件类型 = 事件处理函数
+        dom2级
+            事件源.addEventListen(事件类型, 事件处理函数)
+
+    事件解绑
+        dom0级
+            事件源.on事件类型  = null 
+        dom2级
+            事件源.removeEventListener(事件类型, 事件处理函数)
+
+    事件对象
+        鼠标事件
+            client
+                事件对象.clientX
+                事件对象.clientY
+                光标相对于浏览器可视窗口左上角的坐标
+            page
+                事件对象.pageX
+                事件对象.pageY
+                光标相对于文档流左上角
+            offset
+                事件对象.offsetX
+                事件对象.offsetY
+                光标相对于  准确触发事件的 左上角的坐标
+  */
+</script>

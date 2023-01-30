@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        创建对象的方法
+
+        面向对象的过程中有一个生产对象的过程， 我们把这个生产的过程可以认为是一个机器
+
+        这个机器可以做的事情
+            1. 批量生产
+            2. 具有属性和方法
+                    属性相似但是不同
+                        (以轮播图为例, 轮播图机器生产的轮播图大小，数量，播放方式不相同)
+                    方法是相同的
+                        (轮播图机器生产的轮播图，点击上一张和点击下一张)
+    */
+
+
+    /* 
+        1. 用字面量的方式生产对象
+            - 不能批量生产
+    */
+    // const obj1 = {name:'tom'}
+    // const obj2 = {username:'jerry'}
+
+    /* 
+        2. 用内置构造函数的方式生产对象
+            - 不能批量生产
+    */
+    // const obj1 = new Object({name:"tom"})
+    // const obj2 = new Object({username:"jerry"})
+
+    /* 
+        3. 工厂函数方式生产对象
+            3-1 创建一个工厂函数
+            3-2 利用工厂函数批量产生对象
+    */
+
+    // function createObj(name, age) {
+    //     // 1. 手动创建一个对象
+    //     const obj = {}
+    //     // 2. 给对象设置一些东西
+    //     obj.name = name
+    //     obj.age = age
+    //     obj.sayHi = function () {
+    //         // this指向谁  工厂函数产生的对象
+    //         console.log(this.name);
+    //     }
+    //     // 3. 返回这个对象
+    //     return obj
+    // }
+
+    // let obj1 = createObj('小花', 17)
+    // let obj2 = createObj('小红', 77)
+    // let obj3 = createObj('小明', 107)
+
+    // console.log(obj1, obj2, obj3);
+    // obj1.sayHi()
+    // obj2.sayHi()
+    // obj3.sayHi()
+
+    /* 
+        4. 自定义构造函数方式创建对象
+            - 特点 和 new 关键字连用
+    */
+
+    // 4-1 书写一个构造函数
+    function createObj(name, age) {
+        // 1. 自动创建对象
+        // 2. 手动给对象添加东西
+        // 给谁添加东西 this
+        this.name = name
+        this.age = age
+        // 3. 自动返回对象
+    }
+
+    const obj1 = new createObj('小花', 17)
+    const obj2 = new createObj('小明', 77)
+    console.log(obj1, obj2);
+
+    /*
+        今天的任务
+            - 学会书写构造函数
+    */
+</script>

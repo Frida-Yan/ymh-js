@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.header,
+			.footer {
+				width: 1200px;
+				margin: 0 auto;
+				background-color: skyblue;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 50px;
+				height: 120px;
+				color: #fff;
+			}
+
+			.footer {
+				height: 300px;
+			}
+
+			ul,
+			li {
+				list-style: none;
+			}
+
+			ul {
+				width: 1200px;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0 auto;
+				justify-content: space-between;
+				padding-top: 10px;
+			}
+
+			li {
+				width: 290px;
+				border: 1px solid #333;
+				margin-bottom: 10px;
+				padding: 5px;
+				box-sizing: border-box;
+			}
+
+			li > img {
+				width: 278px;
+				display: block;
+			}
+
+			.pagination {
+				width: 1200px;
+				margin: 10px auto;
+				height: 50px;
+				display: flex;
+				align-items: center;
+			}
+
+			.pagination > .prev,
+			.pagination > .next {
+				width: 50px;
+				height: 30px;
+				cursor: pointer;
+				background-color: orange;
+				font-size: 24px;
+				color: #fff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.pagination > .disable {
+				cursor: not-allowed;
+				background-color: #ccc;
+			}
+
+			.pagination > .total {
+				font-size: 30px;
+				font-weight: 700;
+				margin: 0 20px;
+			}
+
+			.pagination > select {
+				font-size: 22px;
+				padding-left: 20px;
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">网页头部</div>
+		<div class="pagination">
+			<span class="prev">&lt;</span>
+			<span class="total">1 / 100</span>
+			<span class="next">&gt;</span>
+			<select>
+				<option value="4">4</option>
+				<option value="8">8</option>
+				<option value="12">12</option>
+				<option value="16">16</option>
+			</select>
+		</div>
+		<ul></ul>
+		<div class="footer">网页底部</div>
+
+		<script src="./dm_list.js"></script>
+		<script>
+			console.log(list);
+
+			/* 
+                功能 根据分页展示内容
+                1. 数据展示   
+                   1-1 列表展示
+                     第一页，    展示 [0] ~ [3]   
+                     点击下一页  展示 [4] ~ [7]
+                     点击下一页  展示 [8] ~ [11]
+                     ...
+                     截取数组中的指定索引的数据，进行展示 ==> slice
+                     找规律，当前的页码的变量为 current, 每页展示的数量为 pagesize
+                    current === 1 , 截取[0] ~ [3]  ===> list.slice(0, 4) 
+                    current === 2 , 截取[4] ~ [7]  ===> list.slice(4, 8)
+                    current === 3 , 截取[8] ~ [11]  ===> list.slice(8, 12)
+
+                    list.slice((current-1)*pagesize, current*pagesize)
+                    1-2 上一页按钮状态
+                    1-3 下一页按钮状态
+                    1-4 当前页
+                    1-5 总页数
+                    1-6 下拉框内容
+                2. 功能键 上一页 下一页  页码/总页数  切换一页是多少条
+
+                    2-1： 总页数 total 怎么算？
+                        Math.ceil(总数list.length / 一页多少条 pagesize )
+
+                    2-2： 点击下一页
+                        =>  如果是最后一页， 下一页不能点击 禁用 disable
+                            current === total, 禁用
+                        =>  current++ 截取数据展示
+
+                    2-3: 点击上一页
+                        => 如果是第一页，上一页不能点击 禁用 disabled 
+                            current === 1 禁用
+                        => current-- 截取数据展示
+
+                    2-4: 切换一页多少条 pagesize
+                         1） 修改pagesize的值
+                         2） 修改后回到第一页，截取数据展示
+
+                分析需要做的事情
+                    1. 数据展示
+                        上一页按钮状态
+                        下一页按钮状态
+                        当前页
+                        总页数
+                        下拉框展示的内容
+                        列表
+                    2. 点击上一页
+                    3. 点击下一页
+                    4. 选择下拉框
+            */
+
+			// 0 准备变量
+			// 0-1 当前页
+			var current = 1;
+			// 0-2 每页多少天
+			var pagesize = 4;
+			// 0-3 一共多少页
+			var total = Math.ceil(list.length / pagesize);
+
+			// 0 准备元素
+			var ul = document.querySelector("ul");
+			var prev = document.querySelector(".prev");
+			var next = document.querySelector(".next");
+			var totalBox = document.querySelector(".total");
+			var selectEle = document.querySelector("select");
+
+			// 1. 数据展示
+			function renderHtml() {
+				// 1-1 根据当前的页码，截取数据进行渲染
+				var renderList = list.slice(
+					(current - 1) * pagesize,
+					current * pagesize
+				);
+				var str = "";
+				renderList.forEach(function (item) {
+					str += `
+                            <li>
+                                <img src="${item.pic}" alt="">
+                                <p>${item.name}</p>
+                                <p>城市: ${item.city}</p>
+                                <p>地址: ${item.address}</p>
+                                <p>价格: ${item.price}</p>
+                                <p>时间: ${item.showTime}</p>
+                            </li>
+                            `;
+				});
+				ul.innerHTML = str;
+				// 1-2 展示上一页
+				//         上一页按钮状态
+				//         下一页按钮状态
+				//         当前页
+				//         总页数
+				// 上一页按钮状态
+				prev.className = current === 1 ? "disable prev" : "prev";
+				// 下一页状态
+				next.className = current === total ? "disable next" : "next";
+				// 总页面
+				totalBox.innerHTML = ` ${current} / ${total} `;
+			}
+			// 一打开页面就需要展示数据
+			renderHtml();
+
+			// 点击下一页
+			next.onclick = function () {
+				if (current === total) return;
+				current++;
+				renderHtml();
+			};
+			// 点击上一页
+			prev.onclick = function () {
+				if (current === 1) return;
+				current--;
+				renderHtml();
+			};
+			// 切换
+			selectEle.onchange = function () {
+				pagesize = selectEle.value;
+				current = 1;
+				total = Math.ceil(list.length / pagesize);
+				renderHtml();
+			};
+		</script>
+	</body>
+</html>

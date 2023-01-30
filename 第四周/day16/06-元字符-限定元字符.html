@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        元字符--限定元字符
+            修饰前面 一个 符号出现的次数
+
+        1. *         表示  0 ~ 正无穷次
+        2. +         表示  1 ~ 正无穷次
+        3. ?         表示  0 ~ 1 次
+        4. {n}       表示  限定n次
+        5. {n,}      表示  至少n次
+            -> {0,}  0 ~ 正无穷
+            -> {1,}  1 ~ 正无穷
+        6. {n,m}     表示n ~ m次
+            -> {0,1} 表示  0 ~ 1 次
+    */
+
+    // 1. *
+    // 规则   表示字符串从开头到结尾只能由 0 ~ 多个 数字组成
+    // var reg = /^\d*$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('123'));
+    // console.log(reg.test('12345'));
+    // console.log(reg.test('a'));
+
+    // 2. +
+    // 规则  表示字符串从开通到结尾只能由 1 ~ 多个 数字组成
+    // var reg = /^\d+$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('123'));
+    // console.log(reg.test('12345'));
+    // console.log(reg.test('a'));
+
+    // 3. ?
+    // 规则  表示字符串从开头到结尾只能由 0 ~ 1 数字组成
+    // var reg = /^\d?$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('123'));
+    // console.log(reg.test('12345'));
+    // console.log(reg.test('a'));
+
+    // 4. {n}
+    // 规则 表示字符串从开头到结尾只能由2个数字组成
+    // var reg = /^\d{2}$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('13'));
+    // console.log(reg.test('1345'));
+    // console.log(reg.test('a'));
+
+    // 5. {n, }
+    // 规则 表示字符串从开头到结尾只能由 5 ~ 多个 数字组成
+    // var reg = /^\d{5,}$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('13'));
+    // console.log(reg.test('13454'));
+    // console.log(reg.test('a'));
+
+    // 6. {n, m}
+    // 规则 表示字符串从开头到结尾只能由 3 ~ 5 数字组成
+    // var reg = /^\d{3,5}$/
+    // console.log(reg.test(''));
+    // console.log(reg.test('1'));
+    // console.log(reg.test('13'));
+    // console.log(reg.test('13454'));
+    // console.log(reg.test('a'));
+
+    // 练习
+    // 规则 表示字符串 包含3个数字就可以
+    // var reg = /\d{3}/
+    // console.log(reg.test('abc123abc132abc'));
+
+    // var reg = /小花/ // 只要字符串中包含小花
+    // console.log(reg.test('小花'));
+    // console.log(reg.test('小 花'));
+    // console.log(reg.test('小小花'));
+    // console.log(reg.test('小红花'));
+
+    // var reg = /^abcd$/
+    // console.log(reg.test('abcd'));
+    // console.log(reg.test('aabbcd'));
+
+    // var reg = /^abcd{2}$/
+    // console.log(reg.test('abcd'));
+    // console.log(reg.test('abcdd'));
+    // console.log(reg.test('aabbccdd'));
+    // console.log(reg.test('aabbccd'));
+
+</script>

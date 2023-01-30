@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    /*
+      浏览器本地存储 - cookie
+
+      特点:
+        1. 只能存储字符串, 有固定的格式
+          => key=value; key2=value2; key3=value3
+        2. cookie 存储大小有限制
+          => 4KB 左右
+        3. 存储的时效性
+          => 默认是会话级别时效, 可以手动设置过期时间
+        4. 操作必须依赖服务器
+          => 本地打开的页面是不能操作 cookie
+          => 要求页面必须在服务器打开
+        5. 跟随前后端请求自动携带
+          => 只要 cookie 空间中有内容的时候
+          => 会在该页面和后端交互的过程中自动携带
+        6. 前后端操作
+          => 前端可以使用 JS 来操作
+          => 任何一个后端语言都可以操作
+        7. 存储依赖域名
+          => 哪一个域名存储, 哪一个域名使用
+          => 不能跨域名通讯
+
+      解决问题: 如何让页面在服务器打开
+        + 什么是 本地 和 服务器打开
+          => file:// 协议打开的就是本地打开
+            -> 没有域名
+            -> 直接就是本地电脑硬盘的地址
+          => 有域名, 打开就是服务器打开
+            -> 不会看到本地电脑的盘符
+        + 如何在服务器打开
+          => 借助 vscode 的插件在服务器打开
+          => 插件: live server
+          => 再次打开页面的时候
+            -> 注意: 你的侧边栏目录需要有一个文件夹为根目录
+            -> 点击右键  open with live server
+    */
+
+
+    /*
+      cookie 的操作
+
+      设置一条 cookie
+        + 语法: document.cookie = 'key=value'
+
+      设置一条带有过期时间的 cookie
+        + 语法: document.cookie = 'key=value;expires=时间对象'
+        + 注意: 不管你给他的时间对象是什么时区的时间节点, 都按照世界标准时间计算
+          => 你获取的时间对象是 北京时间 15:13
+          => 你就把 15:13 设置为该 cookie 的过期时间了
+          => cookie 会把 15:13 当做世界标准时间使用
+          => 该 cookie 会在世界标准时间 15:13 过期
+          => 也就是北京时间 23:13 过期
+        + 设置一条 30s 以后过期的 cookie
+          => 拿到当前时间, 向前调整 8 小时
+          => 再向后调整 30s 就可以了
+
+    */
+
+    // 设置一条 cookie
+    // 设置了一条叫做 a 的 cookie 存储的值是 100
+    // document.cookie = 'a=100'
+    // document.cookie = 'b=200'
+
+    // 设置一条带有过期时间的 cookie
+    // var time = new Date()
+    // document.cookie = 'a=100;expires=' + time
+
+    // 设置一条 30s 以后过期的 cookie
+    // var time = new Date()
+    // time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 1000 * 30)
+    // // console.log(time)
+    // document.cookie = 'a=100;expires=' + time
+
+
+    // 封装函数设置 cookie
+    //   参数1: 你要设置的 key
+    //   参数2: 你要设置的 value
+    //   参数3(选填): 多少秒以后过期
+    function setCookie(key, value, expires) {
+      // 1. 调整一个时间对象
+      // 问题: 所有情况都需要设置 事件对象 吗 ?
+      //   传递了第三个参数需要设置
+      //   没传递第三个参数不需要设置
+      // 问题: 你如何知道第三个参数传递与否 ?
+      //   传递了第三个参数, 那么 expires 的值是 正整数
+      //   没有传递第三个参数, 那么 expires 的值是 undefined
+      if (expires) {
+        // 表示传递了第三个参数
+        var time = new Date()
+        time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 1000 * expires)
+      }
+
+      // 2. 设置 cookie
+      document.cookie = `${ key }=${ value };expires=${ time }`
+    }
+
+    // 将来使用的时候
+    setCookie('a', 100, 30)
+    setCookie('b', 200)
+
+
+
+    /*
+      获取 cookie
+        + 语法: document.cookie
+        + 得到: 完整的 cookie 字符串
+    */
+
+    // console.log(document.cookie)
+
+    // 直接封装函数获取 cookie
+    function getCookie() {
+      // 1. 拿到 cookie
+      var cookie = document.cookie
+
+      // 2. 准备一个对象
+      var obj = {}
+
+      // 3. 按照 '; ' 切割
+      var arr = cookie.split('; ')
+
+      // 4. 遍历数组
+      arr.forEach(function (item) {
+        // 5. 按照等于开切开 item
+        var t = item.split('=')
+
+        // 6. 插入对象
+        obj[t[0]] = t[1]
+      })
+
+      // 7. 返回 obj
+      return obj
+    }
+
+
+    var res = getCookie()
+    console.log(res)
+
+
+
+  </script>
+</body>
+</html>

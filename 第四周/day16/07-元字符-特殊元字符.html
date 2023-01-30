@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        元字符 - 特殊元字符
+            1. ()
+                -> 含义1 单独捕获(欠着)
+                -> 含义2 一个整体
+            2. |
+                -> 或
+                -> 注意  或的边界到小括号或者正则边界
+            3. []
+                -> 包含
+                -> 注意  一个[] 只占一个字符位置
+                -> 书写在[]里面的任意一个都行
+            4. [^]
+                -> 非
+                -> 一个[^]只占一个字符位置
+                -> 书写在[^]里面的任意一个都不行
+            5. -
+                -> 到
+                -> 注意 必须是unicode编码连着的才可以写
+                -> [0-9] 等价于  \d
+                -> [^0-9]   等价于  \D
+                -> [0-9A-Za-z_]  等价于  \w
+                -> [^0-9A-Za-z_]  等价于  \W
+                -> [\u4e00-\u9fa5] 表示所有中文
+
+
+    */
+    // 1. ()
+    // 此时 {2} 修饰的是前面的一个()，表示()里面的内容整体出现2次
+    // var reg = /^(abc){2}$/
+    // console.log(reg.test('abc'));
+    // console.log(reg.test('abcc'));
+    // console.log(reg.test('abcabc'));
+
+    // 2. |
+    // 规则 ()里面的内容出现两次, () 里面的内容是abc 或者 def
+    //  /^(abc|def)(abc|def)$/
+    // var reg = /^(abc|def){2}$/
+    // console.log(reg.test('abc'));
+    // console.log(reg.test('def'));
+    // console.log(reg.test('abcabc'));
+    // console.log(reg.test('abcdef'));
+    // console.log(reg.test('defdef'));
+
+    // 或的分界线在哪里 ===> 小括号 () 或者 正则边界 //
+    // 对 c|d
+    // ^abc | def$
+    // var reg = /^abc|def$/
+    // /*
+    //     假设 c|d 成立
+    //     /^abcef$/
+    //     /^abdef$/
+    // */
+    // console.log(reg.test('abcef'));
+    // console.log(reg.test('abdef'));
+    // console.log(reg.test('abcasdfasdfas'));
+    // console.log(reg.test('aassdfasdfdef'));
+
+    // var reg = /^(abc|def)$/
+    // console.log(reg.test('abc'));
+    // console.log(reg.test('def'));
+
+    // 3. []
+    // 该字符串只能有一位字符，这个字符可以是 a b c d中的任意一个
+    // var reg = /^[abcd]$/
+    // console.log(reg.test('a'));
+    // console.log(reg.test('b'));
+    // console.log(reg.test('c'));
+    // console.log(reg.test('d'));
+    // console.log(reg.test('aa'));
+    // console.log(reg.test('e'));
+
+    // 4. [^]
+    // 该字符串只能有一个字符,这个字符串除了abcd都可以
+    // var reg = /^[^abcd]$/
+    // console.log(reg.test('a'));
+    // console.log(reg.test('b'));
+    // console.log(reg.test('c'));
+    // console.log(reg.test('d'));
+    // console.log(reg.test('aa'));
+    // console.log(reg.test('e'));
+
+    // 5. -
+    // 表示该字符串只能有一个字符组成 ， 这个字符可以是0-9任意一个
+    var reg = /^[0-9]$/
+    console.log(reg.test(''));
+    console.log(reg.test('0'));
+    console.log(reg.test('9'));
+    console.log(reg.test('a'));
+
+
+</script>

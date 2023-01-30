@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .big {
+        width: 500px;
+        height: 500px;
+        background-color: green;
+        padding: 100px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+      .middle {
+        width: 300px;
+        height: 300px;
+        padding: 100px;
+        background-color: pink;
+        border-radius: 50%;
+      }
+      .small {
+        width: 100px;
+        height: 100px;
+        padding: 100px;
+        background-color: orange;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="big">
+      <div class="middle">
+        <div class="small"></div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  /*
+    事件传播 
+        当行为发生的时候，会按照 父级 依次向上传递， 直到window
+    
+    传播的三个阶段
+        1 捕获  从window传递到事件目标的过程
+        2 目标  准确触发事件的元素
+        3 冒泡  从事件目标传递到window的过程
+
+    事件流机制
+        可以在冒泡阶段触发事件，也可以在捕获阶段触发事件 
+        默认是冒泡阶段触发事件
+        完整过程  捕获 -> 目标 -> 冒泡
+
+    触发捕获阶段的事件(了解)
+        addEventListener接受三个参数
+            -> addEventListener('事件类型', 事件处理函数, true/false)
+                true  捕获阶段触发
+                false  冒泡阶段触发 默认
+  */
+
+  var s = document.querySelector(".small");
+  var m = document.querySelector(".middle");
+  var b = document.querySelector(".big");
+  // 捕获阶段
+  //   s.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-s");
+  //     },
+  //     true
+  //   );
+  //   m.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-m");
+  //     },
+  //     true
+  //   );
+  //   b.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-b");
+  //     },
+  //     true
+  //   );
+  //   document.body.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-body");
+  //     },
+  //     true
+  //   );
+  //   document.documentElement.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-html");
+  //     },
+  //     true
+  //   );
+  //   document.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-document");
+  //     },
+  //     true
+  //   );
+  //   window.addEventListener(
+  //     "click",
+  //     function () {
+  //       alert("捕获阶段-window");
+  //     },
+  //     true
+  //   );
+
+  //   // 冒泡阶段
+  //   s.addEventListener("click", function () {
+  //     alert("冒泡阶段-s");
+  //   });
+  //   m.addEventListener("click", function () {
+  //     alert("冒泡阶段-m");
+  //   });
+
+  //   b.addEventListener("dblclick", function () {
+  //     alert("冒泡阶段-b");
+  //   });
+
+  //   document.body.addEventListener("click", function () {
+  //     alert("冒泡阶段-body");
+  //   });
+  //   document.documentElement.addEventListener("click", function () {
+  //     alert("冒泡阶段-html");
+  //   });
+  //   document.addEventListener("click", function () {
+  //     alert("冒泡阶段-document");
+  //   });
+  //   window.addEventListener("click", function () {
+  //     alert("冒泡阶段-window");
+  //   });
+
+  /* 
+  问题1  事件流顺序     捕获 --- 目标   ---- 冒泡
+  问题2  如果b没有写事件，后面的代码还会执行吗        --- 继续执行 因为事件流会继续传递
+  问题3  如果b的事件不是click 而是dblclick 还会触发这个事件吗 --- 不执行， 因为事件只会触发同一个事件类型
+  */
+
+  // 说出下列代码的顺序
+  s.addEventListener("click", function () {
+    alert("s");
+  });
+  m.addEventListener("click", function () {
+    alert("m");
+  });
+  b.addEventListener(
+    "click",
+    function () {
+      alert("b");
+    },
+    true
+  );
+  document.body.addEventListener(
+    "click",
+    function () {
+      alert("body");
+    },
+    true
+  );
+  document.documentElement.addEventListener("click", function () {
+    alert("html");
+  });
+  document.addEventListener(
+    "click",
+    function () {
+      alert("document");
+    },
+    true
+  );
+  window.addEventListener("click", function () {
+    alert("window");
+  });
+</script>

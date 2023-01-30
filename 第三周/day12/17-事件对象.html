@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  /*
+    事件对象
+        - 当事件行为发生的时候，浏览器主动记录的一个对象数据，内部存储了关于本次事件的相关信息
+
+    获取事件对象
+        - 标准浏览器
+            在事件处理函数有一个参数，参数就是事件对象
+        - IE浏览器
+            IE浏览器天生有一个事件对象 window.event
+  */
+
+  var div = document.querySelector("div");
+  // 标准浏览器
+  div.onclick = function (e) {
+    console.log(e);
+  };
+
+  // IE 浏览器事件对象
+  div.onclick = function () {
+    console.log(window.event);
+  };
+
+  // 兼容性操作
+  div.onclick = function (e) {
+    var e = e || window.event;
+  };
+</script>

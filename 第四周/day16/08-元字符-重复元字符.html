@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        元字符-重复元字符
+            符号: \数字
+            作用: 表示重复第n个小括号的内容，要求和第n个小括号的内容一模一样
+    */
+
+    // 表示这个()里面的整体内容出现2次就可以。不要求一模一样
+    // var reg = /^(abc|def){2}$/
+
+    // 表示 \1 位置 需要出现一个 和 第一个 小括号 一模一样的内容
+    // var reg = /^(abc|def)\1$/
+    // console.log(reg.test('abcabc'));
+    // console.log(reg.test('defdef'));
+    // console.log(reg.test('abcdef'));
+
+    // var reg = /^<(p|span)><\/\1>$/
+    // console.log(reg.test('<p></p>'));
+    // console.log(reg.test('<span></span>'));
+    // console.log(reg.test('<p></span>'));
+
+
+    // 问题？
+    // 表示重复第2个小括号的内容，要求和第2个小括号的内容一模一样
+    // var reg = /^(abc|def)\2$/
+    // console.log(reg.test('abcabcabc'));
+    // console.log(reg.test('abcdefdef'));
+    // console.log(reg.test('abcabcdef'));
+
+    var reg = /^(abc|def)(哈哈|嘻嘻)\2$/
+    console.log(reg.test('abc哈哈哈哈'));
+    console.log(reg.test('abc哈哈嘻嘻'));
+    console.log(reg.test('abc嘻嘻嘻嘻'));
+
+</script>

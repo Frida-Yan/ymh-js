@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+</body>
+
+</html>
+<script>
+    /*
+        函数节流和防抖
+        防抖 --- 回城
+        节流 --- 技能cd
+    */
+
+    /*
+         函数防抖
+             短时间内快速触发同一个事情
+             每一次都用下一次干掉上一次，永远执行最后一次
+    */
+    // const inp = document.querySelector('input')
+
+    // inp.oninput = debounce(function () {
+    //     console.log(this.value);
+    // })
+
+    // function debounce(cb = () => { }) {
+    //     let timer = null
+    //     return function () {
+    //         clearInterval(timer)
+    //         timer = setTimeout(() => {
+    //             // 时间到了之后要做的事情
+    //             cb.call(this)
+    //         }, 2000);
+    //     }
+    // }
+
+
+    /*
+        函数节流
+        + 短时间内快速触发同一个事件
+        + 第一次执行过程中, 不能重复触发, 等到第一次执行完毕后, 才可以触发第二次
+    */
+    const inp = document.querySelector('input')
+
+    // let flag = false
+    // inp.oninput = function () {
+    //     // console.log(this.value); 
+    //     if (flag) return
+    //     flag = true
+    //     setTimeout(() => {
+    //         console.log(this.value);
+    //         flag = false
+    //     }, 2000);
+    // }
+
+
+    inp.oninput = throttle(function () {
+        console.log(this.value);
+    })
+    function throttle(cb = () => { }) {
+        let flag = false
+        return function () {
+            if (flag) return
+            flag = true
+            setTimeout(() => {
+                flag = false
+                cb.call(this)
+            }, 2000);
+        }
+    }
+</script>

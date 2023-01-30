@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    this
+      是一个使用在作用域的关键字
+      - 全局作用域   this 指向 window
+      - 私有作用域   
+          -> 不管函数在哪定义 ，怎么定义，只关心函数调用方式
+
+          1. 普通调用 this指向window
+          2. 对象调用 this指向的 点 前面的
+          3. 定时器   this指向window 
+          4. 事件处理函数   this指向事件源
+          5. 箭头函数 this看父级作用域的this
+
+      改变this指向
+        1. call
+            - 函数名.call(新指向, 参数2)
+            从参数2开始依次是形参赋值
+        2. apply
+           - 函数名.apply(新指向, [形参])
+           - 第二个参数是一个数组，数组中依次是形参赋值
+        3. bind
+           - 函数名.bing(新指向, 参数2...)
+           从参数2开始依次是形参赋值
+           bind不会立即执行，返回一个新函数
+
+        =======================
+        ES6 （ECMAScript2015）
+        - 定义变量 
+          let     变量
+          const   常量 
+        - let/const var 区别
+          1. 预解析
+            let/const 不能预解析 
+            var       可以预解析
+          2. 变量重名
+            let/const 不可以
+            var       可以
+          3. 块级作用域 (可以执行代码的{} 都是块级作用域)
+            let/const 有块级作用域
+            var       没有块级作用域， 只要函数可以限制使用范围
+          let  const区别
+            4. let 定义的变量可以重新赋值
+               const 定义的变量不可以重新赋值
+            5. 初始化赋值
+               let  可以初始化不赋值
+               const  初始化必须赋值
+            
+          2. 箭头函数  
+             var 函数名 = () => {}
+
+             1. () 形参位置 ，如果只有一个形参，那么()可以省略不写
+             2. => 箭头函数的标识
+             3. {} 放置代码段 , 如果代码段只有一句话，那么{} 可以不写，默认把这句代码当做该函数的返回值
+             4. 箭头函数没有this, this是定义的时候的父级作用域的this
+             5. 箭头函数没有arguments
+             6. 箭头函数不能作为构造函数，不能和new连用
+  */
+</script>

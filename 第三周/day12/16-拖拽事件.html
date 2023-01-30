@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+      p {
+        width: 300px;
+        height: 300px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 设置  draggable 属性 让元素可以拖拽 -->
+    <div draggable="true"></div>
+    <p draggable="true"></p>
+  </body>
+</html>
+<script>
+  /*
+    拖拽事件
+        - 拖拽关联两个元素
+            1. 拖拽元素 正在拖着的元素
+            2. 拖放元素 将要松手放置的元素
+        - 如何让一个元素可以被拖拽
+            给元素设置一个属性 draggable = 'true'
+  */
+
+  var div = document.querySelector("div");
+  var p = document.querySelector("p");
+  // 1. dragstart 开始拖拽
+  //   div.ondragstart = function () {
+  //     console.log("开始拖拽");
+  //   };
+
+  //   // 2. drag 拖拽移动
+  //   div.ondrag = function () {
+  //     console.log("正在拖着走");
+  //   };
+
+  //   // 3. dragend 拖拽结束
+  //   div.ondragend = function () {
+  //     console.log("拖拽结束");
+  //   };
+
+  // 4. dragenter 拖拽元素进入拖放元素范围内触发
+  //   p.ondragenter = function () {
+  //     console.log("把别的元素拖进来");
+  //   };
+
+  //   // 5. dragleave 拖拽元素离开拖放元素范围触发
+  //   p.ondragleave = function () {
+  //     console.log("把别的元素拖走了");
+  //   };
+
+  // 6. dragover 拖拽元素完全进入元素范围内触发
+  p.ondragover = function () {
+    console.log("拖进来了");
+    // 阻止默认行为
+    return false;
+  };
+
+  // 7. drop  拖拽元素在拖放元素范围内放手的时候触发
+  // 注意  如果想要让drop事件生效， 需要阻止 dragover事件的默认行为
+  p.ondrop = function () {
+    console.log("把元素拖进来撒手");
+  };
+</script>

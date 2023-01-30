@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+    ES6类的语法
+        - 就是构造函数的语法糖
+        - 语法 
+            class 类名 { 构造器, 原型上的方法... }
+    */
+
+
+    // 缺点
+    // 构造函数如果不写new 也可以使用
+    // 自己的代码放到外面，书写不直观
+    // function Person(name, age) {
+    //     this.name = name
+    //     this.age = age
+    // }
+    // Person.prototype.sing = function () {
+    //     console.log('只因' + this.name + '你太美');
+    // }
+
+    // // 实例化
+    // const p1 = new Person('小花', 18)
+    // p1.sing()
+
+
+    // 构造函数 没有 new 也可以使用
+    // Person('小明', 17)
+
+
+
+    // ES6 类的语法
+
+    class Person {
+        // 构造器 --- 等价于 ES5 中在构造函数里面写的代码
+        constructor(name, age) {
+            this.name = name
+            this.age = age
+        }
+
+        // 从这一项开始往下，直到 class的花括号结束，都是书写原型上的方法的地方
+        sing() {
+            console.log('只因' + this.name + '你太美');
+        }
+
+        dance() {
+            console.log('练习时长两年半');
+        }
+
+        basketball() {
+            console.log('喜欢打篮球');
+        }
+    }
+
+    // 实例化
+    const p1 = new Person('小花', 18)
+    console.log(p1);
+    p1.sing()
+    p1.dance()
+</script>

@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="">
-      <input type="text" name="username" />
-      <input type="text" name="phone" />
-      <button type="submit">提交</button>
-    </form>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" name="username" />
+			<input type="text" name="phone" />
+			<button type="submit">提交</button>
+		</form>
 
-    <div id="box">点击跳转</div>
-    <div id="reload">点击刷新</div>
-  </body>
+		<div id="box">点击跳转</div>
+		<div id="reload">点击刷新</div>
+	</body>
 </html>
 <script>
-  // file:///D:/%E5%B7%A5%E4%BD%9C/%E4%B8%8A%E8%AF%BE%E5%86%85%E5%AE%B9/2215/week3/day11/%E4%BB%A3%E7%A0%81/16-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6.html
+	// file:///D:/%E5%B7%A5%E4%BD%9C/%E4%B8%8A%E8%AF%BE%E5%86%85%E5%AE%B9/2215/week3/day11/%E4%BB%A3%E7%A0%81/16-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6.html
 
-  // https://www.baidu.com/
-  /*
+	// https://www.baidu.com/
+	/*
     浏览器的地址栏组成
         1. 协议  两台电脑通信，必须添加协议(http https file ftp), 浏览器会自动补全协议
         2. 域名(ip)  电脑的唯一表示，由于ip地址不方便记忆，产生了域名
@@ -35,7 +35,7 @@
 
   */
 
-  /* 
+	/* 
     操作地址栏 - location对象
         1. href属性  读写浏览器地址栏的内容
             - 读
@@ -55,20 +55,20 @@
             - 语法 window.location.reload
             - 作用 重新加载页面(刷新)
   */
-  //   console.log(window.location.href);
+	//   console.log(window.location.href);
 
-  //   box.onclick = function () {
-  //     window.location.href = "http://www.baidu.com";
-  //   };
+	//   box.onclick = function () {
+	//     window.location.href = "http://www.baidu.com";
+	//   };
 
-  // search
-  //   console.log(window.location.search);
+	// search
+	//   console.log(window.location.search);
 
-  // hash
-  //   console.log(window.location.hash);
+	// hash
+	//   console.log(window.location.hash);
 
-  // reload
-  reload.onclick = function () {
-    window.location.reload();
-  };
+	// reload
+	reload.onclick = function () {
+		window.location.reload();
+	};
 </script>

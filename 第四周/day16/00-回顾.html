@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        解构赋值
+            从数组 或 对象 快速获取内容
+
+            解构数组
+                var [a, b] = 数组
+            解构对象
+              -  var { key } = 对象
+                 按照对象的键名 定义 同名变量
+              -  起别名
+                 var { key: 别名 } = 对象
+                 把对象中key对应的value, 赋值给别名
+
+        扩展运算符 ...
+        Set Map 数据结构
+            - 共同点： 不接受重复数据 
+            Set 类似数组的数据结构
+                - 创建 var s = new Set([数据1, 数据2...])
+                - 方法 和 属性
+                    1. size 
+                    2. add()
+                    3. delete()
+                    4. has()
+                    5. clear()
+                    6. forEach()
+            Map 类似对象的数据结构
+                - 创建  var m = new Map([ [key, value], [key , value] ])
+                - 方法 和 属性
+                    1. size
+                    2. get
+                    3. set
+                    4. has
+                    5. delete
+                    6. clear
+                    7. forEach
+        对象的简写形式
+            1. key 和 value一样的时候，可以省略value不写
+            - 注意 value是一个变量
+
+            var name = 'tom'
+            var obj = {     
+                name: name      
+            }
+
+            ===>  等价于
+
+            var obj = {
+                name
+            }
+
+            2. key 对应的值 是一个函数
+                - 函数不是箭头函数
+                - 可以省略 function : 不写
+            var obj = {
+                fn: function(){}
+            }
+
+            ====> 等价于 
+
+            var obj = {
+                fn(){}
+            }
+
+        模块化开发
+            - 把代码按照功能进行拆分，每个功能就是一个模块
+            - 每个js都是一个独立的模块
+
+            导出
+                1. 语法1  export default 数据  
+                2. 语法2  export 定义变量 = 值
+            导入
+                1. 语法1  import 变量 from '文件'
+                2. 语法2  import {变量} from '文件'
+
+            模块化开发的时候 script文件 需要添加 一个属性 type = 'module'
+
+        for...of
+            一个数据只要具有Iterator接口，就可以使用for...of遍历
+
+            Iterator接口: ES6提供了一个 Symbol.iterator 属性，一个数据只要具有该属性，就可以使用for...of
+
+            for( var 变量 of 数组 ){}
+
+            - for...of forEach for...in for循环 区别
+            1. for循环最基础，写法累赘，
+            2. forEach不能中断退出 continue break
+            3. for...in 遍历属性，可以遍历自定义属性，一般用做对象遍历
+            4. for...of 只能遍历索引，也可以中断退出
+
+        完整的数据类型
+            基本数据类型  string number boolean undefined null Symbol BigInt
+            引用数据类型  Object
+
+            Symbol 独一无二
+                    - Symbol(1) === Symbol(1) :false 
+                    - 把symbol数据作为对象的key, 但是无法通过对象的语法获取到属性
+                      ES6提供了一个语法 Object.getOwnPropertySymbols(对象) 可以获取到对象中用symbol数据作为属性的所有key
+            BigInt 
+                  - 给数字后面添加一个n
+                  - BigInt只能和BigInt进行操作
+
+    */
+</script>

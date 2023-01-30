@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    ES提供的所有数据类型
+        - 基本数据类型   number  string boolean null undefined  Symbol BigInt
+        - 引用类型  object(array/object/date/function)
+  */
+  /* 
+    Symbol类型
+        - 表示独一无二的值
+    创建Symbol数据类型
+        - 语法 var 变量名 = Symbol(数据)
+    Symbol作为对象的属性
+        - 不会覆盖
+        - 不能通过对象语法获取，只能通过遍历的方式拿到
+        - Object.getOwnPropertySymbols()方式，可以获取到对象的所有Symbol属性名
+  */
+
+   // 创建Symbol数据类型  
+//    var a = Symbol('1') 
+//    var b = Symbol('1')
+//    console.log(a, b);
+//    console.log(a === b); // 独一无二 的，无法比较
+    //    console.log(a == b);
+    
+
+    // 1. 把Symbol当做对象的属性
+
+    // const obj = {
+    //     [Symbol('tom')]:1,
+    //     [Symbol('jerry')]:2,
+    // }
+
+    // obj[Symbol('tom')] = 3
+    // console.log(obj); // 不会覆盖，可以添加
+    // 想要获取obj中键名 Symbol('tom')的值 
+    // console.log(obj[Symbol('tom')]); // undefined , Symbol('tom') 表示独一无二的值，获取的时候的Symbol('tom')，和设置的是的Symbol('tom')， 不是一个东西
+    // 无法通过对象语法获取symbol, 只能遍历
+
+    // console.log(Object.getOwnPropertySymbols(obj));
+    // for(let i = 0; i< Object.getOwnPropertySymbols(obj).length; i++){
+    //     // 获取对象的symbol属性名对应的属性值
+    //     console.log(Object.getOwnPropertySymbols(obj)[i], obj[Object.getOwnPropertySymbols(obj)[i]]);
+    // }
+
+
+    /* 
+        BigInt 大整数 
+        - js存储16位以上的数据会出现精度丢失的问题
+        - 为了解决这个问题，提出了BigInt, 支持比 number 范围更大的整数值，以及任意精度的数值
+        - 将任意数字转为BigInt , 在数字后面添加n
+        - 注意 bigInt只能和bigInt一起操作
+    */
+    // console.log(9999999999999999); // 10000000000000000
+
+    var num = 100 
+    // console.log(100);// number
+    // console.log(typeof num);// number
+    num = 100n // 转为BigInt 
+    console.log(num);
+    console.log(typeof num); // bigint
+
+    console.log(100n + 100n);
+    console.log(100n + 100);
+    
+  
+</script>

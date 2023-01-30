@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        设计模式 - 策略模式
+        + 作用: 把多种形式的内容罗列出来
+    */
+
+    // 例子: 我已知一个购物总价 1356
+    //      需要根据折扣计算最终价格
+    //      折扣种类  8折  7折   300-20    500-50
+
+    // const type = '80%' // 70%  300-20  500-50
+
+    // if (type === '80%') {
+    // } else if (type === '70%') {
+    // } else if (type === '300-20') {
+    // } else if (type === '500-50') {
+    // } else if (type === '300-30') {
+    // }
+
+    // 核心: 用一个数据结构, 把各种折扣记录下来
+    //      值存储的就是该折扣和总价的计算方式
+
+    // 第一版
+    // const calcPrice = (function () {
+    //     // 留一个变量
+    //     const calcList = {
+    //         // 标识
+    //         // 8折 ： 8折之后的价格
+    //         '80%': function (total) { return (total * 0.8).toFixed(2) }
+    //     }
+
+    //     return function (total, type) {
+    //         // 根据 折扣类型  算出总价返回
+    //         if (!calcList[type]) return '折扣类型输入错误'
+    //         return calcList[type](total)
+    //     }
+    // })()
+
+    // 最终版
+    const calcPrice = (function () {
+        // 留一个变量
+        const calcList = {
+            // 标识
+            // 8折 ： 8折之后的价格
+            '80%': function (total) { return (total * 0.8).toFixed(2) }
+        }
+
+        // 所有的复杂数据类型都可以当做一个对象来看
+
+        function inner(total, type) {
+            // 根据 折扣类型  算出总价返回
+            if (!calcList[type]) return '折扣类型输入错误'
+            return calcList[type](total)
+        }
+
+        // 给inner添加一些方法
+        // 添加折扣
+        inner.add = function (type, fn) {
+            calcList[type] = fn
+        }
+        // 删除折扣
+        inner.remove = function (type) {
+            delete calcList[type]
+        }
+        // 查询折扣
+        inner.getList = function () {
+            return calcList
+        }
+        return inner
+    })()
+
+    // const res = calcPrice(1000, '80%')
+    // console.log(res);
+    // const res = calcPrice('总价', '折扣类型')
+
+    const res = calcPrice(1000, '300-20')
+    console.log(res)
+
+    // 我需要添加折扣的时候
+    calcPrice.add('300-20', price => price - parseInt(price / 300) * 20)
+    const res2 = calcPrice(1000, '300-20')
+    console.log(res2)
+
+    const list = calcPrice.getList()
+    console.log(list)
+
+</script>

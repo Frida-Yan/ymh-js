@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+</head>
+
+<body></body>
+
+</html>
+<script>
+    /*
+        沙箱语法糖
+            - 尽可能的简化沙箱模式的语法
+            - 利用的是 getter 和 setter 来进行操作数据
+    */
+
+    function outer() {
+        let a = 100
+        let b = 200
+
+        const obj = {
+            // get关键字， getter获取器，用来获取成员a
+            get a() {
+                return a
+            },
+            get b() {
+                return b
+            },
+            // set 关键字 setter设置器，用来设置成员a 
+            set a(val) {
+                a = val
+            }
+        }
+
+        return obj
+    }
+
+    const res = outer()
+    // 操作的时候 直接对象.设置(获取)器名称 
+    console.log(res.a);
+
+    res.a = 1000
+    console.log(res.a);
+
+
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+</html>
+<script>
+  /*
+    点击每一个li 打印出来当前li的内容，不能用forEach
+  */
+  var lis = document.querySelectorAll("li");
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].onclick = function () {
+      //   console.log(i, lis[i]);
+      console.log(this.innerHTML);
+    };
+  }
+
+  /* 
+    打开浏览器 
+    看到一个循环 循环执行   
+    第1次 循环  var i =0
+    第2次 循环   i =1
+    第3次 循环   i =2
+    第4次 循环   i =3  条件不满足 循环结束 
+
+    打开页面 循环代码就执行完毕， 把变量i修改为3
+
+
+  */
+</script>

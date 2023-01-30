@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .header,
+      .footer {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: skyblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+        height: 120px;
+        color: #fff;
+      }
+
+      .footer {
+        height: 300px;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      ul {
+        width: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        justify-content: space-between;
+        padding-top: 10px;
+      }
+
+      li {
+        width: 290px;
+        border: 1px solid #333;
+        margin-bottom: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      li > img {
+        width: 278px;
+        display: block;
+      }
+
+      .pagination {
+        width: 1200px;
+        margin: 10px auto;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+
+      .pagination > .prev,
+      .pagination > .next {
+        width: 50px;
+        height: 30px;
+        cursor: pointer;
+        background-color: orange;
+        font-size: 24px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pagination > .disable {
+        cursor: not-allowed;
+        background-color: #ccc;
+      }
+
+      .pagination > .total {
+        font-size: 30px;
+        font-weight: 700;
+        margin: 0 20px;
+      }
+
+      .pagination > select {
+        font-size: 22px;
+        padding-left: 20px;
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">网页头部</div>
+    <div class="pagination">
+      <span class="prev">&lt;</span>
+      <span class="total">1 / 100</span>
+      <span class="next">&gt;</span>
+      <select>
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="16">16</option>
+      </select>
+    </div>
+    <!-- 内容 需要渲染 -->
+    <ul></ul>
+    <div class="footer">网页底部</div>
+  </body>
+</html>
+<script src="./dm_list.js"></script>
+<script>
+  /* 
+        1. 展示页面
+            上一页按钮的状态
+            下一页按钮的状态
+            页码盒子  当前页 总页
+            列表
+        2. 功能
+            点击上一页
+            点击下一页
+            下拉框
+
+        1. 默认展示第一页
+            上一页按钮 置灰
+            页码    1 / 总数
+            列表 展示  [0] ~ [3]
+    */
+
+  // 0 准备变量
+  var current = 1;
+  var pagesize = 4; // 每页有几条
+  var total = Math.ceil(list.length / pagesize);
+
+  // 0 准备变量
+  var prev = document.querySelector(".prev");
+  var next = document.querySelector(".next");
+  var totalEle = document.querySelector(".total");
+  var ul = document.querySelector("ul");
+  var select = document.querySelector("select");
+
+  // 默认展示
+  /* 
+    作为页面渲染的函数 
+    按钮状态
+    页码盒子
+    数据渲染
+  */
+  function renderHTML() {
+    // 上一页按钮的状态 改  --- 只要当前页不是1 上一页就不置灰
+    prev.className = current === 1 ? "prev disable" : "prev";
+    // 下一页按钮的状态 改  --- 当前页等于总页数 置灰
+    next.className = current === total ? "next disable" : "next";
+    // 页码盒子
+    totalEle.innerHTML = ` ${current} / ${total} `;
+
+    // 数据渲染  [0] ~ [3]
+    var arr = list.slice((current - 1) * pagesize, current * pagesize);
+    var str = "";
+    arr.forEach(function (item) {
+      str += `
+      <li>
+          <img
+            src = ${item.pic}
+            alt=""
+          />
+          <p>${item.name}</p>
+          <p>城市: ${item.city}</p>
+          <p>地址: ${item.address}</p>
+          <p>价格: ${item.price}</p>
+          <p>时间: ${item.showTime}</p>
+        </li>`;
+    });
+    ul.innerHTML = str;
+  }
+  renderHTML();
+
+  // 点击下一页
+  next.onclick = function () {
+    // 如果 到了最后一页， 那么不能继续操作
+    if (current === total) {
+      return;
+    }
+    /* 
+        当前页 ++
+        页码盒子的数据
+        上一页 下一页 的状态
+        点到最后一页 处理
+        数据截取渲染
+    */
+    // 当前页 ++
+    current++;
+    renderHTML();
+  };
+
+  // 点击上一页
+  prev.onclick = function () {
+    // 4. 上一页不能点击
+    if (current === 1) {
+      return;
+    }
+    /* 
+        1. 当前页--
+        2. 上一页按钮的状态 下一页按钮的状态
+        3. 上一页不能点击
+        4. 页码盒子
+        5. 数据渲染
+
+    */
+    // 1. 当前页--
+    current--;
+    renderHTML();
+  };
+
+  // 切换 下拉框
+  select.onchange = function () {
+    /* 
+        当前页 == 1
+        页码盒子 当前页 总数
+        上一页按钮的状态 下一页按钮状态
+        数据渲染
+    */
+    // 当前页 == 1
+    current = 1;
+    pagesize = select.value;
+    total = Math.ceil(list.length / pagesize);
+    renderHTML();
+  };
+</script>

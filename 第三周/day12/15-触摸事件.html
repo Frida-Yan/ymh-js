@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+<script>
+  /*
+    触摸事件
+  */
+
+  var div = document.querySelector("div");
+
+  // 1. touchstart 开始触摸
+  div.ontouchstart = function () {
+    console.log("开始触摸");
+  };
+
+  // 2. touchmove 触摸移动
+  div.ontouchmove = function () {
+    console.log("触摸移动");
+  };
+
+  // 3. touchend 触摸结束
+  div.ontouchend = function () {
+    console.log("触摸结束");
+  };
+</script>

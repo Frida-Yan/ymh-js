@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <!--
+    认识元素属性
+      + 书写在标签身上, 用来修饰该标签的内容
+      + 属性的格式: 属性名="属性值"
+
+    属性分类
+      + 原生属性: W3C 标准内存在的属性
+        => 比如: class, id, style, type, ...
+      + 自定义属性: W3C 标准内没有的属性
+        => 对标签没有特殊意义, 只是我们自己写下来用来记录一些信息的
+      + H5 自定义属性
+        => 以 data- 开头的属性叫做 自定义属性
+        => 就是为了做一个区分
+  -->
+  <!-- <div hello="world" xhl="guoxiang" index="1" border="1" class="box" id="container" style="width: 100px; height: 200px"></div>
+
+  <p id="box" data-id="box" data-user-name="guoxiang"></p> -->
+  <p id="box" data-id="box" data-user-name="guoxiang"></p>
+
+  <!-- <input type="text">
+  <img src="https://img1.baidu.com/it/u=3217543765,3223180824&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1660410000&t=af2621c49e234974c633e792467839e3" alt=""> -->
+
+  <input type="checkbox" checked>
+
+  <script>
+    /*
+      操作元素属性
+        + 操作元素属性的时候, 尽量不操作元素的 类名 和 样式
+
+      原生属性操作
+        + 直接使用属性名进行操作即可
+          => 读:
+            -> 语法: 元素.属性名
+            -> 得到的就是该属性对应的值
+          => 写:
+            -> 语法: 元素.属性名 = 属性值
+            -> 修改该属性的值
+        + 原生属性内有一种特殊的属性, 叫做 布尔类型 属性
+          => checked / disabled / selected / ...
+          => 这种属性我们获取到的值是一个 布尔值
+          => 也可以直接设置布尔值来操作
+
+      自定义属性
+        + 可以操作原生属性, 但是一般不用他来操作原生属性
+        + 增
+          => 语法: 元素.setAttribute(属性名, 属性值)
+        + 删
+          => 语法: 元素.removeAttribute(属性名)
+        + 查
+          => 语法: 元素.getAttribute(属性名)
+        + 注意: 不管你设置的是什么类型的数据, 得到的都是字符串类型
+        + 注意: 尽量不用这个语法操作 原生属性 和 H5自定义属性
+
+      H5 自定义属性
+        + H5 自定义属性
+          => data- 表示该属性是一个自定义属性
+          => data- 以后的内容才叫做 属性名
+          => 等于号 后面的内容才叫做 属性值
+        + 每一个元素身上天生自带一个属性, 叫做 dataset, 是一个 类似对象 的数据结构
+        + 内部记录的是该元素身上所有 data- 开头的 自定义属性
+        + 对于该元素 H5 自定义属性的操作, 就是对这个数据结构的操作(对象操作语法)
+    */
+
+    // 0. 获取元素
+    // var inp = document.querySelector('input')
+    // var imgEle = document.querySelector('img')
+
+
+    // 1. 原生属性
+    // 获取
+    // console.log(inp.type)
+    // console.log(imgEle.src)
+    // console.log(inp.checked)
+    // // 设置
+    // inp.type = 'password'
+    // imgEle.src = 'https://img2.baidu.com/it/u=1814268193,3619863984&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1660410000&t=bb7c922739418090c17c3a16b5f7e046'
+    // inp.checked = false
+
+    // 2. 自定义属性
+    // var pEle = document.querySelector('p')
+    // 2-1. 设置自定义属性
+    // pEle.setAttribute('hello', 100)
+    // 2-2. 删除自定义属性(可以删除原生属性, 但是不推荐)
+    // pEle.removeAttribute('id') // 不推荐
+    // pEle.removeAttribute('data-id') // 不推荐
+    // pEle.removeAttribute('hello')
+    // 2-3. 获取自定义属性的值
+    // console.log(pEle.getAttribute('hello'))
+    // console.log(typeof pEle.getAttribute('hello'))
+
+
+    // 3. H5 自定义属性
+    var pEle = document.querySelector('p')
+    console.log(pEle)
+
+    // 3-1. 增
+    pEle.dataset.age = 18
+    // 3-2. 删
+    delete pEle.dataset.id
+    // 3-3. 查
+    console.log(pEle.dataset.age)
+
+  </script>
+</body>
+</html>

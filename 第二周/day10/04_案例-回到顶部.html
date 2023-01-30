@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100%;
+      height: 5000px;
+    }
+
+    .header {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      color: #fff;
+      background-color: skyblue;
+
+      position: fixed;
+      left: 0;
+      top: -80px;
+
+      transition: top .5s linear;
+    }
+
+    .goTop {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      line-height: 25px;
+      border: 1px solid #333;
+      position: fixed;
+      right: 50px;
+      bottom: 50px;
+      cursor: pointer;
+      background-color: orange;
+      text-align: center;
+
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">顶部通栏</div>
+  <div class="goTop">回到顶部</div>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+    <li>14</li>
+    <li>15</li>
+    <li>16</li>
+    <li>17</li>
+    <li>18</li>
+    <li>19</li>
+    <li>20</li>
+    <li>21</li>
+    <li>22</li>
+    <li>23</li>
+    <li>24</li>
+    <li>25</li>
+    <li>26</li>
+    <li>27</li>
+    <li>28</li>
+    <li>29</li>
+    <li>30</li>
+    <li>31</li>
+    <li>32</li>
+    <li>33</li>
+    <li>34</li>
+    <li>35</li>
+    <li>36</li>
+    <li>37</li>
+    <li>38</li>
+    <li>39</li>
+    <li>40</li>
+    <li>41</li>
+    <li>42</li>
+    <li>43</li>
+    <li>44</li>
+    <li>45</li>
+    <li>46</li>
+    <li>47</li>
+    <li>48</li>
+    <li>49</li>
+    <li>50</li>
+    <li>51</li>
+    <li>52</li>
+    <li>53</li>
+    <li>54</li>
+    <li>55</li>
+    <li>56</li>
+    <li>57</li>
+    <li>58</li>
+    <li>59</li>
+    <li>60</li>
+    <li>61</li>
+    <li>62</li>
+    <li>63</li>
+    <li>64</li>
+    <li>65</li>
+    <li>66</li>
+    <li>67</li>
+    <li>68</li>
+    <li>69</li>
+    <li>70</li>
+    <li>71</li>
+    <li>72</li>
+    <li>73</li>
+    <li>74</li>
+    <li>75</li>
+    <li>76</li>
+    <li>77</li>
+    <li>78</li>
+    <li>79</li>
+    <li>80</li>
+    <li>81</li>
+    <li>82</li>
+    <li>83</li>
+    <li>84</li>
+    <li>85</li>
+    <li>86</li>
+    <li>87</li>
+    <li>88</li>
+    <li>89</li>
+    <li>90</li>
+    <li>91</li>
+    <li>92</li>
+    <li>93</li>
+    <li>94</li>
+    <li>95</li>
+    <li>96</li>
+    <li>97</li>
+    <li>98</li>
+    <li>99</li>
+    <li>100</li>
+  </ul>
+
+  <script>
+    /*
+      案例 - 回到顶部
+
+
+      需求:
+        1. 随着滚动条滚动发生变化
+          + 约定一个临界值(350px)
+          + 当滚动超过 临界值 的时候, header 和 goTop 显示
+            => header: 设置 header 元素的 top 样式值为 0
+            => goTop: 设置 goTop 元素的 display 样式值为 block
+          + 当滚动小于 临界值 的时候, header 和 goTop 隐藏
+            => header: 设置 header 元素的 top 样式值为 -80px
+            => goTop: 设置 goTop 元素的 display 样式值为 none
+        2. 点击 goTop 按钮的时候发生变化
+          + 让滚动条滚动到顶部
+    */
+
+    // 0. 获取元素
+    // 0-1. header 元素
+    var headerEle = document.querySelector('.header')
+    // 0-2. goTop 元素
+    var goTopEle = document.querySelector('.goTop')
+
+
+    // 1. 随着滚动条滚动发生变化
+    // 1-1. 绑定一个浏览器滚动事件(因为你要随着滚动实时进行一些变化)
+    window.onscroll = function () {
+      // 1-2. 随时获取到卷去的高度
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+      // console.log(scrollTop)
+
+      // 1-3. 判断卷去的高度, 来决定执行什么操作
+      if (scrollTop >= 350) {
+        // 显示
+        headerEle.style.top = 0
+        goTopEle.style.display = 'block'
+      } else {
+        // 隐藏
+        headerEle.style.top = '-80px'
+        goTopEle.style.display = 'none'
+      }
+    }
+
+
+    // 2. 点击 goTop 按钮的时候发生变化
+    // 2-1. 给 goTop 按钮绑定点击事件
+    goTopEle.onclick = function () {
+      // 2-2. 浏览器滚动到 0
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  </script>
+</body>
+</html>
