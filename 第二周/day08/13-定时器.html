@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">关闭</button>
+  </body>
+</html>
+<script>
+  /*
+    定时器
+
+    1. 定时器分类
+        延迟定时器
+        - 语法  setTimeout(function(){}, 毫秒数)
+        - 作用  隔一段时间之后执行
+
+        间隔定时器
+        - 语法  setInterval(function(){}, 毫秒数)
+        - 作用  每隔一段时间执行一次
+
+    2. 定时器的返回值
+        - 返回值 数字
+        - 作用  用来关闭定时器
+
+    3. 关闭定时器
+        - 语法
+            1. clearTimeout(定时器)
+            2. clearInterval(定时器)
+
+  */
+
+  // 1. 延迟定时器
+  //   setTimeout(function () {
+  //     console.log("执行了。。。");
+  //   }, 2000);
+
+  // 2. 间隔定时器
+  //   setInterval(function () {
+  //     console.log("执行了...");
+  //   }, 2000);
+
+  // 定时器的返回值
+  //   var t1 = setTimeout(function () {
+  //     console.log("执行了延迟定时器");
+  //   }, 1000);
+
+  //   var t2 = setInterval(function () {
+  //     console.log("执行了间隔定时器");
+  //   }, 1000);
+
+  //   console.log(t1, "t1");
+  //   console.log(t2, "t2");
+
+  // 关闭定时器
+  var t1 = setTimeout(function () {
+    console.log("执行了延迟定时器");
+  }, 1000);
+
+  var t2 = setInterval(function () {
+    console.log("执行了间隔定时器");
+  }, 1000);
+
+  btn.onclick = function () {
+    // 关闭定时器
+    // clearTimeout(t1);
+    // clearTimeout(t2);
+
+    clearInterval(t1);
+    clearInterval(t2);
+  };
+</script>

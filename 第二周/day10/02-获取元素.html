@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+
+    <div class="laowang">
+      <div class="xiaowang">6</div>
+    </div>
+    <div class="laoli">
+      <div class="xiaowang">7</div>
+    </div>
+  </body>
+</html>
+<script>
+  /*
+    获取元素
+        js中把标签分为两类
+
+        1. 非常规元素
+            -> html     document.documentElement
+            -> head     document.head
+            -> body     document.body
+        2. 常规元素
+            1) 根据id获取元素
+                -> 语法  document.getElementById('id名字')
+                -> 返回值
+                    如果页面上有该id名字的元素， 那么拿到该元素
+                    如果没有，返回null
+            2) 根据class获取元素
+                -> 语法  document.getElementsByClassName('class名字')
+                -> 返回值  是一个伪数组
+                    如果页面上有该class名字的元素，那么全部获取，放到伪数组中返回
+                    如果没有，返回一个空数组
+            3) 根据标签名获取元素
+                -> 语法 document.getElementsByTagName('标签名')
+                -> 返回值  是一个伪数组
+                    如果页面上有 该标签名对应的元素 ，那么全部获取，放到伪数组中返回
+                    如果没有，返回一个空数组
+            4) 根据选择器获取一个元素
+                -> 语法  document.querySelector('选择器')
+                -> 返回值
+                    如果页面上有 该选择器对应的元素， 那么获取满足条件的第一个
+                    如果没有，返回null
+            5) 根据选择器 获取一组元素
+                -> 语法 document.querySelectorAll('选择器')
+                -> 返回值  必然是一个伪数组
+                    如果页面上有 该选择器对应的元素, 那么全部获取，放到一个伪数组中返回
+                    如果没有，返回一个空数组
+
+  */
+
+  // 获取非常规标签
+  //   console.log(document.documentElement);
+  //   console.log(document.head);
+  //   console.log(document.body);
+
+  // 1. 根据id获取元素
+  //   console.log(document.getElementById("box"));
+
+  // 2. 根据class获取元素
+  //   console.log(document.getElementsByClassName("box"));
+  //   var list = document.getElementsByClassName("box");
+  //   for (var i = 0; i < list.length; i++) {
+  //     console.log(list[i]);
+  //   }
+
+  // 3. 根据标签名获取元素
+  //   console.log(document.getElementsByTagName("div"));
+
+  // 4. 通过选择器获取元素
+  //   console.log(document.querySelector(".laoli .xiaowang"));
+
+  // 5. 通过选择器获取一组元素
+  console.log(document.querySelectorAll("div:nth-of-type(2n)"));
+</script>

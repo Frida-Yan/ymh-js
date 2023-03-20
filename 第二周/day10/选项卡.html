@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+			ul {
+				width: 500px;
+				height: 100px;
+				margin: 50px auto 0;
+				display: flex;
+			}
+			ul li {
+				flex: 1;
+				border: 1px solid #000;
+				font-size: 30px;
+				text-align: center;
+				line-height: 100px;
+			}
+			ol {
+				margin: auto;
+				width: 500px;
+				height: 400px;
+				overflow: hidden;
+			}
+			ol li {
+				width: 500px;
+				height: 400px;
+				box-sizing: border-box;
+				border: 1px solid #000;
+			}
+
+			ul .active {
+				background-color: orange;
+			}
+
+			ol li {
+				display: none;
+			}
+			ol .show {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="head">
+			<li class="active">蔬菜</li>
+			<li>水果</li>
+			<li>零食</li>
+		</ul>
+		<ol>
+			<li class="show">
+				<div>玉米</div>
+				<div>土豆</div>
+				<div>番茄</div>
+			</li>
+			<li>
+				<div>苹果</div>
+				<div>香蕉</div>
+				<div>橘子</div>
+			</li>
+			<li>
+				<div>薯片</div>
+				<div>炸鸡</div>
+				<div>可乐</div>
+			</li>
+		</ol>
+		<script>
+			var tabList = document.querySelectorAll("ul li");
+			var containerList = document.querySelectorAll("ol li");
+
+			tabList.forEach(function (tab, index) {
+				tab.onclick = function () {
+					tabList.forEach(function (item) {
+						item.classList.remove("active");
+					});
+					tab.classList.add("active");
+					containerList.forEach(function (container) {
+						container.classList.remove("show");
+					});
+					containerList[index].classList.add("show");
+				};
+			});
+		</script>
+	</body>
+</html>

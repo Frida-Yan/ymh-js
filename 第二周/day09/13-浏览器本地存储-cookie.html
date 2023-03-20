@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    浏览器本地存储 - cookie 
+        特点 
+            1. 只能存储字符串 ，有固定格式
+                key=value; key2=value2; key3=value3
+            2. cookie 存储有大小限制
+                4kb 左右
+            3. 存储的时效性
+                -> 默认是会话级别，可以手动设置过期时间
+            4. 操作依赖服务器
+                -> 本地打开的页面不能操作cookie
+                -> 必须用服务器打开
+            5. 跟随前后端请求自动携带
+            6. 前后端都可以操作
+            7. 存储的时候依赖域名
+                -> 那个域名存储，那个域名用
+                -> 不能跨域名通讯
+
+        需要在服务器下打开
+            需要开启一个本地服务器  安装 插件  live server
+                右键  open with live server
+
+        cookie 操作
+            - 设置一条cookie 
+                -> 语法  document.cookie = 'key=value'
+            - 设置一条带有过期时间的cookie
+                -> 语法  document.cookie = 'key=value;expires=时间对象'
+                -> 注意  不管我们设置的时候什么时间， 都按照世界标准时间计算
+                要想设置一个30s之后过期的cookie 
+                    -> 拿到当前的时间 向前调整8小时
+                    -> 再向后设置需要过期的时间就可以
+  */
+
+  // 设置一条cookie
+  //   document.cookie = "a=100";
+  //   document.cookie = "b=200";
+
+  // 设置一条带有过期时间的cookie
+  //   var time = new Date();
+  //   document.cookie = "a=100;expires=" + time;
+  //   var time = new Date();
+  //   time.setTime(time.getTime() + 30000);
+  //   document.cookie = "a=100;expires=" + time;
+
+  // 设置一个30s以后过期的cookie
+
+  //   var time = new Date();
+  //   // 向前调整8小时, 再向后推30s
+  //   time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 30 * 1000);
+  //   document.cookie = "a=100;expires=" + time;
+
+  // 封装函数设置cookie
+
+  function setCookie(key, value, expires) {
+    // 1. 设置一个时间对象
+    // 根据 第三个参数 判断是否需要设置
+    // 怎么知道第三个参数有没有
+    if (expires) {
+      var time = new Date();
+      time.setTime(time.getTime() - 1000 * 60 * 60 * 8 + 1000 * expires);
+    }
+
+    // 2. 设置cookie
+    document.cookie = `${key}=${value};expires=${time}`;
+  }
+  setCookie("a", 100, 30);
+  setCookie("b", 200);
+
+  /* 
+    获取cookie
+        - 语法 document.cookie  ==> 'b=200; a=100'  ==> {b: 200, a: 100}
+  */
+
+  // 'b=200; a=100 ; c= 300'  ==> {b: 200, a: 100 , c: 300}
+  function getCookie() {
+    // 1. 先拿到cookie
+    var cookie = document.cookie;
+    // 2. 准备一个对象
+    var obj = {};
+    var arr = cookie.split(";"); // ['b=200', ' a=100']
+    arr.forEach(function (item) {
+      // item  b=200
+      var t = item.split("="); // ['b', 100]
+      var key = t[0];
+      var value = t[1];
+      obj[key] = value;
+    });
+    console.log(obj);
+    return obj;
+  }
+
+  getCookie();
+</script>

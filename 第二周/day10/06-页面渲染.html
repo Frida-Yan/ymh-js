@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.header,
+			.footer {
+				width: 1200px;
+				margin: 0 auto;
+				background-color: skyblue;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 50px;
+				height: 120px;
+				color: #fff;
+			}
+
+			.footer {
+				height: 300px;
+			}
+
+			ul,
+			li {
+				list-style: none;
+			}
+
+			ul {
+				width: 1200px;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0 auto;
+				justify-content: space-between;
+				padding-top: 10px;
+			}
+
+			li {
+				width: 290px;
+				border: 1px solid #333;
+				margin-bottom: 10px;
+				padding: 5px;
+				box-sizing: border-box;
+			}
+
+			li > img {
+				width: 278px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">网页头部</div>
+		<ul>
+			<!-- JS渲染 -->
+		</ul>
+		<div class="footer">网页底部</div>
+
+		<script src="./dm_list.js"></script>
+		<script>
+			/*
+      作业: 渲染页面
+        1. 写结构
+        2. 利用数据循环遍历, 组装一个合理的字符串
+          => 字符串内需要的结构, 直接复制
+        3. 插入到指定的页面结构内
+    */
+
+			var contentBox = document.querySelector("ul");
+			var str = "";
+			list.forEach(function (item) {
+				str += `
+        <li>
+          <img src="${item.pic}" alt="">
+          <p>${item.name}</p>
+          <p>城市: ${item.city}</p>
+          <p>地址: ${item.address}</p>
+          <p>价格: ${item.price}</p>
+          <p>时间: ${item.showTime}</p>
+        </li>
+      `;
+			});
+			contentBox.innerHTML = str;
+		</script>
+	</body>
+</html>

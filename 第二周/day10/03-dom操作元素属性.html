@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box" id="box" data-list="list" xiaohua="小花">啦啦啦</div>
+		<table
+			cellpadding="10"
+			cellspacing="10"
+			border="1"
+			rules="rows"
+			width="100"
+		></table>
+		<input type="text" />
+		<p>哈哈哈哈</p>
+		<h2 data-list="100" data-a="200" data-b="abcd">哈哈哈哈</h2>
+	</body>
+</html>
+<script>
+	/*
+    认识元素属性
+        属性的格式 <div 属性='属性值'></div>
+
+    属性分类
+        - 原生属性  w3c 标准内存在的属性
+            eg: class id style border target href src。。。。
+        - 自定义属性
+            没有特殊意义，是我们自己设置的属性
+            <div xiaohua='ymh' ></div>
+        - H5 自定义属性
+            以 data-开头的属性 叫做H5 自定义属性
+
+    操作元素属性
+        - 操作元素属性的时候，尽量不操作元素的类名和样式
+
+        原生属性操作
+            - 直接使用属性名操作就可以
+                -> 读
+                    语法  元素.属性名
+                -> 写
+                    语法  元素.属性名=值
+                    一些表单控件，属性值是布尔值(disabled, checked selected)
+
+        自定义属性
+            - 可以用来操作原生属性，但是一般不推荐
+            - 增 
+                语法  元素.setAttribute(属性名, 属性值)
+            - 删除
+                语法  元素.removeAttribute(属性名)
+            - 查 
+                语法  元素.getAttribute(属性名)
+
+        H5 自定义属性
+            - data- 表示是一个h5自定义属性
+            - data- 后面的内容才是属性名
+            - 每一个元素身上天生带有一个属性 叫做dataset, 是一个类似对象的结构，内部记录的就是h5自定义的属性，所有可以直接操作dataset
+            - 使用对象语法操作dataset
+
+
+  */
+
+	// 0 获取元素
+	//   var table = document.querySelector("table");
+	//   var inp = document.querySelector("input");
+	//   // 1. 获取table的原生属性
+	//   //   console.log(table.border);
+	//   // 2. 设置input的原生属性
+	//   inp.type = "checkbox";
+	//   inp.checked = false;
+
+	// 增加自定义属性
+	// 0 获取元素
+	//   var p = document.querySelector("p");
+	//   p.setAttribute("hello", 100);
+	//   //   p.removeAttribute("hello");
+
+	//   console.log(p.getAttribute("hello"));
+
+	// 操作h5自定义属性
+	// 0 获取元素
+	var h2 = document.querySelector("h2");
+	var h2Dataset = h2.dataset;
+
+	// 获取自定义属性 的a
+	//   console.log(h2Dataset.a);
+	// 增加自定义属性
+	//   h2Dataset["c"] = 1000;
+	// 删除自定义属性
+	delete h2Dataset.a;
+</script>

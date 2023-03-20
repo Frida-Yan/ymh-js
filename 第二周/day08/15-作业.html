@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="box"></div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
 </html>
 <script>
-  /*
+	/*
     1. 时间对象 定时器搞清楚
   */
 
-  /* 
+	/* 
    2. 在页面上展示一个时钟 隔1s更新一次
 
    xx年xx月xx日 星期x xx:xx:xx
  */
 
-  // 封装一个函数， 数字是一位数的时候，前面补0
-  function format(num) {
-    return num > 10 ? num : "0" + num;
-  }
+	// 封装一个函数， 数字是一位数的时候，前面补0
+	function format(num) {
+		return num > 10 ? num : "0" + num;
+	}
 
-  // function dateStr() {
-  //   var str = "";
+	// function dateStr() {
+	//   var str = "";
 
-  //   // 获取日期
-  //   var date = new Date();
-  //   // 解析 获取每一个部分
-  //   var year = date.getFullYear();
-  //   var month = date.getMonth() + 1;
-  //   var day = date.getDate();
+	//   // 获取日期
+	//   var date = new Date();
+	//   // 解析 获取每一个部分
+	//   var year = date.getFullYear();
+	//   var month = date.getMonth() + 1;
+	//   var day = date.getDate();
 
-  //   var week = date.getDay();
+	//   var week = date.getDay();
 
-  //   var weekStr = "日一二三四五六";
-  //   week = "星期" + weekStr[week];
+	//   var weekStr = "日一二三四五六";
+	//   week = "星期" + weekStr[week];
 
-  //   var h = date.getHours();
-  //   var m = date.getMinutes();
-  //   var s = date.getSeconds();
+	//   var h = date.getHours();
+	//   var m = date.getMinutes();
+	//   var s = date.getSeconds();
 
-  //   str = `${year}年${month}月${day}日 ${week}  ${format(h)}:${format(
-  //     m
-  //   )}:${format(s)}`;
+	//   str = `${year}年${month}月${day}日 ${week}  ${format(h)}:${format(
+	//     m
+	//   )}:${format(s)}`;
 
-  //   return str;
-  // }
+	//   return str;
+	// }
 
-  // box.innerHTML = dateStr();
+	// box.innerHTML = dateStr();
 
-  // setInterval(function () {
-  //   box.innerHTML = dateStr();
-  // }, 1000);
+	// setInterval(function () {
+	//   box.innerHTML = dateStr();
+	// }, 1000);
 
-  /* 
+	/* 
     3. 做倒计时
     1.14 放假 
     距离 1. 14还有  x日x时x分x秒
@@ -66,26 +66,26 @@
     时间戳相减
   */
 
-  function countDay() {
-    var str = "";
+	function countDay() {
+		var str = "";
 
-    var futureTime = new Date("2023/1/14");
-    var currentTime = new Date();
+		var futureTime = new Date("2023/1/14");
+		var currentTime = new Date();
 
-    var time = parseInt((futureTime - currentTime) / 1000);
+		var time = parseInt((futureTime - currentTime) / 1000);
 
-    var day = parseInt(time / (24 * 60 * 60));
-    var h = parseInt((time % (24 * 60 * 60)) / (60 * 60));
-    var m = parseInt((time % (60 * 60)) / 60);
-    var s = time % 60;
+		var day = parseInt(time / (24 * 60 * 60));
+		var h = parseInt((time % (24 * 60 * 60)) / (60 * 60));
+		var m = parseInt((time % (60 * 60)) / 60);
+		var s = time % 60;
 
-    str = `${day}天${h}时${m}分${s}秒`;
-    return str;
-  }
+		str = `${day}天${h}时${m}分${s}秒`;
+		return str;
+	}
 
-  box.innerHTML = countDay();
+	box.innerHTML = countDay();
 
-  setInterval(function () {
-    box.innerHTML = countDay();
-  }, 1000);
+	setInterval(function () {
+		box.innerHTML = countDay();
+	}, 1000);
 </script>
