@@ -12,8 +12,9 @@
 
 </html>
 <script>
+    Object.defineProperty
     /*
-        Object.definePrototype 方法
+        Object.defineProperty 方法
 
         数据驱动视图
             - 数据 渲染的普通数据
@@ -36,8 +37,8 @@
 
     // 希望数据修改后，视图直接更改 ---- 数据驱动视图
     /*
-        (静态方法) Object.definePrototype 数据劫持
-            - 语法 Object.definePrototype(对象, 添加的属性, {配置项})
+        (静态方法) Object.defineProperty 数据劫持
+            - 语法 Object.defineProperty(对象, 添加的属性, {配置项})
             - 作用 操作对象
             - 配置项
                 -> value 添加的属性的属性值
