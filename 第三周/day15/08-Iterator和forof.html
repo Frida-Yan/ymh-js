@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Document</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+</head>
+
+<body></body>
+
 </html>
 <script>
   /*
@@ -19,39 +22,39 @@
     for...of... 遍历
         - 语法 for(let 变量名 of 数据) {}
   */
-//   var arr = [1, 2, 3, 4, 5]
-//   var str = 'hello world'
-//   var obj = {name: 'tom', age: 18}
+  //   var arr = [1, 2, 3, 4, 5]
+  //   var str = 'hello world'
+  //   var obj = {name: 'tom', age: 18}
 
- //   console.log(arr[Symbol.iterator]); // ok 
- //   console.log(str[Symbol.iterator]); // ok
- //   console.log(obj[Symbol.iterator]); // 没有
+  //   console.log(arr[Symbol.iterator]); // ok 
+  //   console.log(str[Symbol.iterator]); // ok
+  //   console.log(obj[Symbol.iterator]); // 没有
 
- // for...of 
-//   for(let value of arr) {
-//     console.log(value);
-//   }
-// for(let value of str) {
-//     console.log(value);
-//   }
+  // for...of 
+  //   for(let value of arr) {
+  //     console.log(value);
+  //   }
+  // for(let value of str) {
+  //     console.log(value);
+  //   }
 
- /* 
-     目前学过的遍历方式的区别 for循环 for...in  for...of forEach 
-     1. 以数组为例，最原始的写法就是for循环，这个写法比较麻烦，一般来说用forEach
-     2. forEach不能使用break continue ，不能中断, for...of可以 
-     3. for...in可以遍历数组，但是for...in循环不仅遍历索引，也遍历手动添加的属性，不方便，一般用在对象上
-     4. for...of和for...in的语法一样，但是没有for...in的缺点, 可以中断 退出
- */
+  /* 
+      目前学过的遍历方式的区别 for循环 for...in  for...of forEach 
+      1. 以数组为例，最原始的写法就是for循环，这个写法比较麻烦，一般来说用forEach
+      2. forEach不能使用break continue ，不能中断, for...of可以 
+      3. for...in可以遍历数组，但是for...in循环不仅遍历索引，也遍历手动添加的属性，不方便，一般用在对象上
+      4. for...of和for...in的语法一样，但是没有for...in的缺点, 可以中断 退出
+  */
 
- var arr = [100, 200, 300, 400, 500]
- arr.name = 'tom'
- console.log(arr);
+  var arr = [100, 200, 300, 400, 500]
+  arr.name = 'tom'
+  console.log(arr);
 
-//  for(let value in arr) {
-//     console.log(value);
-//  }
+  //  for(let value in arr) {
+  //     console.log(value);
+  //  }
 
-  for(let value of arr) {
+  for (let value of arr) {
     console.log(value);
   }
 </script>
